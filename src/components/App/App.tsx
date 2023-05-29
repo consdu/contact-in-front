@@ -1,11 +1,7 @@
-import ContainerStyled from "../shared/ContainerStyled";
+import Navbar from "../Navbar/Navbar";
 
 const App = (): React.ReactElement => {
-  return (
-    <ContainerStyled>
-      <p>Contact-in app</p>
-    </ContainerStyled>
-  );
+  return <Navbar />;
 };
 
 export default App;
