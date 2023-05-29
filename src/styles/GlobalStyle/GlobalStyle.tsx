@@ -1,24 +1,27 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-   *,
+  *,
   ::before,
   ::after {
     box-sizing: border-box;
   }
 
   html {
-    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif
+    font-family: ${(props) =>
+      props.theme.fonts
+        .primary}, system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif
   }
 
   body {
     margin: 0;
-    background: url("background.svg"), #f1f8f4;
+    background: url("background.svg"), ${(props) =>
+      props.theme.colors.primary50};
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    color: #000;
-    min-height:100vh;
+    color: ${(props) => props.theme.colors.gray950};
+    min-height: 100vh;
   }
 
   h1,
