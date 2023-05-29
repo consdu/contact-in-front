@@ -3,7 +3,7 @@ import { IoPeople, IoPersonAdd, IoExit } from "react-icons/io5";
 import NavbarStyled from "./NavbarStyled";
 import ContainerStyled from "../shared/ContainerStyled";
 
-const Navbar = () => {
+const Navbar = (): React.ReactElement => {
   return (
     <NavbarStyled>
       <ContainerStyled>
