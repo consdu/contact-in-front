@@ -1,5 +1,11 @@
+import ContainerStyled from "../shared/ContainerStyled";
+
 const App = (): React.ReactElement => {
-  return <p>Contact-in app</p>;
+  return (
+    <ContainerStyled>
+      <p>Contact-in app</p>
+    </ContainerStyled>
+  );
 };
 
 export default App;
