@@ -1,5 +1,6 @@
 import axios from "axios";
 import { UserCredentials } from "../../types";
+import { paths } from "../../constants";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -11,9 +12,12 @@ const useUser = () => {
   const getUserToken = async (
     userCredentials: UserCredentials
   ): Promise<string> => {
-    const { data } = await contactsApi.post<{ token: string }>("/user/login", {
-      userCredentials,
-    });
+    const { data } = await contactsApi.post<{ token: string }>(
+      paths.userLogin,
+      {
+        userCredentials,
+      }
+    );
 
     return data.token;
   };

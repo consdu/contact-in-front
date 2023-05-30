@@ -8,7 +8,7 @@ const Layout = (): React.ReactElement => {
   return (
     <>
       <Outlet />
-      <footer>{!(location.pathname === "/login") && <Navbar />}</footer>
+      <footer>{location.pathname === "/login" || <Navbar />}</footer>
     </>
   );
 };
