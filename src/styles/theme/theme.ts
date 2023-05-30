@@ -33,7 +33,7 @@ const theme: DefaultTheme = {
   fontSizes: {
     normal: "1rem",
     medium: "1.3rem",
-    large: "2.125rem",
+    large: "2.5rem",
   },
   spacing: {
     small: "10px",

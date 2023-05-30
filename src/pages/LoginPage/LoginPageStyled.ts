@@ -6,7 +6,7 @@ const LoginPageStyled = styled.div`
     font-size: ${(props) => props.theme.fontSizes.large};
     font-weight: 300;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 70px;
 
     &__logo {
       font-weight: 600;
