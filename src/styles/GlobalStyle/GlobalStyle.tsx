@@ -1,6 +1,18 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Inter';
+    src:  url("/assets/inter-latin-400-normal-0364d368.woff2") format('woff2');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Sora";
+    src: url("/assets/sora-latin-300-normal-ebd51082.woff2") format('woff2');
+    font-display: swap;
+  }
+
   *,
   ::before,
   ::after {
