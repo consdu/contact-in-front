@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 
-const Layout = () => {
+const Layout = (): React.ReactElement => {
   const location = useLocation();
 
   return (
