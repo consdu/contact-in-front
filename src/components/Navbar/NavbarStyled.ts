@@ -15,8 +15,8 @@ const NavbarStyled = styled.nav`
   }
 
   .navbar_link a {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    aspect-ratio: 1;
     background-color: ${(props) => props.theme.colors.primary400};
     color: ${(props) => props.theme.colors.primary900};
     font-size: 36px;
