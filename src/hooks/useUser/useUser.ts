@@ -14,9 +14,7 @@ const useUser = () => {
   ): Promise<string> => {
     const { data } = await contactsApi.post<{ token: string }>(
       paths.userLogin,
-      {
-        userCredentials,
-      }
+      userCredentials
     );
 
     return data.token;

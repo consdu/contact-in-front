@@ -16,6 +16,8 @@ jobs:
       - name: Node Modules
         run: npm ci
       - name: Coverage
+        env:
+          VITE_API_URL: ${{secrets.VITE_API_URL}}
         run: npm run test:coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.8
