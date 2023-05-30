@@ -1,4 +1,4 @@
-import { IoPersonCircleSharp } from "react-icons/io5";
+import { IoKey, IoPersonCircleSharp } from "react-icons/io5";
 import LoginFormStyled from "./LoginFormStyled";
 import { useState } from "react";
 import { UserCredentials } from "../../types";
@@ -37,7 +37,7 @@ const LoginForm = ({
         <label htmlFor="username" hidden>
           Username:
         </label>
-        <div className="username-wrapper">
+        <div className="input-wrapper">
           <input
             type="text"
             id="username"
@@ -55,13 +55,18 @@ const LoginForm = ({
         <label htmlFor="password" hidden>
           Password:
         </label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleInputChange}
-        />
+        <div className="input-wrapper">
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+          <span className="login-form__group-icon">
+            <IoKey />
+          </span>
+        </div>
       </div>
       <button
         className="login-form__button"

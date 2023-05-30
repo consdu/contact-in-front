@@ -6,7 +6,7 @@ const LoginFormStyled = styled.form`
   gap: ${(props) => props.theme.spacing.medium};
   padding-top: 50px;
 
-  .username-wrapper {
+  .input-wrapper {
     position: relative;
   }
 
