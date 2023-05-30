@@ -13,7 +13,7 @@ const LoginPage = () => {
           </section>
         </header>
         <main>
-          <LoginForm />
+          <LoginForm onLoginFormSubmit={() => ({})} />
         </main>
       </ContainerStyled>
     </LoginPageStyled>
