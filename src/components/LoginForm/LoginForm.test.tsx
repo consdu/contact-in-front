@@ -82,4 +82,28 @@ describe("Given a Login Form component", () => {
       expect(passwordInput).toHaveValue(userLoginDataMock.password);
     });
   });
+
+  describe("When rendered and the user types in both inputs 'admin' and submits", () => {
+    test("Then it should call the received funtion onLoginFormSubmit with the user's credentials", async () => {
+      const usernameLabel = "Username:";
+      const passwordLabel = "Password:";
+      const loginButtonText = "Login";
+
+      renderWithProviders(
+        <LoginForm onLoginFormSubmit={handleLoginFormSubmit} />
+      );
+
+      const usernameInput = screen.getByLabelText(usernameLabel);
+      const passwordInput = screen.getByLabelText(passwordLabel);
+      const loginButton = screen.getByRole("button", {
+        name: loginButtonText,
+      });
+      await userEvent.type(usernameInput, userLoginDataMock.username);
+      await userEvent.type(passwordInput, userLoginDataMock.password);
+
+      await userEvent.click(loginButton);
+
+      expect(handleLoginFormSubmit).toHaveBeenCalledWith(userLoginDataMock);
+    });
+  });
 });
