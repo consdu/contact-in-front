@@ -15,6 +15,9 @@ const LoginForm = ({
     password: "",
   });
 
+  const isButtonDisabled =
+    formData.username.length < 1 || formData.password.length < 1;
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((previousFormData) => ({
       ...previousFormData,
@@ -60,7 +63,11 @@ const LoginForm = ({
           onChange={handleInputChange}
         />
       </div>
-      <button className="login-form__button" type="submit">
+      <button
+        className="login-form__button"
+        type="submit"
+        disabled={isButtonDisabled}
+      >
         Login
       </button>
     </LoginFormStyled>
