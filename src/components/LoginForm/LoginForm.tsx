@@ -4,6 +4,7 @@ import LoginFormStyled from "./LoginFormStyled";
 const LoginForm = (): React.ReactElement => {
   return (
     <LoginFormStyled className="login-form">
+      <h2 className="login-form__title">Login to access your contacts</h2>
       <div className="login-form__group">
         <label htmlFor="username" hidden>
           Username:

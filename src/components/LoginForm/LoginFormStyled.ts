@@ -11,6 +11,13 @@ const LoginFormStyled = styled.form`
   }
 
   .login-form {
+    &__title {
+      font-size: 1.2rem;
+      color: ${(props) => props.theme.colors.gray500};
+      text-align: center;
+      margin-bottom: ${(props) => props.theme.spacing.large};
+    }
+
     &__group {
       display: flex;
       flex-direction: column;
