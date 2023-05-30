@@ -24,6 +24,7 @@ const NavbarStyled = styled.nav`
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 2px 2px 8px -1px ${(props) => props.theme.colors.gray400};
   }
 
   .navbar_link a.active {

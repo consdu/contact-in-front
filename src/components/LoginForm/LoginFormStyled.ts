@@ -56,10 +56,12 @@ const LoginFormStyled = styled.form`
     &__button {
       background-color: ${(props) => props.theme.colors.primary600};
       color: #fff;
+      text-transform: uppercase;
       font-size: 1.5rem;
       padding-block: 20px;
       border-radius: 5px;
       margin-top: 30px;
+      box-shadow: 0px 3px 5px -1px ${(props) => props.theme.colors.gray500};
     }
   }
 `;
