@@ -1,24 +1,35 @@
 import { IoPersonCircleSharp } from "react-icons/io5";
 import LoginFormStyled from "./LoginFormStyled";
-import ContainerStyled from "../shared/ContainerStyled";
 
 const LoginForm = (): React.ReactElement => {
   return (
-    <ContainerStyled>
-      <LoginFormStyled>
-        <div className="form-group">
-          <label htmlFor="username" hidden>
-            Username:
-          </label>
-          <div className="form-group__username">
-            <input type="text" id="username" placeholder="Username" />
-            <span className="form-group__icon">
-              <IoPersonCircleSharp />
-            </span>
-          </div>
+    <LoginFormStyled className="login-form">
+      <div className="login-form__group">
+        <label htmlFor="username" hidden>
+          Username:
+        </label>
+        <div className="username-wrapper">
+          <input type="text" id="username" placeholder="Username" />
+          <span className="login-form__group-icon">
+            <IoPersonCircleSharp />
+          </span>
         </div>
-      </LoginFormStyled>
-    </ContainerStyled>
+      </div>
+      <div className="login-form__group">
+        <label htmlFor="password" hidden>
+          Password:
+        </label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          className="form-group__input"
+        />
+      </div>
+      <button className="login-form__button" type="submit">
+        Login
+      </button>
+    </LoginFormStyled>
   );
 };
 
