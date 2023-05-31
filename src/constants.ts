@@ -7,4 +7,5 @@ export const paths = {
 
 export const feedbacks = {
   wrongCredentials: "Invalid username or password",
+  logoutSuccesful: "You've been logged out correctly",
 };

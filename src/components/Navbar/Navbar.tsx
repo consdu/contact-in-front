@@ -4,7 +4,11 @@ import NavbarStyled from "./NavbarStyled";
 import ContainerStyled from "../shared/ContainerStyled";
 import { paths } from "../../constants";
 
-const Navbar = (): React.ReactElement => {
+interface NavbarProps {
+  onLogoutClick: () => void;
+}
+
+const Navbar = ({ onLogoutClick }: NavbarProps): React.ReactElement => {
   return (
     <NavbarStyled>
       <ContainerStyled>
@@ -20,7 +24,7 @@ const Navbar = (): React.ReactElement => {
             </NavLink>
           </li>
           <li className="navbar-links__link">
-            <button aria-label="logout">
+            <button aria-label="logout" onClick={onLogoutClick}>
               <IoExit />
             </button>
           </li>
