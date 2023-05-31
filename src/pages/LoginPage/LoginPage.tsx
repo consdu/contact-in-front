@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import ContainerStyled from "../../components/shared/ContainerStyled";
 import useToken from "../../hooks/useToken/useToken";
@@ -7,7 +8,7 @@ import { useAppDispatch } from "../../store";
 import { loginUserActionCreator } from "../../store/user/userSlice";
 import { UserCredentials } from "../../types";
 import LoginPageStyled from "./LoginPageStyled";
-import { paths } from "../../constants";
+import { feedbacks, paths } from "../../constants";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -16,12 +17,17 @@ const LoginPage = () => {
   const { getTokenData } = useToken();
 
   const handleLoginFormSubmit = async (userCredentials: UserCredentials) => {
-    const token = await getUserToken(userCredentials);
+    try {
+      const token = await getUserToken(userCredentials);
 
-    if (token) {
-      const userSessionData = getTokenData(token);
-      dispatch(loginUserActionCreator(userSessionData));
-      navigate(paths.contacts, { replace: true });
+      if (token) {
+        const userSessionData = getTokenData(token);
+
+        dispatch(loginUserActionCreator(userSessionData));
+        navigate(paths.contacts, { replace: true });
+      }
+    } catch {
+      toast.error(feedbacks.wrongCredentials);
     }
   };
 
