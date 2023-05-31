@@ -9,10 +9,12 @@ import { loginUserActionCreator } from "../../store/user/userSlice";
 import { UserCredentials } from "../../types";
 import LoginPageStyled from "./LoginPageStyled";
 import { feedbacks, paths } from "../../constants";
+import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { setLocalStorageItem } = useLocalStorage();
   const { getUserToken } = useUser();
   const { getTokenData } = useToken();
 
@@ -21,8 +23,8 @@ const LoginPage = () => {
       const token = await getUserToken(userCredentials);
 
       if (token) {
+        setLocalStorageItem("token", token);
         const userSessionData = getTokenData(token);
-
         dispatch(loginUserActionCreator(userSessionData));
         navigate(paths.contacts, { replace: true });
       }
