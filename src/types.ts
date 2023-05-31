@@ -12,3 +12,9 @@ export interface UserTokenStructure {
 export interface UserStateStructure extends UserTokenStructure {
   isLogged: boolean;
 }
+
+export interface UseLocalStorageStructure {
+  setLocalStorageItem: (key: string, value: string) => void;
+  removeLocalStorageItem: (key: string) => void;
+  getLocalStorageItem: (key: string) => string | null;
+}
