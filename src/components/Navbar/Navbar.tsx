@@ -2,26 +2,31 @@ import { NavLink } from "react-router-dom";
 import { IoPeople, IoPersonAdd, IoExit } from "react-icons/io5";
 import NavbarStyled from "./NavbarStyled";
 import ContainerStyled from "../shared/ContainerStyled";
+import { paths } from "../../constants";
 
-const Navbar = (): React.ReactElement => {
+interface NavbarProps {
+  onLogoutClick: () => void;
+}
+
+const Navbar = ({ onLogoutClick }: NavbarProps): React.ReactElement => {
   return (
     <NavbarStyled>
       <ContainerStyled>
-        <ul className="navbar_links">
-          <li className="navbar_link">
-            <NavLink to="/contacts" aria-label="contacts">
+        <ul className="navbar-links">
+          <li className="navbar-links__link">
+            <NavLink to={paths.contacts} aria-label="contacts">
               <IoPeople />
             </NavLink>
           </li>
-          <li className="navbar_link">
-            <NavLink to="/add-contact" aria-label="add contact">
+          <li className="navbar-links__link">
+            <NavLink to={paths.addContact} aria-label="add contact">
               <IoPersonAdd />
             </NavLink>
           </li>
-          <li className="navbar_link">
-            <NavLink to="/update-contact" aria-label="logout">
+          <li className="navbar-links__link">
+            <button aria-label="logout" onClick={onLogoutClick}>
               <IoExit />
-            </NavLink>
+            </button>
           </li>
         </ul>
       </ContainerStyled>
