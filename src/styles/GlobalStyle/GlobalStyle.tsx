@@ -64,6 +64,16 @@ const GlobalStyle = createGlobalStyle`
   p {
     margin: 0;
   } 
+
+  .Toastify__toast--success {
+  background-color: ${(props) => props.theme.colors.primary200};
+  color: ${(props) => props.theme.colors.gray700}
+}
+
+  .Toastify__toast--error {
+  background-color: ${(props) => props.theme.colors.accent};
+  color: ${(props) => props.theme.colors.gray700}
+}
 `;
 
 export default GlobalStyle;
