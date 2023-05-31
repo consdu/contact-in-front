@@ -1,5 +1,6 @@
 export const paths = {
   userLogin: "/user/login",
+  login: "/login",
   contacts: "/contacts",
 };
 

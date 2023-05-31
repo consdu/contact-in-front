@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { UseLocalStorageStructure } from "../../types";
 
 const useLocalStorage = (): UseLocalStorageStructure => {
@@ -9,9 +10,9 @@ const useLocalStorage = (): UseLocalStorageStructure => {
     localStorage.removeItem(key);
   };
 
-  const getLocalStorageItem = (key: string) => {
+  const getLocalStorageItem = useCallback((key: string) => {
     return localStorage.getItem(key);
-  };
+  }, []);
 
   return {
     setLocalStorageItem,
