@@ -3,8 +3,16 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import LoginPage from "./LoginPage";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
-import { userLoginDataMock, userTokenMock } from "../../mocks/user/userMocks";
+import {
+  emptyUserStateMock,
+  loggedUserStateMock,
+  userLoginDataMock,
+} from "../../mocks/user/userMocks";
 import { paths } from "../../constants";
+
+beforeEach(() => {
+  localStorage.clear();
+});
 
 describe("Given a LoginPage component", () => {
   const usernameLabel = "Username:";
@@ -17,7 +25,7 @@ describe("Given a LoginPage component", () => {
       element: <LoginPage />,
     },
     {
-      path: "/contacts",
+      path: paths.contacts,
       element: <p>Contacts page</p>,
     },
   ];
@@ -36,7 +44,7 @@ describe("Given a LoginPage component", () => {
     });
   });
 
-  describe("When the rendered and the user logs in with invalid credentials", () => {
+  describe("When rendered and the user logs in with valid credentials", () => {
     test("Then it should redirect the user to the contacts page", async () => {
       const router = createMemoryRouter(routes);
 
@@ -56,14 +64,39 @@ describe("Given a LoginPage component", () => {
     });
   });
 
+  describe("When rendered and the user logs in with invalid credentials", () => {
+    test("Then it should stay on the login page", async () => {
+      const router = createMemoryRouter(routes);
+
+      renderWithProviders(<RouterProvider router={router} />, {
+        user: emptyUserStateMock,
+      });
+      screen.debug();
+
+      const usernameInput = screen.getByLabelText(usernameLabel);
+      const passwordInput = screen.getByLabelText(passwordLabel);
+      const loginbutton = screen.getByRole("button", {
+        name: buttonText,
+      });
+
+      await userEvent.type(usernameInput, "wrong username");
+      await userEvent.type(passwordInput, "wrong password");
+      await userEvent.click(loginbutton);
+
+      expect(router.state.location.pathname).toBe("/");
+    });
+  });
+
   describe("When rendered and a valid token already exists in store", () => {
     test("Then it should redirect the user to the contacts page", () => {
       const router = createMemoryRouter(routes);
-      localStorage.setItem("token", userTokenMock);
 
-      renderWithProviders(<RouterProvider router={router} />);
+      renderWithProviders(<RouterProvider router={router} />, {
+        user: loggedUserStateMock,
+      });
 
       expect(router.state.location.pathname).toBe(paths.contacts);
     });
   });
+  ``;
 });
