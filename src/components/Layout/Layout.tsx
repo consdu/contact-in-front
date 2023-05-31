@@ -3,12 +3,12 @@ import { useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 
 const Layout = (): React.ReactElement => {
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   return (
     <>
       <Outlet />
-      <footer>{location.pathname === "/login" || <Navbar />}</footer>
+      <footer>{pathname === "/login" || <Navbar />}</footer>
     </>
   );
 };
