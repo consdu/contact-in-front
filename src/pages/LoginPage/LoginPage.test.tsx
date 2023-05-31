@@ -71,7 +71,6 @@ describe("Given a LoginPage component", () => {
       renderWithProviders(<RouterProvider router={router} />, {
         user: emptyUserStateMock,
       });
-      screen.debug();
 
       const usernameInput = screen.getByLabelText(usernameLabel);
       const passwordInput = screen.getByLabelText(passwordLabel);
