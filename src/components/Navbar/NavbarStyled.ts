@@ -13,7 +13,8 @@ const NavbarStyled = styled.nav`
     justify-content: space-between;
     align-items: center;
 
-    &__link a {
+    &__link a,
+    &__link button {
       width: 60px;
       aspect-ratio: 1;
       background-color: ${(props) => props.theme.colors.primary400};
