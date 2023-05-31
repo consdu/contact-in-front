@@ -16,6 +16,10 @@ const routes: RouteObject[] = [
         path: paths.login,
         element: <LoginPage />,
       },
+      {
+        path: paths.contacts,
+        element: <p>Contacts page</p>,
+      },
     ],
   },
 ];

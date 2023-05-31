@@ -7,18 +7,18 @@ const Navbar = (): React.ReactElement => {
   return (
     <NavbarStyled>
       <ContainerStyled>
-        <ul className="navbar_links">
-          <li className="navbar_link">
+        <ul className="navbar-links">
+          <li className="navbar-links__link">
             <NavLink to="/contacts" aria-label="contacts">
               <IoPeople />
             </NavLink>
           </li>
-          <li className="navbar_link">
+          <li className="navbar-links__link">
             <NavLink to="/add-contact" aria-label="add contact">
               <IoPersonAdd />
             </NavLink>
           </li>
-          <li className="navbar_link">
+          <li className="navbar-links__link">
             <NavLink to="/update-contact" aria-label="logout">
               <IoExit />
             </NavLink>
