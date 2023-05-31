@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import LoginPage from "./LoginPage";
-import { renderWithProviders } from "../../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 
 describe("Given a LoginPage", () => {
   describe("When rendered", () => {
@@ -8,7 +8,7 @@ describe("Given a LoginPage", () => {
       const appName = "contact";
       const appLogoText = "in";
 
-      renderWithProviders(<LoginPage />);
+      renderWithProviders(wrapWithRouter(<LoginPage />));
 
       const appTitle = screen.getByText(appName);
       const appLogo = screen.getByText(appLogoText);
