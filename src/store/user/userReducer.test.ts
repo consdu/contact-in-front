@@ -3,7 +3,7 @@ import {
   loggedUserStateMock,
   userTokenDataMock,
 } from "../../mocks/user/userMocks";
-import { UserStateStructure } from "./types";
+import { UserStateStructure } from "../../types";
 import { loginUserActionCreator, userReducer } from "./userSlice";
 
 describe("Given a userReducer", () => {
