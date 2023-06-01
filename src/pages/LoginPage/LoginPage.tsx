@@ -1,5 +1,5 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import ContainerStyled from "../../components/shared/ContainerStyled";
 import useToken from "../../hooks/useToken/useToken";
@@ -8,9 +8,8 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import { loginUserActionCreator } from "../../store/user/userSlice";
 import { UserCredentials } from "../../types";
 import LoginPageStyled from "./LoginPageStyled";
-import { feedbacks, paths } from "../../constants";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
-import { useEffect } from "react";
+import { paths } from "../../constants";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -27,17 +26,13 @@ const LoginPage = () => {
   });
 
   const handleLoginFormSubmit = async (userCredentials: UserCredentials) => {
-    try {
-      const token = await getUserToken(userCredentials);
+    const token = await getUserToken(userCredentials);
 
-      if (token) {
-        setLocalStorageItem("token", token);
-        const userSessionData = getTokenData(token);
-        dispatch(loginUserActionCreator(userSessionData));
-        navigate(paths.contacts, { replace: true });
-      }
-    } catch {
-      toast.error(feedbacks.wrongCredentials);
+    if (token) {
+      setLocalStorageItem("token", token);
+      const userSessionData = getTokenData(token);
+      dispatch(loginUserActionCreator(userSessionData));
+      navigate(paths.contacts, { replace: true });
     }
   };
 

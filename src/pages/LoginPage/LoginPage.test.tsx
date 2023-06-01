@@ -97,5 +97,4 @@ describe("Given a LoginPage component", () => {
       expect(router.state.location.pathname).toBe(paths.contacts);
     });
   });
-  ``;
 });

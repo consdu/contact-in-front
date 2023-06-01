@@ -1,6 +1,7 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { UserCredentials } from "../../types";
-import { paths } from "../../constants";
+import { paths, feedbacks } from "../../constants";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -11,13 +12,17 @@ const contactsApi = axios.create({
 const useUser = () => {
   const getUserToken = async (
     userCredentials: UserCredentials
-  ): Promise<string> => {
-    const { data } = await contactsApi.post<{ token: string }>(
-      paths.userLogin,
-      userCredentials
-    );
+  ): Promise<string | undefined> => {
+    try {
+      const { data } = await contactsApi.post<{ token: string }>(
+        paths.userLogin,
+        userCredentials
+      );
 
-    return data.token;
+      return data.token;
+    } catch {
+      toast.error(feedbacks.wrongCredentials);
+    }
   };
 
   return {
