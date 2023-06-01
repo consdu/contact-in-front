@@ -8,6 +8,8 @@ import {
 } from "../../mocks/user/userMocks";
 import useUser from "./useUser";
 import { feedbacks } from "../../constants";
+import { server } from "../../mocks/server";
+import { errorHandlers } from "../../mocks/handlers";
 
 describe("Given a getUserToken function", () => [
   describe("When called with username 'admin' and password 'admin'", () => {
@@ -25,6 +27,7 @@ describe("Given a getUserToken function", () => [
 
   describe("When called with invalid username and password", () => {
     test("Then it should call the toast's error method with 'Wrong credentials'", async () => {
+      server.resetHandlers(...errorHandlers);
       toast.error = vi.fn();
 
       const userCredentials = incorrectLoginDataMock;

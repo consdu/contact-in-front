@@ -9,6 +9,8 @@ import {
   userLoginDataMock,
 } from "../../mocks/user/userMocks";
 import { paths } from "../../constants";
+import { server } from "../../mocks/server";
+import { errorHandlers } from "../../mocks/handlers";
 
 beforeEach(() => {
   localStorage.clear();
@@ -66,6 +68,8 @@ describe("Given a LoginPage component", () => {
 
   describe("When rendered and the user logs in with invalid credentials", () => {
     test("Then it should stay on the login page", async () => {
+      server.resetHandlers(...errorHandlers);
+
       const router = createMemoryRouter(routes);
 
       renderWithProviders(<RouterProvider router={router} />, {
