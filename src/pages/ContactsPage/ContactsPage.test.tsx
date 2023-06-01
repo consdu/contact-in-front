@@ -1,16 +1,28 @@
-import { screen, render } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { contactsMock } from "../../factories/contacts/contactsFactory";
+import { renderWithProviders } from "../../testUtils/testUtils";
 import ContactsPage from "./ContactsPage";
 
-describe("Given a Contacts Page component", () => {
-  describe("When rendered", () => {
-    test("Then it should show 'Contacts Page' text", () => {
-      const expectedText = /Contacts Page/i;
+describe("Given a ContactPage component", () => {
+  describe("When it rendered and there are contacts in the store", () => {
+    test("Then it should show a collection of contacts", () => {
+      const contactNames = contactsMock.map(
+        (contact) => `${contact.name} ${contact.surname}`
+      );
 
-      render(<ContactsPage />);
+      renderWithProviders(<ContactsPage />, {
+        contacts: {
+          contactsData: contactsMock,
+        },
+      });
 
-      const text = screen.getByText(expectedText);
+      contactNames.forEach((contactName) => {
+        const contact = screen.getByRole("heading", {
+          name: contactName,
+        });
 
-      expect(text).toBeInTheDocument();
+        expect(contact).toBeInTheDocument();
+      });
     });
   });
 });
