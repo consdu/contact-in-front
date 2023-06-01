@@ -6,6 +6,11 @@ export const userLoginDataMock: UserCredentials = {
   password: "admin",
 };
 
+export const incorrectLoginDataMock: UserCredentials = {
+  username: "wrong username",
+  password: "wrong password",
+};
+
 export const userTokenMock =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmNmE5ZGExYjhhMTZiNDVlYWJmNDQiLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE2ODU0NDE5Nzd9.hwpg_Rtg1F96NevhAB21CkWF5FHs04lQnYec7orlZNo";
 
