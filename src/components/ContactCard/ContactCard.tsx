@@ -18,7 +18,7 @@ const ContactCard = ({ contact }: ContactCardProps): React.ReactElement => {
       />
       <div className="contact-card__info">
         <h2 className="contact-card__name">{`${name} ${surname}`}</h2>
-        <p>{phoneNumber.mobile}</p>
+        <span>{phoneNumber.mobile}</span>
       </div>
     </ContactCardStyled>
   );
