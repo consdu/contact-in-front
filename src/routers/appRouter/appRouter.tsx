@@ -1,8 +1,7 @@
 import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../../components/App/App";
-import LoginPage from "../../pages/LoginPage/LoginPage";
+import { LazyContactsPage, LazyLoginPage } from "../lazyPages/lazyPages";
 import { paths } from "../../constants";
-import ContactsPage from "../../pages/ContactsPage/ContactsPage";
 
 const routes: RouteObject[] = [
   {
@@ -15,11 +14,11 @@ const routes: RouteObject[] = [
       },
       {
         path: paths.login,
-        element: <LoginPage />,
+        element: <LazyLoginPage />,
       },
       {
         path: paths.contacts,
-        element: <ContactsPage />,
+        element: <LazyContactsPage />,
       },
     ],
   },
