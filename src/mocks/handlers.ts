@@ -1,6 +1,7 @@
 import { rest } from "msw";
 import { userTokenMock } from "./user/userMocks";
-import { paths } from "../constants";
+import { paths, responseErrors } from "../constants";
+import { contactsMock } from "../factories/contacts/contactsFactory";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -13,6 +14,15 @@ export const handlers = [
       })
     );
   }),
+
+  rest.get(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        contacts: contactsMock,
+      })
+    );
+  }),
 ];
 
 export const errorHandlers = [
@@ -20,7 +30,16 @@ export const errorHandlers = [
     return res(
       ctx.status(401),
       ctx.json({
-        error: "Wrong credentials",
+        error: responseErrors.wrongCredentials,
+      })
+    );
+  }),
+
+  rest.get(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(401),
+      ctx.json({
+        error: responseErrors.missingToken,
       })
     );
   }),

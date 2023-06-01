@@ -9,3 +9,8 @@ export const feedbacks = {
   wrongCredentials: "Invalid username or password",
   logoutSuccesful: "You've been logged out correctly",
 };
+
+export const responseErrors = {
+  missingToken: "Missing token",
+  wrongCredentials: "Wrong Credentials",
+};
