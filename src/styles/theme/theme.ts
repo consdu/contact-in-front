@@ -4,8 +4,8 @@ const theme: DefaultTheme = {
   colors: {
     gray50: "#f6f6f6",
     gray100: "#e7e7e7",
-    gray200: "##d1d1d1",
-    gray300: "##b0b0b0",
+    gray200: "#d1d1d1",
+    gray300: "#b0b0b0",
     gray400: "#888",
     gray500: "#6d6d6d",
     gray600: "#5d5d5d",
