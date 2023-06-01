@@ -11,7 +11,7 @@ import LoginPageStyled from "./LoginPageStyled";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import { paths } from "../../constants";
 
-const LoginPage = () => {
+const LoginPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const token = useAppSelector((state) => state.user.token);

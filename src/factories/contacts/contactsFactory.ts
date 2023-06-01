@@ -3,15 +3,15 @@ import { faker } from "@faker-js/faker";
 import { ContactStructure } from "../../types";
 
 const contactFactory = Factory.define<ContactStructure>(() => ({
-  id: faker.database.mongodbObjectId.toString(),
+  id: faker.database.mongodbObjectId().toString(),
   name: faker.person.firstName(),
   surname: faker.person.lastName(),
   phoneNumber: {
     mobile: faker.phone.number(),
   },
-  address: faker.location.direction(),
-  avatar: "https://ui-avatars.com/api/?name=John+Doe",
-  birthday: faker.date.birthdate.toString(),
+  address: faker.location.streetAddress(),
+  avatar: "https://ui-avatars.com/api/?name=A+A",
+  birthday: faker.date.birthdate().toJSON(),
   email: faker.internet.email(),
   socials: {
     instagram: "https://instagram.com",
