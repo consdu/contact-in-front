@@ -11,6 +11,7 @@ import {
 import { paths } from "../../constants";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
+import ContactsPage from "../ContactsPage/ContactsPage";
 
 beforeEach(() => {
   localStorage.clear();
@@ -28,9 +29,10 @@ describe("Given a LoginPage component", () => {
     },
     {
       path: paths.contacts,
-      element: <p>Contacts page</p>,
+      element: <ContactsPage />,
     },
   ];
+
   describe("When rendered", () => {
     test("Then it should show the title and logo of the app", () => {
       const appName = "contact";
