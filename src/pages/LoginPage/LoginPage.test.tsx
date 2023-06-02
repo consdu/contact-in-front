@@ -6,7 +6,7 @@ import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import {
   emptyUserStateMock,
   loggedUserStateMock,
-  userLoginDataMock,
+  correctCredentialsMock,
 } from "../../mocks/user/userMocks";
 import { paths } from "../../constants";
 import { server } from "../../mocks/server";
@@ -60,8 +60,8 @@ describe("Given a LoginPage component", () => {
         name: buttonText,
       });
 
-      await userEvent.type(usernameInput, userLoginDataMock.username);
-      await userEvent.type(passwordInput, userLoginDataMock.password);
+      await userEvent.type(usernameInput, correctCredentialsMock.username);
+      await userEvent.type(passwordInput, correctCredentialsMock.password);
       await userEvent.click(loginbutton);
 
       expect(router.state.location.pathname).toBe(paths.contacts);

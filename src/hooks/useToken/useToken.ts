@@ -1,18 +1,20 @@
 import { useCallback } from "react";
 import jwt_decode from "jwt-decode";
-import { UserTokenStructure } from "../../types";
+import { UserTokenPayloadStructure } from "../../types";
 
 const useToken = () => {
-  const getTokenData = useCallback((token: string): UserTokenStructure => {
-    const decodedTokenData: { sub: string; name: string } = jwt_decode(token);
-    const userSessionData = {
-      id: decodedTokenData.sub,
-      name: decodedTokenData.name,
-      token,
-    };
+  const getTokenData = useCallback(
+    (token: string): UserTokenPayloadStructure => {
+      const decodedTokenData: { sub: string; name: string } = jwt_decode(token);
+      const userSessionData = {
+        id: decodedTokenData.sub,
+        name: decodedTokenData.name,
+      };
 
-    return userSessionData;
-  }, []);
+      return userSessionData;
+    },
+    []
+  );
 
   return {
     getTokenData,

@@ -1,7 +1,7 @@
 import {
   emptyUserStateMock,
   loggedUserStateMock,
-  userTokenDataMock,
+  userActionPayloadMock,
 } from "../../mocks/user/userMocks";
 import { UserStateStructure } from "../../types";
 import {
@@ -18,7 +18,7 @@ describe("Given a userReducer", () => {
 
       const newUserState = userReducer(
         currentUserState,
-        loginUserActionCreator(userTokenDataMock)
+        loginUserActionCreator(userActionPayloadMock)
       );
 
       expect(newUserState).toStrictEqual(expectedUserState);
