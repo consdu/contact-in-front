@@ -31,7 +31,7 @@ const LoginPage = (): React.ReactElement => {
     if (token) {
       setLocalStorageItem("token", token);
       const userSessionData = getTokenData(token);
-      dispatch(loginUserActionCreator(userSessionData));
+      dispatch(loginUserActionCreator({ ...userSessionData, token }));
       navigate(paths.contacts, { replace: true });
     }
   };
