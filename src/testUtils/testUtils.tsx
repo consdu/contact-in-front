@@ -36,3 +36,9 @@ export const wrapWithRouter = (ui: React.ReactElement) => {
 
   return <RouterProvider router={router} />;
 };
+
+export const wrapWithProviders = ({
+  children,
+}: PropsWithChildren): React.ReactElement => (
+  <Provider store={store}>{children}</Provider>
+);
