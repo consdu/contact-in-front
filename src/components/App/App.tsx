@@ -14,7 +14,7 @@ const App = (): React.ReactElement => {
     if (getLocalStorageItem("token")) {
       const token = getLocalStorageItem("token") as string;
       const tokenData = getTokenData(token);
-      dispatch(loginUserActionCreator(tokenData));
+      dispatch(loginUserActionCreator({ ...tokenData, token }));
     }
   }, [dispatch, getLocalStorageItem, getTokenData]);
 

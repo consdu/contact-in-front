@@ -3,7 +3,7 @@ import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import LoginForm from "./LoginForm";
 import { renderWithProviders } from "../../testUtils/testUtils";
-import { userLoginDataMock } from "../../mocks/user/userMocks";
+import { correctCredentialsMock } from "../../mocks/user/userMocks";
 
 const handleLoginFormSubmit = vi.fn();
 
@@ -63,9 +63,9 @@ describe("Given a Login Form component", () => {
 
       const usernameInput = screen.getByLabelText(usernameLabel);
 
-      await userEvent.type(usernameInput, userLoginDataMock.username);
+      await userEvent.type(usernameInput, correctCredentialsMock.username);
 
-      expect(usernameInput).toHaveValue(userLoginDataMock.username);
+      expect(usernameInput).toHaveValue(correctCredentialsMock.username);
     });
 
     test("Then it should show admin hidden in the password field", async () => {
@@ -77,9 +77,9 @@ describe("Given a Login Form component", () => {
 
       const passwordInput = screen.getByLabelText(passwordLabel);
 
-      await userEvent.type(passwordInput, userLoginDataMock.password);
+      await userEvent.type(passwordInput, correctCredentialsMock.password);
 
-      expect(passwordInput).toHaveValue(userLoginDataMock.password);
+      expect(passwordInput).toHaveValue(correctCredentialsMock.password);
     });
   });
 
@@ -98,12 +98,14 @@ describe("Given a Login Form component", () => {
       const loginButton = screen.getByRole("button", {
         name: loginButtonText,
       });
-      await userEvent.type(usernameInput, userLoginDataMock.username);
-      await userEvent.type(passwordInput, userLoginDataMock.password);
+      await userEvent.type(usernameInput, correctCredentialsMock.username);
+      await userEvent.type(passwordInput, correctCredentialsMock.password);
 
       await userEvent.click(loginButton);
 
-      expect(handleLoginFormSubmit).toHaveBeenCalledWith(userLoginDataMock);
+      expect(handleLoginFormSubmit).toHaveBeenCalledWith(
+        correctCredentialsMock
+      );
     });
   });
 });

@@ -3,13 +3,15 @@ export interface UserCredentials {
   password: string;
 }
 
-export interface UserTokenStructure {
+export interface UserTokenPayloadStructure {
   name: string;
   id: string;
+}
+export interface UserActionPayloadStructure extends UserTokenPayloadStructure {
   token: string;
 }
 
-export interface UserStateStructure extends UserTokenStructure {
+export interface UserStateStructure extends UserActionPayloadStructure {
   isLogged: boolean;
 }
 
