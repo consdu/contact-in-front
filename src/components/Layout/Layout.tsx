@@ -5,6 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import { useAppDispatch } from "../../store";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import { logoutUserActionCreator } from "../../store/user/userSlice";
+import { clearContactsActionCreator } from "../../store/contacts/contactsSlice";
 import { feedbacks, paths } from "../../constants";
 
 const Layout = (): React.ReactElement => {
@@ -16,6 +17,7 @@ const Layout = (): React.ReactElement => {
   const handleLogoutClick = () => {
     removeLocalStorageItem("token");
     dispatch(logoutUserActionCreator());
+    dispatch(clearContactsActionCreator());
     navigate(paths.login);
     toast.success(feedbacks.logoutSuccesful);
   };
