@@ -44,3 +44,7 @@ export interface ContactStructure {
 export interface ContactsStateStructure {
   contactsData: ContactStructure[];
 }
+
+export interface UiStateStructure {
+  isLoading: boolean;
+}
