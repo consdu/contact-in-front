@@ -16,9 +16,12 @@ const contactsSlice = createSlice({
       ...currentContactsState,
       contactsData: action.payload,
     }),
+    clearContacts: () => initialContactsState,
   },
 });
 
-export const { loadContacts: loadContactsActionCreator } =
-  contactsSlice.actions;
+export const {
+  loadContacts: loadContactsActionCreator,
+  clearContacts: clearContactsActionCreator,
+} = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

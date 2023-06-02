@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
@@ -16,12 +16,15 @@ import "@fontsource/sora/300.css";
 import "@fontsource/sora/400.css";
 import "@fontsource/sora/600.css";
 import "@fontsource/sora/700.css";
+import Loading from "./components/Loading/Loading";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <RouterProvider router={appRouter} />
+        <Suspense fallback={<Loading />}>
+          <RouterProvider router={appRouter} />
+        </Suspense>
         <GlobalStyle />
         <ToastContainer
           hideProgressBar={true}

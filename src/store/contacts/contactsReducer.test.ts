@@ -4,7 +4,11 @@ import {
   fullContactsStateMock,
 } from "../../mocks/contacts/contactsStateMocks";
 import { ContactsStateStructure } from "../../types";
-import { contactsReducer, loadContactsActionCreator } from "./contactsSlice";
+import {
+  clearContactsActionCreator,
+  contactsReducer,
+  loadContactsActionCreator,
+} from "./contactsSlice";
 
 describe("Given a contactsReducer", () => {
   describe("When it receives an empty state and a loadContacts action with 3 contacts", () => {
@@ -18,6 +22,23 @@ describe("Given a contactsReducer", () => {
       const newContactsState = contactsReducer(
         currentContactsState,
         loadContactsActionCreator(contactsMock)
+      );
+
+      expect(newContactsState).toStrictEqual(expectedContactsState);
+    });
+  });
+
+  describe("When it receives a current state and a clearContacts action", () => {
+    test("Then it should return a new empty state", () => {
+      const currentContactsState: ContactsStateStructure =
+        fullContactsStateMock;
+
+      const expectedContactsState: ContactsStateStructure =
+        emptyContactsStateMock;
+
+      const newContactsState = contactsReducer(
+        currentContactsState,
+        clearContactsActionCreator()
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);
