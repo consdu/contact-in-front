@@ -5,9 +5,11 @@ import ContainerStyled from "../../components/shared/ContainerStyled";
 import { useAppSelector } from "../../store";
 import useContacts from "../../hooks/useContacts/useContacts";
 import { loadContactsActionCreator } from "../../store/contacts/contactsSlice";
+import Loading from "../../components/Loading/Loading";
 
 const ContactsPage = (): React.ReactElement => {
   const contacts = useAppSelector((state) => state.contacts.contactsData);
+  const isLoading = useAppSelector((state) => state.ui.isLoading);
   const dispatch = useDispatch();
   const { getContacts } = useContacts();
 
@@ -19,11 +21,12 @@ const ContactsPage = (): React.ReactElement => {
   }, [dispatch, getContacts]);
 
   return (
-    <ContainerStyled>
-      <main>
+    <main>
+      {isLoading && <Loading />}
+      <ContainerStyled>
         <ContactList contacts={contacts} />
-      </main>
-    </ContainerStyled>
+      </ContainerStyled>
+    </main>
   );
 };
 
