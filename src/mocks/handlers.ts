@@ -34,13 +34,4 @@ export const errorHandlers = [
       })
     );
   }),
-
-  rest.get(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
-    return res(
-      ctx.status(401),
-      ctx.json({
-        error: responseErrors.missingToken,
-      })
-    );
-  }),
 ];
