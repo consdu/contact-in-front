@@ -11,7 +11,7 @@ const ContactList = ({ contacts }: ContactListProps): React.ReactElement => {
     <ContactListStyled>
       {contacts.map((contact) => (
         <li key={contact.id}>
-          <ContactCard contact={contact} />
+          <ContactCard contact={contact} onDeleteClick={(id) => id} />
         </li>
       ))}
     </ContactListStyled>
