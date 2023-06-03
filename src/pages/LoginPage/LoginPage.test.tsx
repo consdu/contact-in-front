@@ -106,6 +106,23 @@ describe("Given a LoginPage component", () => {
 
       expect(router.state.location.pathname).toBe("/");
     });
+
+    test("Then it should show the title and the logo of the app", async () => {
+      server.resetHandlers(...errorHandlers);
+      const router = createMemoryRouter(routes);
+
+      renderWithProviders(<RouterProvider router={router} />, {
+        user: emptyUserStateMock,
+      });
+
+      await loginUser(incorrectCredentialsMock);
+
+      const appTitle = screen.getByText(appName);
+      const appLogo = screen.getByText(appLogoText);
+
+      expect(appTitle).toBeInTheDocument();
+      expect(appLogo).toBeInTheDocument();
+    });
   });
 
   describe("When rendered and a valid token already exists in store", () => {
