@@ -1,4 +1,5 @@
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import Navbar from "./Navbar";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
@@ -47,6 +48,24 @@ describe("Given a Navbar Component", () => {
       });
 
       expect(logoutButton).toBeInTheDocument();
+    });
+  });
+
+  describe("When rendered and the user clicks on the logout button", () => {
+    test("Then it call the received handleLogoutClick function", async () => {
+      const buttonText = "logout";
+
+      renderWithProviders(
+        wrapWithRouter(<Navbar onLogoutClick={handleLogoutClick} />)
+      );
+
+      const logoutButton = screen.getByRole("button", {
+        name: buttonText,
+      });
+
+      await userEvent.click(logoutButton);
+
+      expect(handleLogoutClick).toHaveBeenCalled();
     });
   });
 });
