@@ -1,9 +1,11 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
+import { toast } from "react-toastify";
+import { vi } from "vitest";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import Layout from "./Layout";
-import { paths } from "../../constants";
+import { paths, feedbacks } from "../../constants";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import { loggedUserStateMock } from "../../mocks/user/userMocks";
 
@@ -68,6 +70,22 @@ describe("Given a Layout Component", () => {
 
       expect(appTitle).toBeInTheDocument();
       expect(appLogo).toBeInTheDocument();
+    });
+
+    test("Then it should call the toast's method success with 'You've been logged out correctly'", async () => {
+      const router = createMemoryRouter(routes);
+      toast.success = vi.fn();
+
+      renderWithProviders(<RouterProvider router={router} />, {
+        user: loggedUserStateMock,
+      });
+
+      const logoutButton = screen.getByRole("button", {
+        name: logoutButtonText,
+      });
+      await userEvent.click(logoutButton);
+
+      expect(toast.success).toHaveBeenCalledWith(feedbacks.logoutSuccesful);
     });
   });
 });
