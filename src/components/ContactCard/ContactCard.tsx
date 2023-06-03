@@ -28,6 +28,7 @@ const ContactCard = ({
       <button
         className="contact-card__delete-button"
         onClick={() => onDeleteClick(id)}
+        aria-label="delete contact"
       >
         <IoCloseCircleOutline />
       </button>
