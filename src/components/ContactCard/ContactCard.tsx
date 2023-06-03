@@ -1,12 +1,17 @@
 import { ContactStructure } from "../../types";
 import ContactCardStyled from "./ContactCardStyled";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 interface ContactCardProps {
   contact: ContactStructure;
+  onDeleteClick: (id: string) => void;
 }
 
-const ContactCard = ({ contact }: ContactCardProps): React.ReactElement => {
-  const { name, surname, avatar, phoneNumber } = contact;
+const ContactCard = ({
+  contact,
+  onDeleteClick,
+}: ContactCardProps): React.ReactElement => {
+  const { name, surname, avatar, phoneNumber, id } = contact;
   return (
     <ContactCardStyled className="contact-card">
       <img
@@ -20,6 +25,12 @@ const ContactCard = ({ contact }: ContactCardProps): React.ReactElement => {
         <h2 className="contact-card__name">{`${name} ${surname}`}</h2>
         <span>{phoneNumber.mobile}</span>
       </div>
+      <button
+        className="contact-card__delete-button"
+        onClick={() => onDeleteClick(id)}
+      >
+        <IoCloseCircleOutline />
+      </button>
     </ContactCardStyled>
   );
 };

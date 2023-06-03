@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const ContactCardStyled = styled.article`
+  position: relative;
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.medium};
@@ -22,6 +23,21 @@ const ContactCardStyled = styled.article`
 
     &__name {
       font-weight: 700;
+      overflow: hidden;
+      max-width: 12ch;
+      text-overflow: ellipsis;
+    }
+
+    &__delete-button {
+      height: 48px;
+      width: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      position: absolute;
+      top: 10px;
+      right: 5px;
     }
   }
 `;
