@@ -1,7 +1,8 @@
 import axios from "axios";
+import { useCallback } from "react";
+import { toast } from "react-toastify";
 import { ContactStructure } from "../../types";
-import { paths } from "../../constants";
-import { useCallback, useMemo } from "react";
+import { paths, feedbacks } from "../../constants";
 import { useAppDispatch, useAppSelector } from "../../store";
 import {
   hideLoadingActionCreator,
@@ -18,25 +19,31 @@ const useContacts = () => {
   const token = useAppSelector((state) => state.user.token);
   const dispatch = useAppDispatch();
 
-  const config = useMemo(
-    () => ({
+  const getContacts = useCallback(async (): Promise<
+    ContactStructure[] | undefined
+  > => {
+    const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }),
-    [token]
-  );
+    };
 
-  const getContacts = useCallback(async (): Promise<ContactStructure[]> => {
-    dispatch(showLoadingActionCreator());
-    const { data } = await contactsApi.get<{ contacts: ContactStructure[] }>(
-      `${apiUrl}${paths.contacts}`,
-      config
-    );
-    dispatch(hideLoadingActionCreator());
+    try {
+      dispatch(showLoadingActionCreator());
 
-    return data.contacts;
-  }, [config, dispatch]);
+      const { data } = await contactsApi.get<{
+        contacts: ContactStructure[];
+      }>(`${apiUrl}${paths.contacts}`, config);
+
+      dispatch(hideLoadingActionCreator());
+
+      return data.contacts;
+    } catch (error) {
+      dispatch(hideLoadingActionCreator());
+
+      toast.error(feedbacks.errorGettingContacts);
+    }
+  }, [dispatch, token]);
 
   return {
     getContacts,
