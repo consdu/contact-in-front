@@ -16,7 +16,9 @@ const ContactsPage = (): React.ReactElement => {
   useEffect(() => {
     (async () => {
       const contacts = await getContacts();
-      dispatch(loadContactsActionCreator(contacts));
+      if (contacts) {
+        dispatch(loadContactsActionCreator(contacts));
+      }
     })();
   }, [dispatch, getContacts]);
 

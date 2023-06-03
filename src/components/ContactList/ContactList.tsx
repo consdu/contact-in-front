@@ -9,11 +9,12 @@ interface ContactListProps {
 const ContactList = ({ contacts }: ContactListProps): React.ReactElement => {
   return (
     <ContactListStyled>
-      {contacts.map((contact) => (
-        <li key={contact.id}>
-          <ContactCard contact={contact} onDeleteClick={(id) => id} />
-        </li>
-      ))}
+      {contacts &&
+        contacts.map((contact) => (
+          <li key={contact.id}>
+            <ContactCard contact={contact} onDeleteClick={(id) => id} />
+          </li>
+        ))}
     </ContactListStyled>
   );
 };
