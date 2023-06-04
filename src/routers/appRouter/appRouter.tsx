@@ -1,6 +1,10 @@
 import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../../components/App/App";
-import { LazyContactsPage, LazyLoginPage } from "../lazyPages/lazyPages";
+import {
+  LazyContactsPage,
+  LazyLoginPage,
+  LazyNotFoundPage,
+} from "../lazyPages/lazyPages";
 import { paths } from "../../constants";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 
@@ -8,6 +12,7 @@ const routes: RouteObject[] = [
   {
     path: "/",
     element: <App />,
+    errorElement: <LazyNotFoundPage />,
     children: [
       {
         index: true,
