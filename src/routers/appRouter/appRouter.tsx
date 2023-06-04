@@ -1,15 +1,18 @@
 import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../../components/App/App";
-import { LazyContactsPage, LazyLoginPage } from "../lazyPages/lazyPages";
+import {
+  LazyContactsPage,
+  LazyLoginPage,
+  LazyNotFoundPage,
+} from "../lazyPages/lazyPages";
 import { paths } from "../../constants";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
-import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 const routes: RouteObject[] = [
   {
     path: "/",
     element: <App />,
-    errorElement: <NotFoundPage />,
+    errorElement: <LazyNotFoundPage />,
     children: [
       {
         index: true,

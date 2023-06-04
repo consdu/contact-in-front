@@ -7,3 +7,7 @@ export const LazyLoginPage = lazy(
 export const LazyContactsPage = lazy(
   () => import("../../pages/ContactsPage/ContactsPage")
 );
+
+export const LazyNotFoundPage = lazy(
+  () => import("../../pages/NotFoundPage/NotFoundPage")
+);
