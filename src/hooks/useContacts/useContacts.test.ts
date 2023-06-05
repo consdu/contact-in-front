@@ -8,6 +8,10 @@ import { feedbacks } from "../../constants";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
 
+beforeEach(() => {
+  vi.clearAllMocks();
+});
+
 describe("Given a getContacts function", () => {
   describe("When called", () => {
     test("Then it should return a list with 3 contacts", async () => {
@@ -21,6 +25,22 @@ describe("Given a getContacts function", () => {
       const response = await getContacts();
 
       expect(response).toStrictEqual(expectedResponse);
+    });
+  });
+
+  describe("When called and there is an error with the api", () => {
+    test("Then it should call toast's error method with 'Error while getting contacts'", async () => {
+      server.resetHandlers(...errorHandlers);
+      toast.error = vi.fn();
+
+      const { result } = renderHook(() => useContacts(), {
+        wrapper: wrapWithProviders,
+      });
+      const { getContacts } = result.current;
+
+      await getContacts();
+
+      expect(toast.error).toHaveBeenCalledWith(feedbacks.errorGettingContacts);
     });
   });
 });
