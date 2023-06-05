@@ -12,7 +12,11 @@ import {
 } from "react-icons/io5";
 import ContactFormStyled from "./ContactFormStyled";
 
-const ContactForm = () => {
+interface ContactFormProps {
+  buttonText: string;
+}
+
+const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
   return (
     <ContactFormStyled>
       <div className="contact-form__group">
@@ -126,7 +130,7 @@ const ContactForm = () => {
         </div>
       </div>
       <button type="submit" className="contact-form__group-submit">
-        create
+        {buttonText}
       </button>
     </ContactFormStyled>
   );
