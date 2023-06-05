@@ -44,11 +44,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   input {
+    -webkit-border-radius:0; 
+    -webkit-appearance: none;
     font: inherit;
     border: none;
   }
 
   button {
+    -webkit-appearance: none;
     cursor: pointer;
     font: inherit;
     border: none;
