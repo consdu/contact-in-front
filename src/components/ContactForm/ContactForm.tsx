@@ -24,7 +24,7 @@ const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
     ["phone-number"]: "",
     email: "",
     address: "",
-    dob: "",
+    dob: "2000-01-01",
     image: "",
     twitter: "",
     instagram: "",
