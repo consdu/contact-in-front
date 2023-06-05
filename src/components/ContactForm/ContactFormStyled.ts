@@ -24,7 +24,7 @@ const ContactFormStyled = styled.form`
         background-color: ${(props) => props.theme.colors.gray200};
         width: 100%;
         outline: none;
-        padding: 10px;
+        padding: 15px 10px;
         border-top-right-radius: ${(props) => props.theme.radius.normal};
         border-bottom-right-radius: ${(props) => props.theme.radius.normal};
 
@@ -50,7 +50,7 @@ const ContactFormStyled = styled.form`
         color: ${(props) => props.theme.colors.gray50};
         border-radius: ${(props) => props.theme.radius.normal};
         width: 100%;
-        padding: 10px;
+        padding: 15px;
         text-transform: uppercase;
         margin-top: 20px;
       }
