@@ -50,15 +50,20 @@ const useContacts = () => {
 
   const deleteContact = async (contactId: string): Promise<number> => {
     try {
+      dispatch(showLoadingActionCreator());
+
       await contactsApi.delete(
         `${apiUrl}${paths.contacts}/${contactId}`,
         config
       );
 
+      dispatch(hideLoadingActionCreator());
       toast.success(feedbacks.deleteSuccesful);
       return 200;
     } catch {
+      dispatch(hideLoadingActionCreator());
       toast.error(feedbacks.errorDeletingContact);
+
       return 404;
     }
   };
