@@ -17,6 +17,7 @@ export const responseErrors = {
   missingToken: "Missing token",
   wrongCredentials: "Wrong Credentials",
   contactNotFound: "Contact not found",
+  serverError: "Server internal error",
 };
 
 export const responseMesssages = {

@@ -44,6 +44,15 @@ export const errorHandlers = [
     );
   }),
 
+  rest.get(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(500),
+      ctx.json({
+        error: responseErrors.serverError,
+      })
+    );
+  }),
+
   rest.delete(`${apiUrl}${paths.contacts}/:contactId`, (_req, res, ctx) => {
     return res(
       ctx.status(404),
