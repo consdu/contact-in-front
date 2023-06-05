@@ -23,6 +23,7 @@ const ContactFormStyled = styled.form`
       & input {
         background-color: ${(props) => props.theme.colors.gray200};
         width: 100%;
+        height: 100%;
         outline: none;
         padding: 15px 10px;
         border-top-right-radius: ${(props) => props.theme.radius.normal};

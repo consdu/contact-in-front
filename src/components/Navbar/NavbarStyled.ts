@@ -15,6 +15,7 @@ const NavbarStyled = styled.nav`
 
     &__link a,
     &__link button {
+      padding: 0;
       width: 60px;
       aspect-ratio: 1;
       background-color: ${(props) => props.theme.colors.primary400};
