@@ -44,5 +44,9 @@ declare module "styled-components" {
       medium: string;
       large: string;
     };
+
+    radius: {
+      normal: string;
+    };
   }
 }

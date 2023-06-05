@@ -40,6 +40,9 @@ const theme: DefaultTheme = {
     medium: "20px",
     large: "30px",
   },
+  radius: {
+    normal: "10px",
+  },
 };
 
 export default theme;

@@ -44,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   input {
-    font-family: inherit;
+    font: inherit;
     border: none;
   }
 

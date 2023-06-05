@@ -1,3 +1,5 @@
+import ContactForm from "../../components/ContactForm/ContactForm";
+import ContainerStyled from "../../components/shared/ContainerStyled";
 import AddContactPageStyled from "./AddContactPageStyled";
 
 const AddContactPage = () => {
@@ -8,6 +10,11 @@ const AddContactPage = () => {
           new <span>contact</span>
         </h2>
       </header>
+      <main>
+        <ContainerStyled>
+          <ContactForm buttonText="create" />
+        </ContainerStyled>
+      </main>
     </AddContactPageStyled>
   );
 };
