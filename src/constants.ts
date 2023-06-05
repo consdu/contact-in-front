@@ -17,3 +17,7 @@ export const responseErrors = {
   missingToken: "Missing token",
   wrongCredentials: "Wrong Credentials",
 };
+
+export const responseMesssages = {
+  deleteSuccessful: "Contact deleted succesfully",
+};
