@@ -1,3 +1,4 @@
+import useContacts from "../../hooks/useContacts/useContacts";
 import { useAppDispatch } from "../../store";
 import { deleteContactActionCreator } from "../../store/contacts/contactsSlice";
 import { ContactStructure } from "../../types";
@@ -10,9 +11,13 @@ interface ContactListProps {
 
 const ContactList = ({ contacts }: ContactListProps): React.ReactElement => {
   const dispatch = useAppDispatch();
+  const { deleteContact } = useContacts();
 
-  const handleDeleteClick = (id: string) => {
-    dispatch(deleteContactActionCreator(id));
+  const handleDeleteClick = async (id: string) => {
+    const status = await deleteContact(id);
+    if (status === 200) {
+      dispatch(deleteContactActionCreator(id));
+    }
   };
 
   return (
