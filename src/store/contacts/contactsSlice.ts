@@ -17,11 +17,21 @@ const contactsSlice = createSlice({
       contactsData: action.payload,
     }),
     clearContacts: () => initialContactsState,
+    deleteContact: (
+      currentContactsState: ContactsStateStructure,
+      action: PayloadAction<string>
+    ) => ({
+      ...currentContactsState,
+      contactsData: currentContactsState.contactsData.filter(
+        (contact) => contact.id !== action.payload
+      ),
+    }),
   },
 });
 
 export const {
   loadContacts: loadContactsActionCreator,
   clearContacts: clearContactsActionCreator,
+  deleteContact: deleteContactActionCreator,
 } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

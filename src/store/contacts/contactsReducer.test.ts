@@ -7,6 +7,7 @@ import { ContactsStateStructure } from "../../types";
 import {
   clearContactsActionCreator,
   contactsReducer,
+  deleteContactActionCreator,
   loadContactsActionCreator,
 } from "./contactsSlice";
 
@@ -39,6 +40,28 @@ describe("Given a contactsReducer", () => {
       const newContactsState = contactsReducer(
         currentContactsState,
         clearContactsActionCreator()
+      );
+
+      expect(newContactsState).toStrictEqual(expectedContactsState);
+    });
+  });
+
+  describe("When it receives a current state and a deleteContact action with one id as payload", () => {
+    test("Then it should return a new state without the contact who's matching the id", () => {
+      const id = fullContactsStateMock.contactsData[0].id;
+
+      const currentContactsState: ContactsStateStructure =
+        fullContactsStateMock;
+
+      const expectedContactsState: ContactsStateStructure = {
+        contactsData: fullContactsStateMock.contactsData.filter(
+          (contact) => contact.id !== id
+        ),
+      };
+
+      const newContactsState = contactsReducer(
+        currentContactsState,
+        deleteContactActionCreator(id)
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);
