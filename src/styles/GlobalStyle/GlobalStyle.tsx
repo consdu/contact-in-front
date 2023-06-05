@@ -5,6 +5,8 @@ const GlobalStyle = createGlobalStyle`
   ::before,
   ::after {
     box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   html {
