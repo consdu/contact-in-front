@@ -7,6 +7,7 @@ import {
 } from "../lazyPages/lazyPages";
 import { paths } from "../../constants";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
+import AddContactPage from "../../pages/AddContactPage/AddContactPage";
 
 const routes: RouteObject[] = [
   {
@@ -16,7 +17,7 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Navigate to={paths.login} replace />,
+        element: <Navigate to={paths.contacts} replace />,
       },
       {
         path: paths.login,
@@ -27,6 +28,14 @@ const routes: RouteObject[] = [
         element: (
           <ProtectedRoute>
             <LazyContactsPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: paths.addContact,
+        element: (
+          <ProtectedRoute>
+            <AddContactPage />
           </ProtectedRoute>
         ),
       },
