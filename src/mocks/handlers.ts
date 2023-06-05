@@ -43,4 +43,13 @@ export const errorHandlers = [
       })
     );
   }),
+
+  rest.delete(`${apiUrl}${paths.contacts}/:contactId`, (_req, res, ctx) => {
+    return res(
+      ctx.status(404),
+      ctx.json({
+        error: responseErrors.contactNotFound,
+      })
+    );
+  }),
 ];
