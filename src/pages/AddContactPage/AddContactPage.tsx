@@ -12,7 +12,7 @@ const AddContactPage = () => {
       </header>
       <main>
         <ContainerStyled>
-          <ContactForm />
+          <ContactForm buttonText="create" />
         </ContainerStyled>
       </main>
     </AddContactPageStyled>
