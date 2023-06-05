@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { toast } from "react-toastify";
 import { ContactStructure } from "../../types";
 import { paths, feedbacks } from "../../constants";
@@ -19,15 +19,18 @@ const useContacts = () => {
   const token = useAppSelector((state) => state.user.token);
   const dispatch = useAppDispatch();
 
-  const getContacts = useCallback(async (): Promise<
-    ContactStructure[] | undefined
-  > => {
-    const config = {
+  const config = useMemo(
+    () => ({
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    };
+    }),
+    [token]
+  );
 
+  const getContacts = useCallback(async (): Promise<
+    ContactStructure[] | undefined
+  > => {
     try {
       dispatch(showLoadingActionCreator());
 
@@ -43,10 +46,26 @@ const useContacts = () => {
 
       toast.error(feedbacks.errorGettingContacts);
     }
-  }, [dispatch, token]);
+  }, [config, dispatch]);
+
+  const deleteContact = async (contactId: string): Promise<number> => {
+    try {
+      await contactsApi.delete(
+        `${apiUrl}${paths.contacts}/${contactId}`,
+        config
+      );
+
+      toast.success(feedbacks.deleteSuccesful);
+      return 200;
+    } catch {
+      toast.error(feedbacks.errorDeletingContact);
+      return 404;
+    }
+  };
 
   return {
     getContacts,
+    deleteContact,
   };
 };
 
