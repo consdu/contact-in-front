@@ -28,7 +28,9 @@ describe("Given a Layout Component", () => {
   describe("When rendered", () => {
     test("Then it should show a 'contacts', an 'add contact' links", () => {
       const linkNames = ["contacts", "add contact"];
-      renderWithProviders(wrapWithRouter(<Layout />));
+      renderWithProviders(wrapWithRouter(<Layout />), {
+        user: loggedUserStateMock,
+      });
 
       linkNames.forEach((linkName) => {
         const link = screen.getByRole("link", {
@@ -42,7 +44,9 @@ describe("Given a Layout Component", () => {
     test("Then it should show a 'logout' button", () => {
       const buttonText = "logout";
 
-      renderWithProviders(wrapWithRouter(<Layout />));
+      renderWithProviders(wrapWithRouter(<Layout />), {
+        user: loggedUserStateMock,
+      });
 
       const logoutButton = screen.getByRole("button", {
         name: buttonText,
