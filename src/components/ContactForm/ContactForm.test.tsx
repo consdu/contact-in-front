@@ -7,6 +7,7 @@ import { renderWithProviders } from "../../testUtils/testUtils";
 const handleFormSubmit = vi.fn();
 
 describe("Given a Contact Form component", () => {
+  const inputTextSample = "example@example.com";
   const buttonText = "create";
   const inputLabels = [
     "Name",
@@ -48,22 +49,41 @@ describe("Given a Contact Form component", () => {
   });
 
   describe("When is rendered and the user types 'example' in the inputs", () => {
-    test("Then the inputs should show 'example'", () => {
-      const textSample = "example";
-
+    test("Then the inputs should show 'example'", async () => {
       renderWithProviders(
         <ContactForm buttonText={buttonText} onFormSubmit={handleFormSubmit} />
       );
 
-      inputLabels.forEach(async (inputName) => {
-        if (inputName !== "Date of birth") {
-          const input = screen.getByLabelText(inputName);
-
-          await userEvent.type(input, textSample);
-
-          expect(input).toHaveValue(textSample);
+      for (const inputLabel of inputLabels) {
+        if (inputLabel !== "Date of birth") {
+          const input = screen.getByLabelText(inputLabel);
+          await userEvent.type(input, inputTextSample);
+          expect(input).toHaveValue(inputTextSample);
         }
+      }
+    });
+  });
+
+  describe("When is rendered and the user fills the form and submits", () => {
+    test("Then it should call the received submit handler function", async () => {
+      renderWithProviders(
+        <ContactForm buttonText={buttonText} onFormSubmit={handleFormSubmit} />
+      );
+
+      for (const inputLabel of inputLabels) {
+        if (inputLabel !== "Date of birth") {
+          const input = screen.getByLabelText(inputLabel);
+          await userEvent.type(input, inputTextSample);
+          expect(input).toHaveValue(inputTextSample);
+        }
+      }
+
+      const createButton = screen.getByRole("button", {
+        name: buttonText,
       });
+      await userEvent.click(createButton);
+
+      expect(handleFormSubmit).toHaveBeenCalled();
     });
   });
 });
