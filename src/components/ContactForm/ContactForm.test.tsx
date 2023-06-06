@@ -1,7 +1,10 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 import ContactForm from "./ContactForm";
 import { renderWithProviders } from "../../testUtils/testUtils";
+
+const handleFormSubmit = vi.fn();
 
 describe("Given a Contact Form component", () => {
   const buttonText = "create";
@@ -20,7 +23,9 @@ describe("Given a Contact Form component", () => {
 
   describe("When it receives 'create' as a text and it's rendered", () => {
     test("Then it should show Name, Surname, Phone, Email, Address, DOB, Image, Socials inputs", () => {
-      renderWithProviders(<ContactForm buttonText={buttonText} />);
+      renderWithProviders(
+        <ContactForm buttonText={buttonText} onFormSubmit={handleFormSubmit} />
+      );
 
       inputLabels.forEach((inputName) => {
         const input = screen.getByLabelText(inputName);
@@ -30,7 +35,9 @@ describe("Given a Contact Form component", () => {
     });
 
     test("Then it should show a create button", () => {
-      renderWithProviders(<ContactForm buttonText={buttonText} />);
+      renderWithProviders(
+        <ContactForm buttonText={buttonText} onFormSubmit={handleFormSubmit} />
+      );
 
       const submitButton = screen.getByRole("button", {
         name: buttonText,
@@ -44,7 +51,9 @@ describe("Given a Contact Form component", () => {
     test("Then the inputs should show 'example'", () => {
       const textSample = "example";
 
-      renderWithProviders(<ContactForm buttonText={buttonText} />);
+      renderWithProviders(
+        <ContactForm buttonText={buttonText} onFormSubmit={handleFormSubmit} />
+      );
 
       inputLabels.forEach(async (inputName) => {
         if (inputName !== "Date of birth") {

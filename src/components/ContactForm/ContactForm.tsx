@@ -16,9 +16,13 @@ import { ContactStructure } from "../../types";
 
 interface ContactFormProps {
   buttonText: string;
+  onFormSubmit: (formData: Partial<ContactStructure>) => void;
 }
 
-const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
+const ContactForm = ({
+  buttonText,
+  onFormSubmit,
+}: ContactFormProps): React.ReactElement => {
   const [formData, setFormData] = useState<ContactStructure>({
     name: "",
     surname: "",
@@ -64,8 +68,13 @@ const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
     }));
   };
 
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onFormSubmit(formData);
+  };
+
   return (
-    <ContactFormStyled>
+    <ContactFormStyled onSubmit={handleFormSubmit}>
       <div className="contact-form__group">
         <label htmlFor="name">Name</label>
         <div className="input-wrapper">

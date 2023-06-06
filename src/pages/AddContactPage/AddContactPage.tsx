@@ -12,7 +12,7 @@ const AddContactPage = () => {
       </header>
       <main>
         <ContainerStyled>
-          <ContactForm buttonText="create" />
+          <ContactForm buttonText="create" onFormSubmit={() => undefined} />
         </ContainerStyled>
       </main>
     </AddContactPageStyled>
