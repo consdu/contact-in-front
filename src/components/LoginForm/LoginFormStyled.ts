@@ -54,6 +54,7 @@ const LoginFormStyled = styled.form`
     }
 
     &__button {
+      position: relative;
       background-color: ${(props) => props.theme.colors.primary600};
       color: #fff;
       text-transform: uppercase;
@@ -65,6 +66,36 @@ const LoginFormStyled = styled.form`
 
       &:disabled {
         background-color: ${(props) => props.theme.colors.primary500};
+      }
+
+      &--hide-text {
+        color: transparent;
+      }
+
+      &--loading::after {
+        content: "";
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 4px solid transparent;
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        animation: button-loading-spinner 1s ease infinite;
+      }
+
+      @keyframes button-loading-spinner {
+        from {
+          transform: rotate(0turn);
+        }
+
+        to {
+          transform: rotate(1turn);
+        }
       }
     }
   }

@@ -15,6 +15,7 @@ const LoginPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const token = useAppSelector((state) => state.user.token);
+  const isLoading = useAppSelector((state) => state.ui.isLoading);
   const { setLocalStorageItem } = useLocalStorage();
   const { getUserToken } = useUser();
   const { getTokenData } = useToken();
@@ -46,7 +47,10 @@ const LoginPage = (): React.ReactElement => {
           </section>
         </header>
         <main>
-          <LoginForm onLoginFormSubmit={handleLoginFormSubmit} />
+          <LoginForm
+            onLoginFormSubmit={handleLoginFormSubmit}
+            isLoading={isLoading}
+          />
         </main>
       </ContainerStyled>
     </LoginPageStyled>

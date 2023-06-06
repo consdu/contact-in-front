@@ -5,10 +5,12 @@ import { UserCredentials } from "../../types";
 
 interface LoginFormProps {
   onLoginFormSubmit: (formData: UserCredentials) => void;
+  isLoading: boolean;
 }
 
 const LoginForm = ({
   onLoginFormSubmit,
+  isLoading,
 }: LoginFormProps): React.ReactElement => {
   const [formData, setFormData] = useState({
     username: "",
@@ -69,9 +71,12 @@ const LoginForm = ({
         </div>
       </div>
       <button
-        className="login-form__button"
+        className={`login-form__button ${
+          isLoading &&
+          "login-form__button--loading login-form__button--hide-text"
+        }`}
         type="submit"
-        disabled={isButtonDisabled}
+        disabled={isButtonDisabled || isLoading}
       >
         Login
       </button>
