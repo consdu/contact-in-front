@@ -65,7 +65,7 @@ describe("Given a contactsReducer", () => {
 
       const newContactsState = contactsReducer(
         currentContactsState,
-        deleteContactActionCreator(id)
+        deleteContactActionCreator(id as string)
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);

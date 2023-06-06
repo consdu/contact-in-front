@@ -54,6 +54,10 @@ const ContactFormStyled = styled.form`
         padding: 15px;
         text-transform: uppercase;
         margin-top: 20px;
+
+        &:disabled {
+          background-color: ${(props) => props.theme.colors.primary500};
+        }
       }
     }
   }

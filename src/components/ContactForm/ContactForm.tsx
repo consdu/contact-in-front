@@ -12,23 +12,32 @@ import {
 } from "react-icons/io5";
 import ContactFormStyled from "./ContactFormStyled";
 import { useState } from "react";
+import { ContactStructure } from "../../types";
 
 interface ContactFormProps {
   buttonText: string;
+  onFormSubmit: (formData: Partial<ContactStructure>) => void;
 }
 
-const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
-  const [formData, setFormData] = useState({
+const ContactForm = ({
+  buttonText,
+  onFormSubmit,
+}: ContactFormProps): React.ReactElement => {
+  const [formData, setFormData] = useState<ContactStructure>({
     name: "",
     surname: "",
-    phoneNumber: "",
+    phoneNumber: {
+      mobile: "",
+    },
     email: "",
     address: "",
     birthday: "2000-01-01",
     avatar: "",
-    twitter: "",
-    instagram: "",
-    linkedin: "",
+    socials: {
+      twitter: "",
+      instagram: "",
+      linkedin: "",
+    },
   });
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,8 +47,42 @@ const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
     }));
   };
 
+  const handlePhoneNumberChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFormData((previousFormData) => ({
+      ...previousFormData,
+      phoneNumber: {
+        mobile: event.target.value,
+      },
+    }));
+  };
+
+  const handleSocialsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((previousFormData) => ({
+      ...previousFormData,
+      socials: {
+        ...previousFormData.socials,
+        [event.target.id]: event.target.value,
+      },
+    }));
+  };
+
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onFormSubmit(formData);
+  };
+
+  const isButtonDisabled =
+    formData.name.length < 1 ||
+    formData.surname.length < 1 ||
+    formData.address.length < 1 ||
+    formData.avatar.length < 1 ||
+    formData.phoneNumber.mobile.length < 1 ||
+    formData.email.length < 1;
+
   return (
-    <ContactFormStyled>
+    <ContactFormStyled onSubmit={handleFormSubmit}>
       <div className="contact-form__group">
         <label htmlFor="name">Name</label>
         <div className="input-wrapper">
@@ -80,8 +123,8 @@ const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
             type="text"
             id="phoneNumber"
             placeholder="Insert a phone number"
-            value={formData.phoneNumber}
-            onChange={handleInputChange}
+            value={formData.phoneNumber.mobile}
+            onChange={handlePhoneNumberChange}
           />
         </div>
       </div>
@@ -154,8 +197,8 @@ const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
             type="text"
             id="twitter"
             placeholder="Link to twitter profile"
-            value={formData.twitter}
-            onChange={handleInputChange}
+            value={formData.socials.twitter}
+            onChange={handleSocialsChange}
           />
         </div>
       </div>
@@ -169,8 +212,8 @@ const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
             type="text"
             id="instagram"
             placeholder="Link to instagram profile"
-            value={formData.instagram}
-            onChange={handleInputChange}
+            value={formData.socials.instagram}
+            onChange={handleSocialsChange}
           />
         </div>
       </div>
@@ -184,12 +227,16 @@ const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
             type="text"
             id="linkedin"
             placeholder="Link to linkedin profile"
-            value={formData.linkedin}
-            onChange={handleInputChange}
+            value={formData.socials.linkedin}
+            onChange={handleSocialsChange}
           />
         </div>
       </div>
-      <button type="submit" className="contact-form__group-submit">
+      <button
+        type="submit"
+        className="contact-form__group-submit"
+        disabled={isButtonDisabled}
+      >
         {buttonText}
       </button>
     </ContactFormStyled>
