@@ -40,5 +40,6 @@ export const {
   loadContacts: loadContactsActionCreator,
   clearContacts: clearContactsActionCreator,
   deleteContact: deleteContactActionCreator,
+  addContact: addContactActionCreator,
 } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

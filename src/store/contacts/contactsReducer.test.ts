@@ -1,10 +1,14 @@
-import { contactsMock } from "../../factories/contacts/contactsFactory";
+import {
+  contactMock,
+  contactsMock,
+} from "../../factories/contacts/contactsFactory";
 import {
   emptyContactsStateMock,
   fullContactsStateMock,
 } from "../../mocks/contacts/contactsStateMocks";
 import { ContactsStateStructure } from "../../types";
 import {
+  addContactActionCreator,
   clearContactsActionCreator,
   contactsReducer,
   deleteContactActionCreator,
@@ -62,6 +66,24 @@ describe("Given a contactsReducer", () => {
       const newContactsState = contactsReducer(
         currentContactsState,
         deleteContactActionCreator(id)
+      );
+
+      expect(newContactsState).toStrictEqual(expectedContactsState);
+    });
+  });
+
+  describe("When it receives a current state and an addContact action with a contact as payload", () => {
+    test("Then it should return a new state with the payload's contact included", () => {
+      const currentContactsState: ContactsStateStructure =
+        fullContactsStateMock;
+
+      const expectedContactsState: ContactsStateStructure = {
+        contactsData: [...contactsMock, contactMock],
+      };
+
+      const newContactsState = contactsReducer(
+        currentContactsState,
+        addContactActionCreator(contactMock)
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);
