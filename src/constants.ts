@@ -9,8 +9,10 @@ export const feedbacks = {
   wrongCredentials: "Invalid username or password",
   logoutSuccesful: "You've been logged out correctly",
   deleteSuccesful: "Contact deleted correctly",
+  addSuccesful: "Contact added correctly",
   errorGettingContacts: "Error while getting contacts",
   errorDeletingContact: "Error while deleting contact",
+  errorAddingContact: "Error while adding contact",
 };
 
 export const responseErrors = {
