@@ -22,7 +22,7 @@ export interface UseLocalStorageStructure {
 }
 
 export interface ContactStructure {
-  id: string;
+  id?: string;
   name: string;
   surname: string;
   avatar: string;
@@ -38,7 +38,7 @@ export interface ContactStructure {
     instagram?: string;
     linkedin?: string;
   };
-  user: string;
+  user?: string;
 }
 
 export interface ContactsStateStructure {
