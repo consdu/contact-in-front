@@ -1,7 +1,10 @@
 import { rest } from "msw";
 import { userTokenMock } from "./user/userMocks";
 import { paths, responseErrors, responseMesssages } from "../constants";
-import { contactsMock } from "../factories/contacts/contactsFactory";
+import {
+  contactMock,
+  contactsMock,
+} from "../factories/contacts/contactsFactory";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -32,6 +35,15 @@ export const handlers = [
       })
     );
   }),
+
+  rest.post(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        contact: contactMock,
+      })
+    );
+  }),
 ];
 
 export const errorHandlers = [
@@ -58,6 +70,15 @@ export const errorHandlers = [
       ctx.status(404),
       ctx.json({
         error: responseErrors.contactNotFound,
+      })
+    );
+  }),
+
+  rest.post(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(500),
+      ctx.json({
+        error: responseErrors.serverError,
       })
     );
   }),

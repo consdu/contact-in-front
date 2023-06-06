@@ -59,6 +59,7 @@ const useContacts = () => {
 
       dispatch(hideLoadingActionCreator());
       toast.success(feedbacks.deleteSuccesful);
+
       return 200;
     } catch {
       dispatch(hideLoadingActionCreator());
@@ -68,9 +69,25 @@ const useContacts = () => {
     }
   };
 
+  const addContact = async (contactData: Partial<ContactStructure>) => {
+    try {
+      const { data } = await contactsApi.post(
+        `${apiUrl}${paths.contacts}`,
+        contactData,
+        config
+      );
+      toast.success(feedbacks.addSuccesful);
+
+      return data.contact;
+    } catch {
+      toast.error(feedbacks.errorAddingContact);
+    }
+  };
+
   return {
     getContacts,
     deleteContact,
+    addContact,
   };
 };
 
