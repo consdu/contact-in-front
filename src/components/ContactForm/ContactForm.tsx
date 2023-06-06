@@ -73,6 +73,14 @@ const ContactForm = ({
     onFormSubmit(formData);
   };
 
+  const isButtonDisabled =
+    formData.name.length < 1 ||
+    formData.surname.length < 1 ||
+    formData.address.length < 1 ||
+    formData.avatar.length < 1 ||
+    formData.phoneNumber.mobile.length < 1 ||
+    formData.email.length < 1;
+
   return (
     <ContactFormStyled onSubmit={handleFormSubmit}>
       <div className="contact-form__group">
@@ -224,7 +232,11 @@ const ContactForm = ({
           />
         </div>
       </div>
-      <button type="submit" className="contact-form__group-submit">
+      <button
+        type="submit"
+        className="contact-form__group-submit"
+        disabled={isButtonDisabled}
+      >
         {buttonText}
       </button>
     </ContactFormStyled>

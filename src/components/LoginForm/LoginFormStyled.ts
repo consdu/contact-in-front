@@ -64,7 +64,7 @@ const LoginFormStyled = styled.form`
       box-shadow: 0px 3px 5px -1px ${(props) => props.theme.colors.gray500};
 
       &:disabled {
-        background-color: ${(props) => props.theme.colors.primary400};
+        background-color: ${(props) => props.theme.colors.primary500};
       }
     }
   }
