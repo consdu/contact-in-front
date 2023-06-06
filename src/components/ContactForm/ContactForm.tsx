@@ -21,11 +21,11 @@ const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
-    ["phone-number"]: "",
+    phoneNumber: "",
     email: "",
     address: "",
-    dob: "2000-01-01",
-    image: "",
+    birthday: "2000-01-01",
+    avatar: "",
     twitter: "",
     instagram: "",
     linkedin: "",
@@ -71,16 +71,16 @@ const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
         </div>
       </div>
       <div className="contact-form__group">
-        <label htmlFor="phone-number">Phone number</label>
+        <label htmlFor="phoneNumber">Phone number</label>
         <div className="input-wrapper">
           <span className="contact-form__group-icon">
             <IoCall />
           </span>
           <input
             type="text"
-            id="phone-number"
+            id="phoneNumber"
             placeholder="Insert a phone number"
-            value={formData["phone-number"]}
+            value={formData.phoneNumber}
             onChange={handleInputChange}
           />
         </div>
@@ -116,30 +116,30 @@ const ContactForm = ({ buttonText }: ContactFormProps): React.ReactElement => {
         </div>
       </div>
       <div className="contact-form__group">
-        <label htmlFor="dob">Date of birth</label>
+        <label htmlFor="birthday">Date of birth</label>
         <div className="input-wrapper">
           <span className="contact-form__group-icon">
             <IoGift />
           </span>
           <input
             type="date"
-            id="dob"
-            value={formData.dob}
+            id="birthday"
+            value={formData.birthday}
             onChange={handleInputChange}
           />
         </div>
       </div>
       <div className="contact-form__group">
-        <label htmlFor="image">Image</label>
+        <label htmlFor="avatar">Image</label>
         <div className="input-wrapper">
           <span className="contact-form__group-icon">
             <IoImage />
           </span>
           <input
             type="text"
-            id="image"
+            id="avatar"
             placeholder="Link an image"
-            value={formData.image}
+            value={formData.avatar}
             onChange={handleInputChange}
           />
         </div>
