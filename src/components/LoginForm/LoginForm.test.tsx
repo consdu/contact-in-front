@@ -13,7 +13,10 @@ describe("Given a Login Form component", () => {
       const headingText = "Login to access your contacts";
 
       renderWithProviders(
-        <LoginForm onLoginFormSubmit={handleLoginFormSubmit} />
+        <LoginForm
+          onLoginFormSubmit={handleLoginFormSubmit}
+          isLoading={false}
+        />
       );
 
       const formHeading = screen.getByRole("heading", {
@@ -28,7 +31,10 @@ describe("Given a Login Form component", () => {
       const passwordLabel = "Password:";
 
       renderWithProviders(
-        <LoginForm onLoginFormSubmit={handleLoginFormSubmit} />
+        <LoginForm
+          onLoginFormSubmit={handleLoginFormSubmit}
+          isLoading={false}
+        />
       );
 
       const usernameInput = screen.getByLabelText(usernameLabel);
@@ -42,7 +48,10 @@ describe("Given a Login Form component", () => {
       const loginButtonText = "Login";
 
       renderWithProviders(
-        <LoginForm onLoginFormSubmit={handleLoginFormSubmit} />
+        <LoginForm
+          onLoginFormSubmit={handleLoginFormSubmit}
+          isLoading={false}
+        />
       );
 
       const loginButton = screen.getByRole("button", {
@@ -58,7 +67,10 @@ describe("Given a Login Form component", () => {
       const usernameLabel = "Username:";
 
       renderWithProviders(
-        <LoginForm onLoginFormSubmit={handleLoginFormSubmit} />
+        <LoginForm
+          onLoginFormSubmit={handleLoginFormSubmit}
+          isLoading={false}
+        />
       );
 
       const usernameInput = screen.getByLabelText(usernameLabel);
@@ -72,7 +84,10 @@ describe("Given a Login Form component", () => {
       const passwordLabel = "Password:";
 
       renderWithProviders(
-        <LoginForm onLoginFormSubmit={handleLoginFormSubmit} />
+        <LoginForm
+          onLoginFormSubmit={handleLoginFormSubmit}
+          isLoading={false}
+        />
       );
 
       const passwordInput = screen.getByLabelText(passwordLabel);
@@ -90,7 +105,10 @@ describe("Given a Login Form component", () => {
       const loginButtonText = "Login";
 
       renderWithProviders(
-        <LoginForm onLoginFormSubmit={handleLoginFormSubmit} />
+        <LoginForm
+          onLoginFormSubmit={handleLoginFormSubmit}
+          isLoading={false}
+        />
       );
 
       const usernameInput = screen.getByLabelText(usernameLabel);

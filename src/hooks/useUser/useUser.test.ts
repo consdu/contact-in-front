@@ -10,6 +10,7 @@ import useUser from "./useUser";
 import { feedbacks } from "../../constants";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
+import { wrapWithProviders } from "../../testUtils/testUtils";
 
 describe("Given a getUserToken function", () => [
   describe("When called with username 'admin' and password 'admin'", () => {
@@ -17,7 +18,9 @@ describe("Given a getUserToken function", () => [
       const expectedToken = userTokenMock;
       const userCredentials = correctCredentialsMock;
 
-      const { result } = renderHook(() => useUser());
+      const { result } = renderHook(() => useUser(), {
+        wrapper: wrapWithProviders,
+      });
       const { getUserToken } = result.current;
       const token = await getUserToken(userCredentials);
 
@@ -32,7 +35,9 @@ describe("Given a getUserToken function", () => [
 
       const userCredentials = incorrectCredentialsMock;
 
-      const { result } = renderHook(() => useUser());
+      const { result } = renderHook(() => useUser(), {
+        wrapper: wrapWithProviders,
+      });
       const { getUserToken } = result.current;
       await getUserToken(userCredentials);
 
