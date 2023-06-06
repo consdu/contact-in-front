@@ -73,4 +73,13 @@ export const errorHandlers = [
       })
     );
   }),
+
+  rest.post(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(500),
+      ctx.json({
+        error: responseErrors.serverError,
+      })
+    );
+  }),
 ];
