@@ -26,6 +26,13 @@ const contactsSlice = createSlice({
         (contact) => contact.id !== action.payload
       ),
     }),
+    addContact: (
+      currentContactsState: ContactsStateStructure,
+      action: PayloadAction<ContactStructure>
+    ) => ({
+      ...currentContactsState,
+      contactsData: [...currentContactsState.contactsData, action.payload],
+    }),
   },
 });
 
@@ -33,5 +40,6 @@ export const {
   loadContacts: loadContactsActionCreator,
   clearContacts: clearContactsActionCreator,
   deleteContact: deleteContactActionCreator,
+  addContact: addContactActionCreator,
 } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

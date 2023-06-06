@@ -5,6 +5,8 @@ const GlobalStyle = createGlobalStyle`
   ::before,
   ::after {
     box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   html {
@@ -45,6 +47,7 @@ const GlobalStyle = createGlobalStyle`
 
   input {
     -webkit-border-radius:0; 
+    border-radius:0;
     font: inherit;
     border: none;
   }

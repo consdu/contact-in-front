@@ -29,6 +29,7 @@ const ContactCardStyled = styled.article`
     }
 
     &__delete-button {
+      padding: 0;
       height: 48px;
       width: 48px;
       display: flex;
