@@ -1,7 +1,10 @@
 import { vi } from "vitest";
 import { renderHook } from "@testing-library/react";
 import { toast } from "react-toastify";
-import { contactsMock } from "../../factories/contacts/contactsFactory";
+import {
+  contactMock,
+  contactsMock,
+} from "../../factories/contacts/contactsFactory";
 import useContacts from "./useContacts";
 import { wrapWithProviders } from "../../testUtils/testUtils";
 import { feedbacks } from "../../constants";
@@ -103,6 +106,23 @@ describe("Given a deleteContact function", () => {
       await deleteContact(id);
 
       expect(toast.error).toHaveBeenCalledWith(feedbacks.errorDeletingContact);
+    });
+  });
+});
+
+describe("Given a addContact function", () => {
+  describe("When called with a contact", () => {
+    test("Then it should return the contact added", async () => {
+      const expectedContact = contactMock;
+
+      const { result } = renderHook(() => useContacts(), {
+        wrapper: wrapWithProviders,
+      });
+      const { addContact } = result.current;
+
+      const newContact = await addContact(contactMock);
+
+      expect(newContact).toStrictEqual(expectedContact);
     });
   });
 });
