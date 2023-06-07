@@ -23,4 +23,4 @@ const contactFactory = Factory.define<ContactStructure>(() => ({
 
 export const contactMock = contactFactory.build();
 
-export const contactsMock = contactFactory.buildList(3);
+export const contactsMock = contactFactory.buildList(10);
