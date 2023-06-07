@@ -10,6 +10,10 @@ const LoginFormStyled = styled.form`
     position: relative;
   }
 
+  button {
+    font-size: 1.5rem;
+  }
+
   .login-form {
     &__title {
       font-size: 1.2rem;

@@ -6,7 +6,6 @@ const ButtonStyled = styled.button`
   background-color: ${(props) => props.theme.colors.primary600};
   color: #fff;
   text-transform: uppercase;
-  font-size: 1.5rem;
   padding-block: 20px;
   border-radius: 5px;
   margin-top: 30px;
@@ -14,8 +13,8 @@ const ButtonStyled = styled.button`
   transition: background-color 0.2s ease;
 
   &:disabled {
-    background-color: transparent;
-    border: 2px solid ${(props) => props.theme.colors.primary600};
+    background-color: #f1f8f420;
+    outline: 2px solid ${(props) => props.theme.colors.primary600};
     color: ${(props) => props.theme.colors.primary600};
   }
 
