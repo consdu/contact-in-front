@@ -2,6 +2,7 @@ import { IoKey, IoPersonCircleSharp } from "react-icons/io5";
 import LoginFormStyled from "./LoginFormStyled";
 import { useState } from "react";
 import { UserCredentials } from "../../types";
+import Button from "../Button/Button";
 
 interface LoginFormProps {
   onLoginFormSubmit: (formData: UserCredentials) => void;
@@ -70,16 +71,12 @@ const LoginForm = ({
           </span>
         </div>
       </div>
-      <button
-        className={`login-form__button ${
-          isLoading &&
-          "login-form__button--loading login-form__button--hide-text"
-        }`}
+      <Button
+        text="Login"
+        isLoading={isLoading}
+        isButtonDisabled={isButtonDisabled}
         type="submit"
-        disabled={isButtonDisabled || isLoading}
-      >
-        Login
-      </button>
+      />
     </LoginFormStyled>
   );
 };
