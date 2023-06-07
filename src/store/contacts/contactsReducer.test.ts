@@ -9,6 +9,7 @@ import {
 import { ContactsStateStructure } from "../../types";
 import {
   addContactActionCreator,
+  addMoreActionCreator,
   clearContactsActionCreator,
   contactsReducer,
   deleteContactActionCreator,
@@ -58,6 +59,7 @@ describe("Given a contactsReducer", () => {
         fullContactsStateMock;
 
       const expectedContactsState: ContactsStateStructure = {
+        ...fullContactsStateMock,
         contactsData: fullContactsStateMock.contactsData.filter(
           (contact) => contact.id !== id
         ),
@@ -78,12 +80,32 @@ describe("Given a contactsReducer", () => {
         fullContactsStateMock;
 
       const expectedContactsState: ContactsStateStructure = {
+        ...fullContactsStateMock,
         contactsData: [...contactsMock, contactMock],
       };
 
       const newContactsState = contactsReducer(
         currentContactsState,
         addContactActionCreator(contactMock)
+      );
+
+      expect(newContactsState).toStrictEqual(expectedContactsState);
+    });
+  });
+
+  describe("When it receives a current state and an addMore action", () => {
+    test("Then it should return a new state with limit incremented by 10", () => {
+      const currentContactsState: ContactsStateStructure =
+        fullContactsStateMock;
+
+      const expectedContactsState: ContactsStateStructure = {
+        ...fullContactsStateMock,
+        limit: fullContactsStateMock.limit + 10,
+      };
+
+      const newContactsState = contactsReducer(
+        currentContactsState,
+        addMoreActionCreator()
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);
