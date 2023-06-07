@@ -1,6 +1,9 @@
 import useContacts from "../../hooks/useContacts/useContacts";
 import { useAppDispatch } from "../../store";
-import { deleteContactActionCreator } from "../../store/contacts/contactsSlice";
+import {
+  addMoreActionCreator,
+  deleteContactActionCreator,
+} from "../../store/contacts/contactsSlice";
 import { ContactStructure } from "../../types";
 import ContactCard from "../ContactCard/ContactCard";
 import LoadMore from "../LoadMore/LoadMore";
@@ -16,9 +19,14 @@ const ContactList = ({ contacts }: ContactListProps): React.ReactElement => {
 
   const handleDeleteClick = async (id: string) => {
     const status = await deleteContact(id);
+
     if (status === 200) {
       dispatch(deleteContactActionCreator(id));
     }
+  };
+
+  const handleLoadMoreClick = () => {
+    dispatch(addMoreActionCreator());
   };
 
   return (
@@ -29,7 +37,7 @@ const ContactList = ({ contacts }: ContactListProps): React.ReactElement => {
             <ContactCard contact={contact} onDeleteClick={handleDeleteClick} />
           </li>
         ))}
-      <LoadMore handleButtonClick={() => undefined} />
+      <LoadMore handleButtonClick={handleLoadMoreClick} />
     </ContactListStyled>
   );
 };

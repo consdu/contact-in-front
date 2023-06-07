@@ -3,6 +3,7 @@ import { ContactStructure, ContactsStateStructure } from "../../types";
 
 const initialContactsState: ContactsStateStructure = {
   contactsData: [],
+  limit: 10,
 };
 
 const contactsSlice = createSlice({
@@ -33,6 +34,10 @@ const contactsSlice = createSlice({
       ...currentContactsState,
       contactsData: [...currentContactsState.contactsData, action.payload],
     }),
+    addMore: (currentContactsState: ContactsStateStructure) => ({
+      ...currentContactsState,
+      limit: currentContactsState.limit + 10,
+    }),
   },
 });
 
@@ -41,5 +46,6 @@ export const {
   clearContacts: clearContactsActionCreator,
   deleteContact: deleteContactActionCreator,
   addContact: addContactActionCreator,
+  addMore: addMoreActionCreator,
 } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

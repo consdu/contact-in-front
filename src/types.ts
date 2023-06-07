@@ -43,6 +43,7 @@ export interface ContactStructure {
 
 export interface ContactsStateStructure {
   contactsData: ContactStructure[];
+  limit: number;
 }
 
 export interface UiStateStructure {
