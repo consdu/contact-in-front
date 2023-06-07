@@ -9,6 +9,7 @@ import Loading from "../../components/Loading/Loading";
 
 const ContactsPage = (): React.ReactElement => {
   const contacts = useAppSelector((state) => state.contacts.contactsData);
+  const limit = useAppSelector((state) => state.contacts.limit);
   const isLogged = useAppSelector((state) => state.user.isLogged);
   const isLoading = useAppSelector((state) => state.ui.isLoading);
   const dispatch = useDispatch();
@@ -17,12 +18,12 @@ const ContactsPage = (): React.ReactElement => {
   useEffect(() => {
     isLogged &&
       (async () => {
-        const contacts = await getContacts();
+        const contacts = await getContacts(limit);
         if (contacts) {
           dispatch(loadContactsActionCreator(contacts));
         }
       })();
-  }, [dispatch, getContacts, isLogged]);
+  }, [dispatch, getContacts, isLogged, limit]);
 
   return (
     <main>

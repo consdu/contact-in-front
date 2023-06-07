@@ -15,6 +15,8 @@ beforeEach(() => {
   vi.clearAllMocks();
 });
 
+const limit = 10;
+
 describe("Given a getContacts function", () => {
   describe("When called", () => {
     test("Then it should return a list with 3 contacts", async () => {
@@ -25,7 +27,7 @@ describe("Given a getContacts function", () => {
       });
       const { getContacts } = result.current;
 
-      const response = await getContacts();
+      const response = await getContacts(limit);
 
       expect(response).toStrictEqual(expectedResponse);
     });
@@ -41,7 +43,7 @@ describe("Given a getContacts function", () => {
       });
       const { getContacts } = result.current;
 
-      await getContacts();
+      await getContacts(limit);
 
       expect(toast.error).toHaveBeenCalledWith(feedbacks.errorGettingContacts);
     });

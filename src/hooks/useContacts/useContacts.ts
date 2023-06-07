@@ -28,25 +28,26 @@ const useContacts = () => {
     [token]
   );
 
-  const getContacts = useCallback(async (): Promise<
-    ContactStructure[] | undefined
-  > => {
-    try {
-      dispatch(showLoadingActionCreator());
+  const getContacts = useCallback(
+    async (limit: number): Promise<ContactStructure[] | undefined> => {
+      try {
+        dispatch(showLoadingActionCreator());
 
-      const { data } = await contactsApi.get<{
-        contacts: ContactStructure[];
-      }>(`${apiUrl}${paths.contacts}`, config);
+        const { data } = await contactsApi.get<{
+          contacts: ContactStructure[];
+        }>(`${apiUrl}${paths.contacts}?limit=${limit}`, config);
 
-      dispatch(hideLoadingActionCreator());
+        dispatch(hideLoadingActionCreator());
 
-      return data.contacts;
-    } catch (error) {
-      dispatch(hideLoadingActionCreator());
+        return data.contacts;
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
 
-      toast.error(feedbacks.errorGettingContacts);
-    }
-  }, [config, dispatch]);
+        toast.error(feedbacks.errorGettingContacts);
+      }
+    },
+    [config, dispatch]
+  );
 
   const deleteContact = async (contactId: string): Promise<number> => {
     try {
