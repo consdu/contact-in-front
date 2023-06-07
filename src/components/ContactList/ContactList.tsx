@@ -3,6 +3,7 @@ import { useAppDispatch } from "../../store";
 import { deleteContactActionCreator } from "../../store/contacts/contactsSlice";
 import { ContactStructure } from "../../types";
 import ContactCard from "../ContactCard/ContactCard";
+import LoadMore from "../LoadMore/LoadMore";
 import ContactListStyled from "./ContactListStyled";
 
 interface ContactListProps {
@@ -28,6 +29,7 @@ const ContactList = ({ contacts }: ContactListProps): React.ReactElement => {
             <ContactCard contact={contact} onDeleteClick={handleDeleteClick} />
           </li>
         ))}
+      <LoadMore handleButtonClick={() => undefined} />
     </ContactListStyled>
   );
 };
