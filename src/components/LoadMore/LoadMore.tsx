@@ -5,9 +5,7 @@ interface LoadMoreProps {
 }
 
 const LoadMore = ({ handleButtonClick }: LoadMoreProps) => {
-  return (
-    <LoadMoreStyled onClick={handleButtonClick}>Load more...</LoadMoreStyled>
-  );
+  return <LoadMoreStyled onClick={handleButtonClick}>Load more</LoadMoreStyled>;
 };
 
 export default LoadMore;

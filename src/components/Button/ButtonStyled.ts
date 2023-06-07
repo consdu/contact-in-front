@@ -7,14 +7,14 @@ const ButtonStyled = styled.button`
   color: #fff;
   text-transform: uppercase;
   padding-block: 20px;
-  border-radius: 5px;
+  border-radius: ${(props) => props.theme.radius.small};
   margin-top: 30px;
   box-shadow: 0px 3px 5px -1px ${(props) => props.theme.colors.gray500};
   transition: background-color 0.2s ease;
+  border: 2px solid ${(props) => props.theme.colors.primary600};
 
   &:disabled {
     background-color: #f1f8f420;
-    outline: 2px solid ${(props) => props.theme.colors.primary600};
     color: ${(props) => props.theme.colors.primary600};
   }
 
