@@ -1,4 +1,5 @@
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { contactsMock } from "../../factories/contacts/contactsFactory";
 import { renderWithProviders } from "../../testUtils/testUtils";
 import ContactsPage from "./ContactsPage";
@@ -26,6 +27,29 @@ describe("Given a ContactPage component", () => {
 
         expect(contact).toBeInTheDocument();
       });
+    });
+  });
+
+  describe("When rendered with 10 contacts and the user deletes one", () => {
+    test("Then it should show 9 contacts", async () => {
+      const deleteButtonName = "delete contact";
+
+      renderWithProviders(<ContactsPage />, {
+        contacts: {
+          contactsData: contactsMock,
+          limit,
+        },
+      });
+
+      const deleteButton = screen.getAllByRole("button", {
+        name: deleteButtonName,
+      })[0];
+
+      const heading = screen.getAllByRole("heading")[0];
+
+      await userEvent.click(deleteButton);
+
+      expect(heading).not.toBeInTheDocument();
     });
   });
 });
