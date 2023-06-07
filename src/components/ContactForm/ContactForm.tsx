@@ -13,6 +13,7 @@ import {
 import ContactFormStyled from "./ContactFormStyled";
 import { useState } from "react";
 import { ContactStructure } from "../../types";
+import Button from "../Button/Button";
 
 interface ContactFormProps {
   buttonText: string;
@@ -232,13 +233,11 @@ const ContactForm = ({
           />
         </div>
       </div>
-      <button
+      <Button
+        text={buttonText}
+        isButtonDisabled={isButtonDisabled}
         type="submit"
-        className="contact-form__group-submit"
-        disabled={isButtonDisabled}
-      >
-        {buttonText}
-      </button>
+      />
     </ContactFormStyled>
   );
 };

@@ -45,20 +45,6 @@ const ContactFormStyled = styled.form`
         border-top-left-radius: ${(props) => props.theme.radius.normal};
         border-bottom-left-radius: ${(props) => props.theme.radius.normal};
       }
-
-      &-submit {
-        background-color: ${(props) => props.theme.colors.primary600};
-        color: ${(props) => props.theme.colors.gray50};
-        border-radius: ${(props) => props.theme.radius.normal};
-        width: 100%;
-        padding: 15px;
-        text-transform: uppercase;
-        margin-top: 20px;
-
-        &:disabled {
-          background-color: ${(props) => props.theme.colors.primary500};
-        }
-      }
     }
   }
 `;
