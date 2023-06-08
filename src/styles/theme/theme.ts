@@ -41,6 +41,7 @@ const theme: DefaultTheme = {
     large: "30px",
   },
   radius: {
+    small: "5px",
     normal: "10px",
   },
 };

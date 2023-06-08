@@ -7,7 +7,7 @@ import { renderWithProviders } from "../../testUtils/testUtils";
 const handleButtonClick = vi.fn();
 
 describe("Given a LoadMore component", () => {
-  const buttonText = "Load more...";
+  const buttonText = "Load more";
 
   describe("When rendered", () => {
     test("Then it should show a 'LOAD MORE...' button", () => {
