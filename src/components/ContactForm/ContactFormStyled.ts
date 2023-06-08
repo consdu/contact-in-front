@@ -32,6 +32,10 @@ const ContactFormStyled = styled.form`
         &::placeholder {
           color: ${(props) => props.theme.colors.gray700};
         }
+
+        &[type="date"] {
+          color: ${(props) => props.theme.colors.gray700};
+        }
       }
 
       &-icon {
