@@ -8,7 +8,6 @@ import {
 import { paths } from "../../constants";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import AddContactPage from "../../pages/AddContactPage/AddContactPage";
-import Search from "../../components/Search/Search";
 
 const routes: RouteObject[] = [
   {
@@ -23,10 +22,6 @@ const routes: RouteObject[] = [
       {
         path: paths.login,
         element: <LazyLoginPage />,
-      },
-      {
-        path: "search",
-        element: <Search />,
       },
       {
         path: paths.contacts,
