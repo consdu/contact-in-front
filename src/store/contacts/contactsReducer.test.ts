@@ -14,6 +14,7 @@ import {
   contactsReducer,
   deleteContactActionCreator,
   loadContactsActionCreator,
+  resetLimitActionCreator,
 } from "./contactsSlice";
 
 describe("Given a contactsReducer", () => {
@@ -106,6 +107,25 @@ describe("Given a contactsReducer", () => {
       const newContactsState = contactsReducer(
         currentContactsState,
         addMoreActionCreator()
+      );
+
+      expect(newContactsState).toStrictEqual(expectedContactsState);
+    });
+  });
+
+  describe("When it receives a current state and an resetLimit action", () => {
+    test("Then it should return a new state with limit value to 11", () => {
+      const currentContactsState: ContactsStateStructure =
+        fullContactsStateMock;
+
+      const expectedContactsState: ContactsStateStructure = {
+        ...fullContactsStateMock,
+        limit: 11,
+      };
+
+      const newContactsState = contactsReducer(
+        currentContactsState,
+        resetLimitActionCreator()
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);
