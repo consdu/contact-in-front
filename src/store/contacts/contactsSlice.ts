@@ -38,6 +38,10 @@ const contactsSlice = createSlice({
       ...currentContactsState,
       limit: currentContactsState.limit + 10,
     }),
+    resetLimit: (currentContactsState: ContactsStateStructure) => ({
+      ...currentContactsState,
+      limit: 11,
+    }),
   },
 });
 
@@ -47,5 +51,6 @@ export const {
   deleteContact: deleteContactActionCreator,
   addContact: addContactActionCreator,
   addMore: addMoreActionCreator,
+  resetLimit: resetLimitActionCreator,
 } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
