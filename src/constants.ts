@@ -3,6 +3,7 @@ export const paths = {
   login: "/login",
   contacts: "/contacts",
   addContact: "/add-contact",
+  search: "/search",
 };
 
 export const feedbacks = {

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useCallback, useMemo } from "react";
 import { toast } from "react-toastify";
 import { ContactStructure } from "../../types";
-import { paths, feedbacks } from "../../constants";
+import { paths, feedbacks, responseErrors } from "../../constants";
 import { useAppDispatch, useAppSelector } from "../../store";
 import {
   hideLoadingActionCreator,
@@ -85,10 +85,23 @@ const useContacts = () => {
     }
   };
 
+  const searchContacts = async (name: string) => {
+    try {
+      const { data } = await contactsApi.get<{
+        contacts: ContactStructure[];
+      }>(`${apiUrl}${paths.contacts}${paths.search}?name=${name}`, config);
+
+      return data.contacts;
+    } catch {
+      toast.error(responseErrors.serverError);
+    }
+  };
+
   return {
     getContacts,
     deleteContact,
     addContact,
+    searchContacts,
   };
 };
 

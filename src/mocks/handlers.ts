@@ -44,6 +44,20 @@ export const handlers = [
       })
     );
   }),
+
+  rest.get(`${apiUrl}${paths.contacts}${paths.search}`, (req, res, ctx) => {
+    const name = req.url.searchParams.get("name") as string;
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        contacts: contactsMock.filter(
+          (contact) =>
+            contact.name.includes(name) || contact.surname.includes(name)
+        ),
+      })
+    );
+  }),
 ];
 
 export const errorHandlers = [
@@ -75,6 +89,15 @@ export const errorHandlers = [
   }),
 
   rest.post(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(500),
+      ctx.json({
+        error: responseErrors.serverError,
+      })
+    );
+  }),
+
+  rest.get(`${apiUrl}${paths.contacts}${paths.search}`, (_req, res, ctx) => {
     return res(
       ctx.status(500),
       ctx.json({

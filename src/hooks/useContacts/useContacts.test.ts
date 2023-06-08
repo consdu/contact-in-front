@@ -7,7 +7,7 @@ import {
 } from "../../factories/contacts/contactsFactory";
 import useContacts from "./useContacts";
 import { wrapWithProviders } from "../../testUtils/testUtils";
-import { feedbacks } from "../../constants";
+import { feedbacks, responseErrors } from "../../constants";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
 
@@ -141,6 +141,46 @@ describe("Given a addContact function", () => {
       await addContact(contactMock);
 
       expect(toast.error).toHaveBeenCalledWith(feedbacks.errorAddingContact);
+    });
+  });
+});
+
+describe("Given a searchContact function", () => {
+  const text = "t";
+
+  describe("When called with 't'", () => {
+    test("Then it should return the contacts that include 't' in either name or surname", async () => {
+      const expectedContacts = contactsMock.filter(
+        (contact) =>
+          contact.name.includes(text) || contact.surname.includes(text)
+      );
+
+      const { result } = renderHook(() => useContacts(), {
+        wrapper: wrapWithProviders,
+      });
+      const { searchContacts } = result.current;
+
+      const contacts = await searchContacts(text);
+
+      expect(contacts).toStrictEqual(expectedContacts);
+    });
+  });
+
+  describe("When called with 't' and there is a server error", () => {
+    test("Then it should call toast's error method with 'Server internal error'", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const message = responseErrors.serverError;
+      toast.error = vi.fn();
+
+      const { result } = renderHook(() => useContacts(), {
+        wrapper: wrapWithProviders,
+      });
+      const { searchContacts } = result.current;
+
+      await searchContacts(text);
+
+      expect(toast.error).toHaveBeenCalledWith(message);
     });
   });
 });
