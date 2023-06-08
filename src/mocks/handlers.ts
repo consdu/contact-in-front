@@ -96,4 +96,13 @@ export const errorHandlers = [
       })
     );
   }),
+
+  rest.get(`${apiUrl}${paths.contacts}${paths.search}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(500),
+      ctx.json({
+        error: responseErrors.serverError,
+      })
+    );
+  }),
 ];
