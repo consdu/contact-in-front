@@ -4,7 +4,11 @@ import SearchStyled from "./SearchStyled";
 const Search = () => {
   return (
     <SearchStyled className="search-group">
-      <label className="search-group__label" htmlFor="search">
+      <label
+        className="search-group__label"
+        htmlFor="search"
+        aria-label="search"
+      >
         <span className="search-group__icon">
           <IoSearch />
         </span>
