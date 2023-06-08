@@ -29,6 +29,7 @@ const ContactCardStyled = styled.article`
     }
 
     &__delete-button {
+      color: ${(props) => props.theme.colors.gray950};
       padding: 0;
       height: 48px;
       width: 48px;

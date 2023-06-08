@@ -10,6 +10,11 @@ const ContactFormStyled = styled.form`
   .input-wrapper {
     display: flex;
     width: 100%;
+
+    &:focus-within {
+      outline: 2px solid ${(props) => props.theme.colors.primary600};
+      border-radius: ${(props) => props.theme.radius.normal};
+    }
   }
 
   .contact-form {
@@ -31,6 +36,23 @@ const ContactFormStyled = styled.form`
 
         &::placeholder {
           color: ${(props) => props.theme.colors.gray700};
+        }
+
+        &[type="date"] {
+          position: relative;
+          text-align: left;
+          color: ${(props) => props.theme.colors.gray700};
+        }
+
+        &[type="date"]::-webkit-calendar-picker-indicator {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          color: transparent;
+          background: transparent;
         }
       }
 

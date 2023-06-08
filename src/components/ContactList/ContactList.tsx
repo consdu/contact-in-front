@@ -37,7 +37,9 @@ const ContactList = ({ contacts }: ContactListProps): React.ReactElement => {
             <ContactCard contact={contact} onDeleteClick={handleDeleteClick} />
           </li>
         ))}
-      <LoadMore handleButtonClick={handleLoadMoreClick} />
+      {contacts.length >= 10 && (
+        <LoadMore handleButtonClick={handleLoadMoreClick} />
+      )}
     </ContactListStyled>
   );
 };
