@@ -44,6 +44,20 @@ export const handlers = [
       })
     );
   }),
+
+  rest.get(`${apiUrl}${paths.contacts}${paths.search}`, (req, res, ctx) => {
+    const name = req.url.searchParams.get("name") as string;
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        contacts: contactsMock.filter(
+          (contact) =>
+            contact.name.includes(name) || contact.surname.includes(name)
+        ),
+      })
+    );
+  }),
 ];
 
 export const errorHandlers = [

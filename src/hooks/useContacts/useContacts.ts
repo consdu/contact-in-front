@@ -87,7 +87,7 @@ const useContacts = () => {
 
   const searchContacts = async (name: string) => {
     try {
-      const { data } = await contactsApi.post<{
+      const { data } = await contactsApi.get<{
         contacts: ContactStructure[];
       }>(`${apiUrl}${paths.contacts}${paths.search}?name=${name}`, config);
 

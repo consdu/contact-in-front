@@ -144,3 +144,24 @@ describe("Given a addContact function", () => {
     });
   });
 });
+
+describe("Given a searchContact function", () => {
+  describe("When called with 't'", () => {
+    test("Then it should return the contacts that include 't' in either name or surname", async () => {
+      const text = "t";
+      const expectedContacts = contactsMock.filter(
+        (contact) =>
+          contact.name.includes(text) || contact.surname.includes(text)
+      );
+
+      const { result } = renderHook(() => useContacts(), {
+        wrapper: wrapWithProviders,
+      });
+      const { searchContacts } = result.current;
+
+      const contacts = await searchContacts(text);
+
+      expect(contacts).toStrictEqual(expectedContacts);
+    });
+  });
+});
