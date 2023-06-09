@@ -19,6 +19,8 @@ const ContactCardStyled = styled.article`
 
     &__avatar {
       border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
     }
 
     &__name {
