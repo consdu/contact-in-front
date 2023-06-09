@@ -4,8 +4,14 @@ import ContactList from "../../components/ContactList/ContactList";
 import ContainerStyled from "../../components/shared/ContainerStyled";
 import { useAppSelector } from "../../store";
 import useContacts from "../../hooks/useContacts/useContacts";
-import { loadContactsActionCreator } from "../../store/contacts/contactsSlice";
+import {
+  clearLimitActionCreator,
+  loadContactsActionCreator,
+  resetLimitActionCreator,
+} from "../../store/contacts/contactsSlice";
 import Loading from "../../components/Loading/Loading";
+import Search from "../../components/Search/Search";
+import { debounce } from "debounce";
 
 const ContactsPage = (): React.ReactElement => {
   const contacts = useAppSelector((state) => state.contacts.contactsData);
@@ -13,7 +19,7 @@ const ContactsPage = (): React.ReactElement => {
   const isLogged = useAppSelector((state) => state.user.isLogged);
   const isLoading = useAppSelector((state) => state.ui.isLoading);
   const dispatch = useDispatch();
-  const { getContacts } = useContacts();
+  const { getContacts, searchContacts } = useContacts();
 
   useEffect(() => {
     isLogged &&
@@ -25,10 +31,24 @@ const ContactsPage = (): React.ReactElement => {
       })();
   }, [dispatch, getContacts, isLogged, limit]);
 
+  const handleSearchInputChange = debounce(async (searchTerm: string) => {
+    if (searchTerm.length === 0) {
+      dispatch(resetLimitActionCreator());
+      return;
+    }
+
+    const contacts = await searchContacts(searchTerm);
+    if (contacts) {
+      dispatch(clearLimitActionCreator());
+      dispatch(loadContactsActionCreator(contacts));
+    }
+  }, 200);
+
   return (
     <main>
       {isLoading && <Loading />}
       <ContainerStyled>
+        <Search onSearchInputChange={handleSearchInputChange} />
         <ContactList contacts={contacts} />
       </ContainerStyled>
     </main>

@@ -1,7 +1,21 @@
 import { IoSearch } from "react-icons/io5";
 import SearchStyled from "./SearchStyled";
+import { useState } from "react";
 
-const Search = () => {
+interface SearchProps {
+  onSearchInputChange: (value: string) => void;
+}
+
+const Search = ({ onSearchInputChange }: SearchProps): React.ReactElement => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchTerm(event.target.value);
+    onSearchInputChange(event.target.value);
+  };
+
   return (
     <SearchStyled className="search-group">
       <label
@@ -17,6 +31,8 @@ const Search = () => {
           type="text"
           id="search"
           placeholder="Search"
+          value={searchTerm}
+          onChange={handleSearchInputChange}
         />
       </label>
     </SearchStyled>
