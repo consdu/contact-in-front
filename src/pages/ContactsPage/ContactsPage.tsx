@@ -25,6 +25,17 @@ const ContactsPage = (): React.ReactElement => {
         const contacts = await getContacts(limit);
         if (contacts) {
           dispatch(loadContactsActionCreator(contacts));
+
+          const firstAvatar = contacts[0].avatar;
+
+          const preloadLink = await document.createElement("link");
+          preloadLink.rel = "preload";
+          preloadLink.as = "image";
+          preloadLink.href = firstAvatar;
+
+          const head = document.head;
+          const firstChild = head.firstChild;
+          head.insertBefore(preloadLink, firstChild);
         }
       })();
   }, [dispatch, getContacts, isLogged, limit]);

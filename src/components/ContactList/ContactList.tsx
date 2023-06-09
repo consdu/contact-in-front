@@ -1,7 +1,7 @@
 import useContacts from "../../hooks/useContacts/useContacts";
 import { useAppDispatch } from "../../store";
 import {
-  addMoreActionCreator,
+  loadMoreContactsActionCreator,
   deleteContactActionCreator,
 } from "../../store/contacts/contactsSlice";
 import { ContactStructure } from "../../types";
@@ -26,7 +26,7 @@ const ContactList = ({ contacts }: ContactListProps): React.ReactElement => {
   };
 
   const handleLoadMoreClick = () => {
-    dispatch(addMoreActionCreator());
+    dispatch(loadMoreContactsActionCreator());
   };
 
   return (

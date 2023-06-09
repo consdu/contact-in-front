@@ -7,7 +7,8 @@ const LoadingStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
+  top: 0;
   z-index: 10;
 
   .loader:before {

@@ -19,6 +19,8 @@ const ContactCardStyled = styled.article`
 
     &__avatar {
       border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
     }
 
     &__name {
@@ -38,8 +40,8 @@ const ContactCardStyled = styled.article`
       align-items: center;
       font-size: 2rem;
       position: absolute;
-      top: 10px;
-      right: 5px;
+      top: 25%;
+      right: 0;
     }
   }
 `;
