@@ -38,8 +38,8 @@ const ContactCardStyled = styled.article`
       align-items: center;
       font-size: 2rem;
       position: absolute;
-      top: 10px;
-      right: 5px;
+      top: 25%;
+      right: 0;
     }
   }
 `;
