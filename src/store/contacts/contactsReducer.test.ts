@@ -10,11 +10,12 @@ import { ContactsStateStructure } from "../../types";
 import {
   addContactActionCreator,
   addMoreActionCreator,
-  clearContactsActionCreator,
+  resetContactsStateActionCreator,
   contactsReducer,
   deleteContactActionCreator,
   loadContactsActionCreator,
   resetLimitActionCreator,
+  clearLimitActionCreator,
 } from "./contactsSlice";
 
 describe("Given a contactsReducer", () => {
@@ -45,7 +46,7 @@ describe("Given a contactsReducer", () => {
 
       const newContactsState = contactsReducer(
         currentContactsState,
-        clearContactsActionCreator()
+        resetContactsStateActionCreator()
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);
@@ -114,18 +115,37 @@ describe("Given a contactsReducer", () => {
   });
 
   describe("When it receives a current state and an resetLimit action", () => {
-    test("Then it should return a new state with limit value to 11", () => {
+    test("Then it should return a new state with limit value to 10", () => {
       const currentContactsState: ContactsStateStructure =
         fullContactsStateMock;
 
       const expectedContactsState: ContactsStateStructure = {
         ...fullContactsStateMock,
-        limit: 11,
+        limit: 10,
       };
 
       const newContactsState = contactsReducer(
         currentContactsState,
         resetLimitActionCreator()
+      );
+
+      expect(newContactsState).toStrictEqual(expectedContactsState);
+    });
+  });
+
+  describe("When it receives a current state and an clearLimit action", () => {
+    test("Then it should return a new state with limit value to 0", () => {
+      const currentContactsState: ContactsStateStructure =
+        fullContactsStateMock;
+
+      const expectedContactsState: ContactsStateStructure = {
+        ...fullContactsStateMock,
+        limit: 0,
+      };
+
+      const newContactsState = contactsReducer(
+        currentContactsState,
+        clearLimitActionCreator()
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);
