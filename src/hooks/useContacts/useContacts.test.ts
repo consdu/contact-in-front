@@ -184,3 +184,22 @@ describe("Given a searchContact function", () => {
     });
   });
 });
+
+describe("Given a getContact function", () => {
+  describe("When called", () => {
+    test("Then it should return a contact", async () => {
+      const id = "test-id";
+
+      const expectedResponse = contactMock;
+
+      const { result } = renderHook(() => useContacts(), {
+        wrapper: wrapWithProviders,
+      });
+      const { getContact } = result.current;
+
+      const response = await getContact(id);
+
+      expect(response).toStrictEqual(expectedResponse);
+    });
+  });
+});
