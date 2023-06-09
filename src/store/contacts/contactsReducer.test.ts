@@ -9,7 +9,7 @@ import {
 import { ContactsStateStructure } from "../../types";
 import {
   addContactActionCreator,
-  addMoreActionCreator,
+  loadMoreContactsActionCreator,
   resetContactsStateActionCreator,
   contactsReducer,
   deleteContactActionCreator,
@@ -107,7 +107,7 @@ describe("Given a contactsReducer", () => {
 
       const newContactsState = contactsReducer(
         currentContactsState,
-        addMoreActionCreator()
+        loadMoreContactsActionCreator()
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);
