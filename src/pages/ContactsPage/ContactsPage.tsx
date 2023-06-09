@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import ContactList from "../../components/ContactList/ContactList";
 import ContainerStyled from "../../components/shared/ContainerStyled";
-import { useAppSelector } from "../../store";
+import { useAppSelector, useAppDispatch } from "../../store";
 import useContacts from "../../hooks/useContacts/useContacts";
 import {
   clearLimitActionCreator,
@@ -11,14 +10,13 @@ import {
 } from "../../store/contacts/contactsSlice";
 import Loading from "../../components/Loading/Loading";
 import Search from "../../components/Search/Search";
-import { debounce } from "debounce";
 
 const ContactsPage = (): React.ReactElement => {
   const contacts = useAppSelector((state) => state.contacts.contactsData);
   const limit = useAppSelector((state) => state.contacts.limit);
   const isLogged = useAppSelector((state) => state.user.isLogged);
   const isLoading = useAppSelector((state) => state.ui.isLoading);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { getContacts, searchContacts } = useContacts();
 
   useEffect(() => {
@@ -31,7 +29,7 @@ const ContactsPage = (): React.ReactElement => {
       })();
   }, [dispatch, getContacts, isLogged, limit]);
 
-  const handleSearchInputChange = debounce(async (searchTerm: string) => {
+  const handleSearchInputChange = async (searchTerm: string) => {
     if (searchTerm.length === 0) {
       dispatch(resetLimitActionCreator());
       return;
@@ -42,7 +40,7 @@ const ContactsPage = (): React.ReactElement => {
       dispatch(clearLimitActionCreator());
       dispatch(loadContactsActionCreator(contacts));
     }
-  }, 200);
+  };
 
   return (
     <main>

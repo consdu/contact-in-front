@@ -52,4 +52,30 @@ describe("Given a ContactPage component", () => {
       expect(heading).not.toBeInTheDocument();
     });
   });
+
+  describe("When rendered and the user types 'a' in the search field", () => {
+    test("Then it should show all contacts with name or surname that include 'a' ", async () => {
+      const searchTerm = "a";
+      const placeholderText = "Search";
+      const expectedContacts = contactsMock.filter(
+        (contact) =>
+          contact.name.includes(searchTerm) ||
+          contact.surname.includes(searchTerm)
+      );
+
+      renderWithProviders(<ContactsPage />);
+
+      const searchInput = screen.getByPlaceholderText(placeholderText);
+
+      await userEvent.type(searchInput, searchTerm);
+
+      expectedContacts.forEach((contact) => {
+        const contactName = screen.getByRole("heading", {
+          name: `${contact.name} ${contact.surname}`,
+        });
+
+        expect(contactName).toBeInTheDocument();
+      });
+    });
+  });
 });
