@@ -74,13 +74,13 @@ const useContacts = () => {
     }
   };
 
-  const addContact = async (contactData: Partial<ContactStructure>) => {
+  const addContact = async (
+    contactData: Partial<ContactStructure>
+  ): Promise<ContactStructure | undefined> => {
     try {
-      const { data } = await contactsApi.post(
-        `${apiUrl}${paths.contacts}`,
-        contactData,
-        config
-      );
+      const { data } = await contactsApi.post<{
+        contact: ContactStructure;
+      }>(`${apiUrl}${paths.contacts}`, contactData, config);
       toast.success(feedbacks.addSuccesful);
 
       return data.contact;
@@ -89,7 +89,9 @@ const useContacts = () => {
     }
   };
 
-  const searchContacts = async (name: string) => {
+  const searchContacts = async (
+    name: string
+  ): Promise<ContactStructure[] | undefined> => {
     try {
       const { data } = await contactsApi.get<{
         contacts: ContactStructure[];
@@ -101,11 +103,30 @@ const useContacts = () => {
     }
   };
 
+  const getContact = async (
+    contactId: string
+  ): Promise<ContactStructure | undefined> => {
+    try {
+      dispatch(showLoadingActionCreator());
+
+      const { data } = await contactsApi.get<{
+        contact: ContactStructure;
+      }>(`${apiUrl}${paths.contacts}/${contactId}`, config);
+
+      dispatch(hideLoadingActionCreator());
+
+      return data.contact;
+    } catch {
+      dispatch(hideLoadingActionCreator());
+    }
+  };
+
   return {
     getContacts,
     deleteContact,
     addContact,
     searchContacts,
+    getContact,
   };
 };
 
