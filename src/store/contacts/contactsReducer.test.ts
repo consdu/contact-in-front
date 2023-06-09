@@ -16,6 +16,7 @@ import {
   loadContactsActionCreator,
   resetLimitActionCreator,
   clearLimitActionCreator,
+  loadSelectedContactActionCreator,
 } from "./contactsSlice";
 
 describe("Given a contactsReducer", () => {
@@ -146,6 +147,25 @@ describe("Given a contactsReducer", () => {
       const newContactsState = contactsReducer(
         currentContactsState,
         clearLimitActionCreator()
+      );
+
+      expect(newContactsState).toStrictEqual(expectedContactsState);
+    });
+  });
+
+  describe("When it receives a current state and an loadSelectedContact action with a contact as payload", () => {
+    test("Then it should return a new state with property selectedContact with the contact", () => {
+      const currentContactsState: ContactsStateStructure =
+        fullContactsStateMock;
+
+      const expectedContactsState: ContactsStateStructure = {
+        ...fullContactsStateMock,
+        selectedContact: contactMock,
+      };
+
+      const newContactsState = contactsReducer(
+        currentContactsState,
+        loadSelectedContactActionCreator(contactMock)
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);
