@@ -30,6 +30,10 @@ const useContacts = () => {
 
   const getContacts = useCallback(
     async (limit: number): Promise<ContactStructure[] | undefined> => {
+      if (limit === 0) {
+        return;
+      }
+
       try {
         dispatch(showLoadingActionCreator());
 

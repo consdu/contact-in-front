@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const SearchStyled = styled.section`
   font-size: 1.2rem;
+  margin-top: 20px;
 
   .search-group {
     &__label {
