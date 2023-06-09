@@ -186,10 +186,10 @@ describe("Given a searchContact function", () => {
 });
 
 describe("Given a getContact function", () => {
-  describe("When called", () => {
-    test("Then it should return a contact", async () => {
-      const id = "test-id";
+  const id = "test-id";
 
+  describe("When called with an existing id", () => {
+    test("Then it should return a contact", async () => {
       const expectedResponse = contactMock;
 
       const { result } = renderHook(() => useContacts(), {
@@ -200,6 +200,22 @@ describe("Given a getContact function", () => {
       const response = await getContact(id);
 
       expect(response).toStrictEqual(expectedResponse);
+    });
+  });
+
+  describe("When called with a non-existing contact id", () => {
+    test("Then it should return status code 404", async () => {
+      server.resetHandlers(...errorHandlers);
+      const expectedStatusCode = 404;
+
+      const { result } = renderHook(() => useContacts(), {
+        wrapper: wrapWithProviders,
+      });
+      const { getContact } = result.current;
+
+      const statusCode = await getContact(id);
+
+      expect(statusCode).toBe(expectedStatusCode);
     });
   });
 });

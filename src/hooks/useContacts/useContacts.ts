@@ -105,7 +105,7 @@ const useContacts = () => {
 
   const getContact = async (
     contactId: string
-  ): Promise<ContactStructure | undefined> => {
+  ): Promise<ContactStructure | number> => {
     try {
       dispatch(showLoadingActionCreator());
 
@@ -118,6 +118,8 @@ const useContacts = () => {
       return data.contact;
     } catch {
       dispatch(hideLoadingActionCreator());
+
+      return 404;
     }
   };
 
