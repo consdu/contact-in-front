@@ -8,6 +8,7 @@ import {
 import { paths } from "../../constants";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import AddContactPage from "../../pages/AddContactPage/AddContactPage";
+import ContactDetailsPage from "../../pages/ContactDetailsPage/ContactDetailsPage";
 
 const routes: RouteObject[] = [
   {
@@ -36,6 +37,14 @@ const routes: RouteObject[] = [
         element: (
           <ProtectedRoute>
             <AddContactPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: `${paths.contacts}/:contactId`,
+        element: (
+          <ProtectedRoute>
+            <ContactDetailsPage />
           </ProtectedRoute>
         ),
       },
