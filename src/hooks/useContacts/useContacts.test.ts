@@ -16,6 +16,7 @@ beforeEach(() => {
 });
 
 const limit = 10;
+const id = "test-id";
 
 describe("Given a getContacts function", () => {
   describe("When called", () => {
@@ -51,8 +52,6 @@ describe("Given a getContacts function", () => {
 });
 
 describe("Given a deleteContact function", () => {
-  const id = "test-id";
-
   describe("When called with an existing contact id", () => {
     test("Then it should return status code 200", async () => {
       const expectedStatusCode = 200;
@@ -186,8 +185,6 @@ describe("Given a searchContact function", () => {
 });
 
 describe("Given a getContact function", () => {
-  const id = "test-id";
-
   describe("When called with an existing id", () => {
     test("Then it should return a contact", async () => {
       const expectedResponse = contactMock;

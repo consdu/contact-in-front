@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    background: url("background.svg"), ${(props) =>
+    background: url("/background.svg"), ${(props) =>
       props.theme.colors.primary50};
     background-attachment: fixed;
     background-size: cover;

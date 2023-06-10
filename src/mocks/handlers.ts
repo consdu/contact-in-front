@@ -59,7 +59,7 @@ export const handlers = [
     );
   }),
 
-  rest.get(`${apiUrl}${paths.contacts}/:contactId`, (_req, res, ctx) => {
+  rest.get(`${apiUrl}${paths.contacts}/id/:contactId`, (_req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -115,7 +115,7 @@ export const errorHandlers = [
     );
   }),
 
-  rest.get(`${apiUrl}${paths.contacts}/:contactId`, (_req, res, ctx) => {
+  rest.get(`${apiUrl}${paths.contacts}/id/:contactId`, (_req, res, ctx) => {
     return res(
       ctx.status(404),
       ctx.json({
