@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import ContactList from "./ContactList";
 import { contactsMock } from "../../factories/contacts/contactsFactory";
-import { renderWithProviders } from "../../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 
 describe("Given a ContactList component", () => {
   describe("When it receives a collection of contacts and it's rendered", () => {
@@ -10,7 +10,9 @@ describe("Given a ContactList component", () => {
         (contact) => `${contact.name} ${contact.surname}`
       );
 
-      renderWithProviders(<ContactList contacts={contactsMock} />);
+      renderWithProviders(
+        wrapWithRouter(<ContactList contacts={contactsMock} />)
+      );
 
       contactNames.forEach((contactName) => {
         const contact = screen.getByRole("heading", {
