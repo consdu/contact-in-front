@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const ContactDetailsPageStyled = styled.section`
   padding-top: 40px;
+  padding-bottom: 150px;
 
   .contact {
     &__header {
@@ -59,6 +60,38 @@ const ContactDetailsPageStyled = styled.section`
         justify-content: center;
         align-items: center;
         font-size: 1.5rem;
+      }
+    }
+
+    &__socials {
+      font-size: 2rem;
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  @media screen and (min-width: 370px) {
+    padding-top: 60px;
+
+    .contact {
+      &__socials {
+        font-size: 2.5rem;
+        margin-top: 50px;
+      }
+
+      &__details {
+        padding-top: 20px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    padding-top: 80px;
+
+    .contact {
+      &__socials {
+        margin-top: 90px;
       }
     }
   }

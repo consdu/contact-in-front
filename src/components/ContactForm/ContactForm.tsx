@@ -197,7 +197,7 @@ const ContactForm = ({
           <input
             type="text"
             id="twitter"
-            placeholder="Link to twitter profile"
+            placeholder="Twitter profile name"
             value={formData.socials.twitter}
             onChange={handleSocialsChange}
           />
@@ -212,7 +212,7 @@ const ContactForm = ({
           <input
             type="text"
             id="instagram"
-            placeholder="Link to instagram profile"
+            placeholder="Instagram profile name"
             value={formData.socials.instagram}
             onChange={handleSocialsChange}
           />
@@ -227,7 +227,7 @@ const ContactForm = ({
           <input
             type="text"
             id="linkedin"
-            placeholder="Link to linkedin profile"
+            placeholder="Linkedin profile name"
             value={formData.socials.linkedin}
             onChange={handleSocialsChange}
           />

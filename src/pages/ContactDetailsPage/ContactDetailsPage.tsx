@@ -4,6 +4,9 @@ import {
   IoLocationSharp,
   IoGift,
   IoPencilSharp,
+  IoLogoTwitter,
+  IoLogoLinkedin,
+  IoLogoInstagram,
 } from "react-icons/io5";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -38,8 +41,16 @@ const ContactDetailsPage = (): React.ReactElement => {
   }, [contactId, dispatch, getContact, isLogged]);
 
   if (selectedContact) {
-    const { avatar, name, surname, phoneNumber, email, address, birthday } =
-      selectedContact;
+    const {
+      avatar,
+      name,
+      surname,
+      phoneNumber,
+      email,
+      address,
+      birthday,
+      socials,
+    } = selectedContact;
 
     const birthdayDate = new Date(birthday);
 
@@ -52,6 +63,8 @@ const ContactDetailsPage = (): React.ReactElement => {
                 <img
                   src={`${avatar}`}
                   alt={`Avatar of ${name} ${surname}`}
+                  width={80}
+                  height={80}
                   className="contact__avatar"
                 />
                 <h2 className="contact__fullname">{`${name} ${surname}`}</h2>
@@ -95,6 +108,32 @@ const ContactDetailsPage = (): React.ReactElement => {
                     </time>
                   </li>
                 </ul>
+                <footer className="contact__socials">
+                  {socials.twitter && (
+                    <a
+                      href={`https://twitter.com/${socials.twitter}`}
+                      aria-label="twitter profile"
+                    >
+                      <IoLogoTwitter />
+                    </a>
+                  )}
+                  {socials.linkedin && (
+                    <a
+                      href={`https://linkedin.com/in/${socials.linkedin}`}
+                      aria-label="linkedin profile"
+                    >
+                      <IoLogoLinkedin />
+                    </a>
+                  )}
+                  {socials.instagram && (
+                    <a
+                      href={`https://instagram.com/${socials.instagram}`}
+                      aria-label="instagram profile"
+                    >
+                      <IoLogoInstagram />
+                    </a>
+                  )}
+                </footer>
               </address>
             </article>
           </ContactDetailsPageStyled>
