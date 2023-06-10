@@ -12,7 +12,7 @@ const NotFoundPage = () => {
           </h2>
         </div>
         <img
-          src="notFoundImage.svg"
+          src="/notFoundImage.svg"
           alt="page not found"
           width={200}
           height="auto"

@@ -103,25 +103,26 @@ const useContacts = () => {
     }
   };
 
-  const getContact = async (
-    contactId: string
-  ): Promise<ContactStructure | number> => {
-    try {
-      dispatch(showLoadingActionCreator());
+  const getContact = useCallback(
+    async (contactId: string): Promise<ContactStructure | number> => {
+      try {
+        dispatch(showLoadingActionCreator());
 
-      const { data } = await contactsApi.get<{
-        contact: ContactStructure;
-      }>(`${apiUrl}${paths.contacts}/${contactId}`, config);
+        const { data } = await contactsApi.get<{
+          contact: ContactStructure;
+        }>(`${apiUrl}${paths.contacts}/id/${contactId}`, config);
 
-      dispatch(hideLoadingActionCreator());
+        dispatch(hideLoadingActionCreator());
 
-      return data.contact;
-    } catch {
-      dispatch(hideLoadingActionCreator());
+        return data.contact;
+      } catch {
+        dispatch(hideLoadingActionCreator());
 
-      return 404;
-    }
-  };
+        return 404;
+      }
+    },
+    [config, dispatch]
+  );
 
   return {
     getContacts,

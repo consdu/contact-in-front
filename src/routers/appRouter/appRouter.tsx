@@ -41,7 +41,7 @@ const routes: RouteObject[] = [
         ),
       },
       {
-        path: `${paths.contacts}/:contactId`,
+        path: `${paths.contacts}/id/:contactId`,
         element: (
           <ProtectedRoute>
             <ContactDetailsPage />
