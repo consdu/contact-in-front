@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ContactStructure } from "../../types";
 import ContactCardStyled from "./ContactCardStyled";
 import { IoCloseCircleOutline } from "react-icons/io5";
@@ -21,10 +22,10 @@ const ContactCard = ({
         width={60}
         height={60}
       />
-      <div className="contact-card__info">
+      <Link to={`id/${id}`} className="contact-card__info">
         <h2 className="contact-card__name">{`${name} ${surname}`}</h2>
         <span>{phoneNumber.mobile}</span>
-      </div>
+      </Link>
       <button
         className="contact-card__delete-button"
         onClick={() => onDeleteClick(id as string)}
