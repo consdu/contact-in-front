@@ -1,8 +1,3 @@
-import { useEffect } from "react";
-import ContainerStyled from "../../components/shared/ContainerStyled";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { ContactStructure } from "../../types";
-import ContactDetailsPageStyled from "./ContactDetailsPageStyled";
 import {
   IoCall,
   IoAtSharp,
@@ -10,9 +5,15 @@ import {
   IoGift,
   IoPencilSharp,
 } from "react-icons/io5";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import ContainerStyled from "../../components/shared/ContainerStyled";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { ContactStructure } from "../../types";
+import ContactDetailsPageStyled from "./ContactDetailsPageStyled";
 import useContacts from "../../hooks/useContacts/useContacts";
 import { loadSelectedContactActionCreator } from "../../store/contacts/contactsSlice";
-import { useParams } from "react-router-dom";
+import { monthNames } from "../../constants";
 
 const ContactDetailsPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -22,21 +23,6 @@ const ContactDetailsPage = (): React.ReactElement => {
   const isLogged = useAppSelector((state) => state.user.isLogged);
   const { contactId } = useParams();
   const { getContact } = useContacts();
-
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
   useEffect(() => {
     isLogged &&
@@ -69,7 +55,10 @@ const ContactDetailsPage = (): React.ReactElement => {
                   className="contact__avatar"
                 />
                 <h2 className="contact__fullname">{`${name} ${surname}`}</h2>
-                <button className="contact__update-button">
+                <button
+                  className="contact__update-button"
+                  aria-label="update contact"
+                >
                   <IoPencilSharp />
                 </button>
               </header>
@@ -99,8 +88,8 @@ const ContactDetailsPage = (): React.ReactElement => {
                     <span className="contact__detail-icon">
                       <IoGift />
                     </span>
-                    <time dateTime={birthdayDate.toISOString().slice(0, 6)}>
-                      {`${birthdayDate.getDay()} of ${
+                    <time dateTime={birthdayDate.toISOString().slice(0, 10)}>
+                      {`${birthdayDate.getDate()} of ${
                         monthNames[birthdayDate.getMonth()]
                       }`}
                     </time>
