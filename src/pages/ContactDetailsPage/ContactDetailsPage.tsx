@@ -15,8 +15,12 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import { ContactStructure } from "../../types";
 import ContactDetailsPageStyled from "./ContactDetailsPageStyled";
 import useContacts from "../../hooks/useContacts/useContacts";
-import { loadSelectedContactActionCreator } from "../../store/contacts/contactsSlice";
+import {
+  loadSelectedContactActionCreator,
+  resetLimitActionCreator,
+} from "../../store/contacts/contactsSlice";
 import { monthNames } from "../../constants";
+import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
 
 const ContactDetailsPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -28,6 +32,8 @@ const ContactDetailsPage = (): React.ReactElement => {
   const { getContact } = useContacts();
 
   useEffect(() => {
+    dispatch(resetLimitActionCreator());
+
     isLogged &&
       (async () => {
         const contact = await getContact(contactId as string);
@@ -141,7 +147,7 @@ const ContactDetailsPage = (): React.ReactElement => {
       </ContainerStyled>
     );
   } else {
-    return <p>Contact not found</p>;
+    return <NoContactsFound />;
   }
 };
 

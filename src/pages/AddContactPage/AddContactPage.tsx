@@ -4,14 +4,22 @@ import ContainerStyled from "../../components/shared/ContainerStyled";
 import AddContactPageStyled from "./AddContactPageStyled";
 import useContacts from "../../hooks/useContacts/useContacts";
 import { useAppDispatch } from "../../store";
-import { addContactActionCreator } from "../../store/contacts/contactsSlice";
+import {
+  addContactActionCreator,
+  resetLimitActionCreator,
+} from "../../store/contacts/contactsSlice";
 import { ContactStructure } from "../../types";
 import { paths } from "../../constants";
+import { useEffect } from "react";
 
 const AddContactPage = () => {
   const { addContact } = useContacts();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(resetLimitActionCreator());
+  });
 
   const handleFormSubmit = async (contactData: Partial<ContactStructure>) => {
     const contact = await addContact(contactData);

@@ -9,7 +9,7 @@ const ButtonStyled = styled.button`
   padding-block: 20px;
   border-radius: ${(props) => props.theme.radius.small};
   margin-top: 30px;
-  box-shadow: 0px 3px 5px -1px ${(props) => props.theme.colors.gray500};
+  box-shadow: 0px 2px 2px -1px ${(props) => props.theme.colors.gray500};
   transition: background-color 0.2s ease;
   border: 2px solid ${(props) => props.theme.colors.primary600};
 

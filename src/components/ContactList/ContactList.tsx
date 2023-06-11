@@ -7,6 +7,7 @@ import {
 import { ContactStructure } from "../../types";
 import ContactCard from "../ContactCard/ContactCard";
 import LoadMore from "../LoadMore/LoadMore";
+import NoContactsFound from "../NoContactsFound/NoContactsFound";
 import ContactListStyled from "./ContactListStyled";
 
 interface ContactListProps {
@@ -31,13 +32,14 @@ const ContactList = ({ contacts }: ContactListProps): React.ReactElement => {
 
   return (
     <ContactListStyled>
+      {contacts.length === 0 && <NoContactsFound />}
       {contacts &&
         contacts.map((contact) => (
           <li key={contact.id}>
             <ContactCard contact={contact} onDeleteClick={handleDeleteClick} />
           </li>
         ))}
-      {contacts.length >= 10 && (
+      {contacts.length > 1 && (
         <LoadMore handleButtonClick={handleLoadMoreClick} />
       )}
     </ContactListStyled>

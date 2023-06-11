@@ -25,7 +25,7 @@ const NavbarStyled = styled.nav`
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 2px 2px 8px -1px ${(props) => props.theme.colors.gray400};
+      box-shadow: 1px 2px 2px -1px ${(props) => props.theme.colors.gray400};
 
       &.active {
         background-color: ${(props) => props.theme.colors.accent};
