@@ -27,7 +27,8 @@ const ContactsPage = (): React.ReactElement => {
     isLogged &&
       (async () => {
         const contacts = await getContacts(limit);
-        if (contacts) {
+
+        if (contacts?.length) {
           dispatch(loadContactsActionCreator(contacts));
 
           const firstAvatar = contacts[0].avatar;
@@ -67,8 +68,8 @@ const ContactsPage = (): React.ReactElement => {
       <ContainerStyled>
         <Search onSearchInputChange={handleSearchInputChange} />
         {contacts.length === 0 && <NoContactsFound />}
-        {contacts.length > 1 && <ContactList contacts={contacts} />}
-        {contacts.length > 1 && (
+        {contacts.length >= 1 && <ContactList contacts={contacts} />}
+        {contacts.length >= 1 && (
           <LoadMore handleButtonClick={handleLoadMoreClick} />
         )}
       </ContainerStyled>

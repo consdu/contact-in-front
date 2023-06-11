@@ -9,7 +9,7 @@ import {
   IoLogoInstagram,
 } from "react-icons/io5";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ContainerStyled from "../../components/shared/ContainerStyled";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { ContactStructure } from "../../types";
@@ -24,6 +24,7 @@ import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
 
 const ContactDetailsPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const selectedContact = useAppSelector(
     (state) => state.contacts.selectedContact
   );
@@ -77,6 +78,7 @@ const ContactDetailsPage = (): React.ReactElement => {
                 <button
                   className="contact__update-button"
                   aria-label="update contact"
+                  onClick={() => navigate("/update-contact")}
                 >
                   <IoPencilSharp />
                 </button>
