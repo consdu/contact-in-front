@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const NoContactsFoundStyled = styled.div`
   text-align: center;
+  padding-top: 80px;
   font-family: ${(props) => props.theme.fonts.secondary};
   font-size: 1.5rem;
 
@@ -13,7 +14,7 @@ const NoContactsFoundStyled = styled.div`
     &__icon {
       padding-top: 15px;
       padding-inline: 15px;
-      font-size: 5rem;
+      font-size: 80px;
       background-color: ${(props) => props.theme.colors.gray200};
       color: ${(props) => props.theme.colors.gray700};
       border-radius: 50%;

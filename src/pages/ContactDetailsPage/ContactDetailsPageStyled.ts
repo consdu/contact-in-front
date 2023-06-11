@@ -16,6 +16,8 @@ const ContactDetailsPageStyled = styled.section`
       width: 80px;
       aspect-ratio: 1;
       margin-bottom: 10px;
+      object-fit: cover;
+      object-position: center;
     }
 
     &__fullname {
@@ -26,6 +28,7 @@ const ContactDetailsPageStyled = styled.section`
     }
 
     &__update-button {
+      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
