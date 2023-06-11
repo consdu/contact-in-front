@@ -2,7 +2,7 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 import ContainerStyled from "../../components/shared/ContainerStyled";
 import { useAppSelector } from "../../store";
 import { ContactStructure } from "../../types";
-import AddContactPageStyled from "../AddContactPage/AddContactPageStyled";
+import AddContactPageStyled from "../shared/FormPageStyled";
 
 const UpdateContactPage = (): React.ReactElement => {
   const contact = useAppSelector(

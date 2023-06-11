@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ContainerStyled from "../../components/shared/ContainerStyled";
-import AddContactPageStyled from "./AddContactPageStyled";
+import AddContactPageStyled from "../shared/FormPageStyled";
 import useContacts from "../../hooks/useContacts/useContacts";
 import { useAppDispatch } from "../../store";
 import {
