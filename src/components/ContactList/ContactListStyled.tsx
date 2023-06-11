@@ -5,7 +5,7 @@ const ContactListStyled = styled.ul`
   flex-direction: column;
   gap: ${(props) => props.theme.spacing.large};
   padding-top: 50px;
-  padding-bottom: 150px;
+  padding-bottom: 40px;
 `;
 
 export default ContactListStyled;

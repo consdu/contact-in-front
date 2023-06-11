@@ -14,6 +14,7 @@ const ContactFormStyled = styled.form`
     &:focus-within {
       outline: 2px solid ${(props) => props.theme.colors.primary600};
       border-radius: ${(props) => props.theme.radius.normal};
+      -webkit-border-radius: ${(props) => props.theme.radius.normal};
     }
   }
 

@@ -10,9 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: ${(props) =>
-      props.theme.fonts
-        .primary}, system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif
+    font-family: ${(props) => props.theme.fonts.primary}, sans-serif;
   }
 
   body {
