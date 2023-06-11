@@ -13,6 +13,7 @@ import Loading from "../../components/Loading/Loading";
 import Search from "../../components/Search/Search";
 import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
 import LoadMore from "../../components/LoadMore/LoadMore";
+import ContactsPageStyled from "./ContactsPageStyled";
 
 const ContactsPage = (): React.ReactElement => {
   const contacts = useAppSelector((state) => state.contacts.contactsData);
@@ -61,18 +62,17 @@ const ContactsPage = (): React.ReactElement => {
   };
 
   return (
-    <main>
+    <ContactsPageStyled>
       {isLoading && <Loading />}
       <ContainerStyled>
         <Search onSearchInputChange={handleSearchInputChange} />
-
         {contacts.length === 0 && <NoContactsFound />}
         {contacts.length > 1 && <ContactList contacts={contacts} />}
         {contacts.length > 1 && (
           <LoadMore handleButtonClick={handleLoadMoreClick} />
         )}
       </ContainerStyled>
-    </main>
+    </ContactsPageStyled>
   );
 };
 
