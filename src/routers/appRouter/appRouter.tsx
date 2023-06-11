@@ -4,11 +4,11 @@ import {
   LazyContactsPage,
   LazyLoginPage,
   LazyNotFoundPage,
+  LazyAddContactPage,
+  LazyContactDetailsPage,
 } from "../lazyPages/lazyPages";
 import { paths } from "../../constants";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
-import AddContactPage from "../../pages/AddContactPage/AddContactPage";
-import ContactDetailsPage from "../../pages/ContactDetailsPage/ContactDetailsPage";
 
 const routes: RouteObject[] = [
   {
@@ -36,7 +36,7 @@ const routes: RouteObject[] = [
         path: paths.addContact,
         element: (
           <ProtectedRoute>
-            <AddContactPage />
+            <LazyAddContactPage />
           </ProtectedRoute>
         ),
       },
@@ -44,7 +44,7 @@ const routes: RouteObject[] = [
         path: `${paths.contacts}/id/:contactId`,
         element: (
           <ProtectedRoute>
-            <ContactDetailsPage />
+            <LazyContactDetailsPage />
           </ProtectedRoute>
         ),
       },

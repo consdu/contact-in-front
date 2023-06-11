@@ -11,3 +11,11 @@ export const LazyContactsPage = lazy(
 export const LazyNotFoundPage = lazy(
   () => import("../../pages/NotFoundPage/NotFoundPage")
 );
+
+export const LazyAddContactPage = lazy(
+  () => import("../../pages/AddContactPage/AddContactPage")
+);
+
+export const LazyContactDetailsPage = lazy(
+  () => import("../../pages/ContactDetailsPage/ContactDetailsPage")
+);
