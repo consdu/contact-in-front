@@ -67,6 +67,15 @@ export const handlers = [
       })
     );
   }),
+
+  rest.put(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        contact: contactMock,
+      })
+    );
+  }),
 ];
 
 export const errorHandlers = [
@@ -120,6 +129,15 @@ export const errorHandlers = [
       ctx.status(404),
       ctx.json({
         error: responseErrors.contactNotFound,
+      })
+    );
+  }),
+
+  rest.put(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(500),
+      ctx.json({
+        error: responseErrors.serverError,
       })
     );
   }),

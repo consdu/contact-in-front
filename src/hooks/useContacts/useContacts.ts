@@ -124,12 +124,28 @@ const useContacts = () => {
     [config, dispatch]
   );
 
+  const updateContact = async (
+    contactData: ContactStructure
+  ): Promise<ContactStructure | undefined> => {
+    try {
+      const { data } = await contactsApi.put<{
+        contact: ContactStructure;
+      }>(`${apiUrl}${paths.contacts}`, contactData, config);
+      toast.success(feedbacks.updateSuccesful);
+
+      return data.contact;
+    } catch {
+      toast.error(feedbacks.errorUpdatingContact);
+    }
+  };
+
   return {
     getContacts,
     deleteContact,
     addContact,
     searchContacts,
     getContact,
+    updateContact,
   };
 };
 
