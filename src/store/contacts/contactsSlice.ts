@@ -4,6 +4,7 @@ import { ContactStructure, ContactsStateStructure } from "../../types";
 const initialContactsState: ContactsStateStructure = {
   contactsData: [],
   limit: 10,
+  totalCount: 0,
 };
 
 const contactsSlice = createSlice({
@@ -53,6 +54,13 @@ const contactsSlice = createSlice({
       ...currentContactsState,
       limit: 0,
     }),
+    setTotalCount: (
+      currentContactsState: ContactsStateStructure,
+      action: PayloadAction<number>
+    ) => ({
+      ...currentContactsState,
+      totalCount: action.payload,
+    }),
   },
 });
 
@@ -65,5 +73,6 @@ export const {
   loadSelectedContact: loadSelectedContactActionCreator,
   resetLimit: resetLimitActionCreator,
   clearLimit: clearLimitActionCreator,
+  setTotalCount: setTotalCountActionCreator,
 } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
