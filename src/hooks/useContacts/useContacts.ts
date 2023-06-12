@@ -125,15 +125,15 @@ const useContacts = () => {
   );
 
   const updateContact = async (
-    contactData: ContactStructure
-  ): Promise<ContactStructure | undefined> => {
+    contactData: Partial<ContactStructure>
+  ): Promise<number | undefined> => {
     try {
-      const { data } = await contactsApi.put<{
+      const { status } = await contactsApi.put<{
         contact: ContactStructure;
       }>(`${apiUrl}${paths.contacts}`, contactData, config);
       toast.success(feedbacks.updateSuccesful);
 
-      return data.contact;
+      return status;
     } catch {
       toast.error(feedbacks.errorUpdatingContact);
     }
