@@ -28,7 +28,7 @@ const NavbarStyled = styled.nav`
       box-shadow: 1px 2px 2px -1px ${(props) => props.theme.colors.gray400};
 
       &.active {
-        background-color: ${(props) => props.theme.colors.accent};
+        outline: 2px solid ${(props) => props.theme.colors.primary900};
       }
     }
   }
