@@ -28,6 +28,7 @@ export const responseErrors = {
 
 export const responseMesssages = {
   deleteSuccessful: "Contact deleted succesfully",
+  updateSuccessful: "Contact updated succesfully",
 };
 
 export const monthNames = [
