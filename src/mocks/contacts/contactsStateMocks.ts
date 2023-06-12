@@ -4,9 +4,10 @@ import { ContactsStateStructure } from "../../types";
 export const emptyContactsStateMock: ContactsStateStructure = {
   contactsData: [],
   limit: 10,
+  totalCount: 0,
 };
 
 export const fullContactsStateMock: ContactsStateStructure = {
+  ...emptyContactsStateMock,
   contactsData: contactsMock,
-  limit: 10,
 };

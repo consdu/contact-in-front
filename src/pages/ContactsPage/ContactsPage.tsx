@@ -20,6 +20,9 @@ const ContactsPage = (): React.ReactElement => {
   const limit = useAppSelector((state) => state.contacts.limit);
   const isLogged = useAppSelector((state) => state.user.isLogged);
   const isLoading = useAppSelector((state) => state.ui.isLoading);
+  const totalContactsCount = useAppSelector(
+    (state) => state.contacts.totalCount
+  );
   const dispatch = useAppDispatch();
   const { getContacts, searchContacts } = useContacts();
 
@@ -69,7 +72,7 @@ const ContactsPage = (): React.ReactElement => {
         <Search onSearchInputChange={handleSearchInputChange} />
         {contacts.length === 0 && <NoContactsFound />}
         {contacts.length >= 1 && <ContactList contacts={contacts} />}
-        {contacts.length >= 1 && (
+        {contacts.length < totalContactsCount && (
           <LoadMore handleButtonClick={handleLoadMoreClick} />
         )}
       </ContainerStyled>

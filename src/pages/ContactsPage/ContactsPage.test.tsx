@@ -4,14 +4,15 @@ import { contactsMock } from "../../factories/contacts/contactsFactory";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import ContactsPage from "./ContactsPage";
 
-describe("Given a ContactPage component", () => {
+describe("Given a ContactsPage component", () => {
   const limit = 10;
-
+  const totalCount = 10;
   beforeEach(() => {
     renderWithProviders(wrapWithRouter(<ContactsPage />), {
       contacts: {
         contactsData: contactsMock,
         limit,
+        totalCount,
       },
     });
   });

@@ -8,6 +8,7 @@ import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../../store/ui/uiSlice";
+import { setTotalCountActionCreator } from "../../store/contacts/contactsSlice";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -39,9 +40,11 @@ const useContacts = () => {
 
         const { data } = await contactsApi.get<{
           contacts: ContactStructure[];
+          totalCount: number;
         }>(`${apiUrl}${paths.contacts}?limit=${limit}`, config);
 
         dispatch(hideLoadingActionCreator());
+        dispatch(setTotalCountActionCreator(data.totalCount));
 
         return data.contacts;
       } catch (error) {
