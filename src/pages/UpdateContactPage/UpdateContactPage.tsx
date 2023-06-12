@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ContainerStyled from "../../components/shared/ContainerStyled";
+import { paths } from "../../constants";
+import useContacts from "../../hooks/useContacts/useContacts";
 import { useAppSelector } from "../../store";
 import { ContactStructure } from "../../types";
 import AddContactPageStyled from "../shared/FormPageStyled";
@@ -8,12 +11,21 @@ const UpdateContactPage = (): React.ReactElement => {
   const contact = useAppSelector(
     (state) => state.contacts.selectedContact
   ) as ContactStructure;
+  const { updateContact } = useContacts();
+  const navigate = useNavigate();
 
   const formContact = {
     ...contact,
     birthday: contact?.birthday.slice(0, 10),
   };
 
+  const handleFormSubmit = async (contactData: Partial<ContactStructure>) => {
+    const status = await updateContact(contactData);
+
+    if (status === 200) {
+      navigate(paths.contacts);
+    }
+  };
   return (
     <AddContactPageStyled>
       <header className="header">
@@ -26,7 +38,7 @@ const UpdateContactPage = (): React.ReactElement => {
           <ContactForm
             buttonText="Update"
             contact={formContact as ContactStructure}
-            onFormSubmit={() => undefined}
+            onFormSubmit={handleFormSubmit}
           />
         </ContainerStyled>
       </main>
