@@ -4,6 +4,7 @@ export const paths = {
   contacts: "/contacts",
   addContact: "/add-contact",
   search: "/search",
+  updateContact: "/update-contact",
 };
 
 export const feedbacks = {

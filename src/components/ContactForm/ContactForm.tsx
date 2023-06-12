@@ -18,28 +18,32 @@ import Button from "../Button/Button";
 interface ContactFormProps {
   buttonText: string;
   onFormSubmit: (formData: Partial<ContactStructure>) => void;
+  contact?: ContactStructure;
 }
 
 const ContactForm = ({
   buttonText,
   onFormSubmit,
+  contact,
 }: ContactFormProps): React.ReactElement => {
-  const [formData, setFormData] = useState<ContactStructure>({
-    name: "",
-    surname: "",
-    phoneNumber: {
-      mobile: "",
-    },
-    email: "",
-    address: "",
-    birthday: "2000-01-01",
-    avatar: "",
-    socials: {
-      twitter: "",
-      instagram: "",
-      linkedin: "",
-    },
-  });
+  const [formData, setFormData] = useState<ContactStructure>(
+    contact ?? {
+      name: "",
+      surname: "",
+      phoneNumber: {
+        mobile: "",
+      },
+      email: "",
+      address: "",
+      birthday: "2000-01-01",
+      avatar: "",
+      socials: {
+        twitter: "",
+        instagram: "",
+        linkedin: "",
+      },
+    }
+  );
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((previousFormData) => ({

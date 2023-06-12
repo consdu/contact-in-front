@@ -9,6 +9,7 @@ import {
 } from "../lazyPages/lazyPages";
 import { paths } from "../../constants";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
+import UpdateContactPage from "../../pages/UpdateContactPage/UpdateContactPage";
 
 const routes: RouteObject[] = [
   {
@@ -45,6 +46,14 @@ const routes: RouteObject[] = [
         element: (
           <ProtectedRoute>
             <LazyContactDetailsPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: paths.updateContact,
+        element: (
+          <ProtectedRoute>
+            <UpdateContactPage />
           </ProtectedRoute>
         ),
       },
