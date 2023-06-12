@@ -132,4 +132,13 @@ export const errorHandlers = [
       })
     );
   }),
+
+  rest.put(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(500),
+      ctx.json({
+        error: responseErrors.serverError,
+      })
+    );
+  }),
 ];

@@ -131,11 +131,11 @@ const useContacts = () => {
       const { data } = await contactsApi.put<{
         contact: ContactStructure;
       }>(`${apiUrl}${paths.contacts}`, contactData, config);
-      toast.success(feedbacks.addSuccesful);
+      toast.success(feedbacks.updateSuccesful);
 
       return data.contact;
     } catch {
-      toast.error(feedbacks.errorAddingContact);
+      toast.error(feedbacks.errorUpdatingContact);
     }
   };
 

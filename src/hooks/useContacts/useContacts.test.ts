@@ -232,4 +232,20 @@ describe("Given a updateContact function", () => {
       expect(updatedContact).toStrictEqual(expectedUpdatedContact);
     });
   });
+
+  describe("When called with a contact and there is a database error", () => {
+    test("Then it should call toast's error method with 'Error while updating contact'", async () => {
+      server.resetHandlers(...errorHandlers);
+      toast.error = vi.fn();
+
+      const { result } = renderHook(() => useContacts(), {
+        wrapper: wrapWithProviders,
+      });
+      const { updateContact } = result.current;
+
+      await updateContact(contactMock);
+
+      expect(toast.error).toHaveBeenCalledWith(feedbacks.errorUpdatingContact);
+    });
+  });
 });
