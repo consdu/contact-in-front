@@ -17,6 +17,7 @@ import {
   resetLimitActionCreator,
   clearLimitActionCreator,
   loadSelectedContactActionCreator,
+  setTotalCountActionCreator,
 } from "./contactsSlice";
 
 describe("Given a contactsReducer", () => {
@@ -166,6 +167,25 @@ describe("Given a contactsReducer", () => {
       const newContactsState = contactsReducer(
         currentContactsState,
         loadSelectedContactActionCreator(contactMock)
+      );
+
+      expect(newContactsState).toStrictEqual(expectedContactsState);
+    });
+  });
+
+  describe("When it receives a current state and a setTotalCount action with 10 as payload", () => {
+    test("Then it should return a new state with totalCount value set to 10", () => {
+      const currentContactsState: ContactsStateStructure =
+        emptyContactsStateMock;
+
+      const expectedContactsState: ContactsStateStructure = {
+        ...emptyContactsStateMock,
+        totalCount: 10,
+      };
+
+      const newContactsState = contactsReducer(
+        currentContactsState,
+        setTotalCountActionCreator(10)
       );
 
       expect(newContactsState).toStrictEqual(expectedContactsState);

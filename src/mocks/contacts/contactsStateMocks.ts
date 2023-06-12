@@ -8,7 +8,6 @@ export const emptyContactsStateMock: ContactsStateStructure = {
 };
 
 export const fullContactsStateMock: ContactsStateStructure = {
+  ...emptyContactsStateMock,
   contactsData: contactsMock,
-  limit: 10,
-  totalCount: 10,
 };
