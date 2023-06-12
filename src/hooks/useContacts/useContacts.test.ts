@@ -216,3 +216,20 @@ describe("Given a getContact function", () => {
     });
   });
 });
+
+describe("Given a updateContact function", () => {
+  describe("When called with a contact", () => {
+    test("Then it should return the contact updated", async () => {
+      const expectedUpdatedContact = contactMock;
+
+      const { result } = renderHook(() => useContacts(), {
+        wrapper: wrapWithProviders,
+      });
+      const { updateContact } = result.current;
+
+      const updatedContact = await updateContact(contactMock);
+
+      expect(updatedContact).toStrictEqual(expectedUpdatedContact);
+    });
+  });
+});

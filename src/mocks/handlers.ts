@@ -67,6 +67,15 @@ export const handlers = [
       })
     );
   }),
+
+  rest.put(`${apiUrl}${paths.contacts}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        contact: contactMock,
+      })
+    );
+  }),
 ];
 
 export const errorHandlers = [
