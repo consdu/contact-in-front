@@ -43,6 +43,17 @@ const ContactDetailsPage = (): React.ReactElement => {
           dispatch(
             loadSelectedContactActionCreator(contact as ContactStructure)
           );
+
+          const avatar = (contact as ContactStructure).avatar;
+
+          const preloadLink = await document.createElement("link");
+          preloadLink.rel = "preload";
+          preloadLink.as = "image";
+          preloadLink.href = avatar;
+
+          const head = document.head;
+          const firstChild = head.firstChild;
+          head.insertBefore(preloadLink, firstChild);
         }
       })();
   }, [contactId, dispatch, getContact, isLogged]);

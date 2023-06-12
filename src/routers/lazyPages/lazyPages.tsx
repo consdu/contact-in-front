@@ -19,3 +19,7 @@ export const LazyAddContactPage = lazy(
 export const LazyContactDetailsPage = lazy(
   () => import("../../pages/ContactDetailsPage/ContactDetailsPage")
 );
+
+export const LazyUpdateContactPage = lazy(
+  () => import("../../pages/UpdateContactPage/UpdateContactPage")
+);

@@ -6,10 +6,10 @@ import {
   LazyNotFoundPage,
   LazyAddContactPage,
   LazyContactDetailsPage,
+  LazyUpdateContactPage,
 } from "../lazyPages/lazyPages";
 import { paths } from "../../constants";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
-import UpdateContactPage from "../../pages/UpdateContactPage/UpdateContactPage";
 
 const routes: RouteObject[] = [
   {
@@ -53,7 +53,7 @@ const routes: RouteObject[] = [
         path: paths.updateContact,
         element: (
           <ProtectedRoute>
-            <UpdateContactPage />
+            <LazyUpdateContactPage />
           </ProtectedRoute>
         ),
       },

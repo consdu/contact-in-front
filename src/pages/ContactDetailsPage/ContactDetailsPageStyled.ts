@@ -57,6 +57,7 @@ const ContactDetailsPageStyled = styled.section`
       background-color: ${(props) => props.theme.colors.primary200};
       border-radius: ${(props) => props.theme.radius.normal};
       padding: 10px 15px;
+      overflow: hidden;
 
       &-icon {
         display: flex;
