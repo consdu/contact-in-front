@@ -65,4 +65,25 @@ describe("Given a ContactsPage component", () => {
       });
     });
   });
+
+  describe("When rendered and the user types 'a' in the search field and deletes 'a'", () => {
+    test("Then it should show all 10 contacts of the store", async () => {
+      const searchTerm = "a";
+      const placeholderText = "Search";
+
+      const searchInput = screen.getByPlaceholderText(placeholderText);
+
+      await userEvent.type(searchInput, searchTerm);
+      await userEvent.type(searchInput, "{backspace}");
+      await userEvent.type(searchInput, " ");
+
+      contactsMock.forEach((contact) => {
+        const contactName = screen.getByRole("heading", {
+          name: `${contact.name} ${contact.surname}`,
+        });
+
+        expect(contactName).toBeInTheDocument();
+      });
+    });
+  });
 });

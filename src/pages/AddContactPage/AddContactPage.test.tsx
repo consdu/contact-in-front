@@ -9,6 +9,7 @@ import {
 import AddContactPage from "./AddContactPage";
 import { paths } from "../../constants";
 import ContactsPage from "../ContactsPage/ContactsPage";
+import { vi } from "vitest";
 
 const routes = [
   {
@@ -20,6 +21,9 @@ const routes = [
     element: <ContactsPage />,
   },
 ];
+
+const spyScroll = vi.fn();
+Object.defineProperty(global.window, "scroll", { value: spyScroll });
 
 describe("Given a AddContactPage component", () => {
   describe("When rendered", () => {

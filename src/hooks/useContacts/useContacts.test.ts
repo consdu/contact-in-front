@@ -19,7 +19,7 @@ const limit = 10;
 const id = "test-id";
 
 describe("Given a getContacts function", () => {
-  describe("When called", () => {
+  describe("When called with a limit of 10", () => {
     test("Then it should return a list with 3 contacts", async () => {
       const expectedResponse = contactsMock;
 
@@ -34,7 +34,7 @@ describe("Given a getContacts function", () => {
     });
   });
 
-  describe("When called and there is an error with the api", () => {
+  describe("When called with a limit of 10 and there is an error with the api", () => {
     test("Then it should call toast's error method with 'Error while getting contacts'", async () => {
       server.resetHandlers(...errorHandlers);
       toast.error = vi.fn();
@@ -47,6 +47,19 @@ describe("Given a getContacts function", () => {
       await getContacts(limit);
 
       expect(toast.error).toHaveBeenCalledWith(feedbacks.errorGettingContacts);
+    });
+  });
+
+  describe("When called with with a limit of 0", () => {
+    test("Then it should return undefined", async () => {
+      const { result } = renderHook(() => useContacts(), {
+        wrapper: wrapWithProviders,
+      });
+      const { getContacts } = result.current;
+
+      const response = await getContacts(0);
+
+      expect(response).toBeUndefined();
     });
   });
 });
