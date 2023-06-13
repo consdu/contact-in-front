@@ -7,7 +7,7 @@ const contactFactory = Factory.define<ContactStructure>(() => ({
   name: faker.person.firstName(),
   surname: faker.person.lastName(),
   phoneNumber: {
-    mobile: faker.phone.number(),
+    mobile: "+34 000 000 000",
   },
   address: faker.location.streetAddress(),
   avatar: "https://ui-avatars.com/api/?name=A+A",
