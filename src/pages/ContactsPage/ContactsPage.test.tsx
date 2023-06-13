@@ -3,17 +3,12 @@ import userEvent from "@testing-library/user-event";
 import { contactsMock } from "../../factories/contacts/contactsFactory";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import ContactsPage from "./ContactsPage";
+import { fullContactsStateMock } from "../../mocks/contacts/contactsStateMocks";
 
 describe("Given a ContactsPage component", () => {
-  const limit = 10;
-  const totalCount = 10;
   beforeEach(() => {
     renderWithProviders(wrapWithRouter(<ContactsPage />), {
-      contacts: {
-        contactsData: contactsMock,
-        limit,
-        totalCount,
-      },
+      contacts: fullContactsStateMock,
     });
   });
   describe("When it rendered and there are contacts in the store", () => {

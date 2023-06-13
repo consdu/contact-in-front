@@ -99,8 +99,8 @@ const ContactForm = ({
             id="name"
             placeholder="Insert a name"
             value={formData.name}
-            pattern="[A-Z][a-z]{1,}"
-            title="E.g. John"
+            pattern="^[A-Za-z\s]+$"
+            title="E.g. John Albert"
             onChange={handleInputChange}
           />
         </div>
@@ -116,8 +116,8 @@ const ContactForm = ({
             id="surname"
             placeholder="Insert a surname"
             value={formData.surname}
-            pattern="[A-Z][a-z]{1,}"
-            title="E.g. Doe"
+            pattern="^[A-Za-z\s]+$"
+            title="E.g. Doe Smith"
             onChange={handleInputChange}
           />
         </div>
