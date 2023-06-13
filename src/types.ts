@@ -45,7 +45,7 @@ export interface ContactsStateStructure {
   contactsData: ContactStructure[];
   limit: number;
   totalCount: number;
-  selectedContact?: ContactStructure;
+  selectedContact: ContactStructure;
 }
 
 export interface UiStateStructure {
