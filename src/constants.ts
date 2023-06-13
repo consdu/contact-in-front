@@ -30,18 +30,3 @@ export const responseMesssages = {
   deleteSuccessful: "Contact deleted succesfully",
   updateSuccessful: "Contact updated succesfully",
 };
-
-export const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];

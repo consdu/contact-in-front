@@ -1,10 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ContactStructure, ContactsStateStructure } from "../../types";
+import { emptySelectedContact } from "../../mocks/contacts/contactsStateMocks";
 
 const initialContactsState: ContactsStateStructure = {
   contactsData: [],
   limit: 10,
   totalCount: 0,
+  selectedContact: emptySelectedContact,
 };
 
 const contactsSlice = createSlice({

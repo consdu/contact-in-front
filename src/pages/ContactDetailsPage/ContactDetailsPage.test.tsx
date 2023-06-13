@@ -4,7 +4,6 @@ import { contactMock } from "../../factories/contacts/contactsFactory";
 import { loggedUserStateMock } from "../../mocks/user/userMocks";
 import ContactDetailsPage from "./ContactDetailsPage";
 import { fullContactsStateMock } from "../../mocks/contacts/contactsStateMocks";
-import { monthNames } from "../../constants";
 
 describe("Given a ContactDetailsPage", () => {
   describe("When rendered and the user is logged in", () => {
@@ -65,11 +64,14 @@ describe("Given a ContactDetailsPage", () => {
     });
 
     test("Then it should show a contact's birthday", () => {
-      const date = new Date(contactMock.birthday);
-      const month = monthNames[date.getMonth()];
-      const day = date.getDate();
+      const birthdayDate = new Date(contactMock.birthday);
 
-      const expectedBirthdayText = `${day} of ${month}`;
+      const expectedBirthdayText = birthdayDate.toLocaleDateString("en-UK", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+
       const birthday = screen.getByText(expectedBirthdayText);
 
       expect(birthday).toBeInTheDocument();

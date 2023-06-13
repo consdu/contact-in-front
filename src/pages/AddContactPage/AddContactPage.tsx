@@ -27,6 +27,7 @@ const AddContactPage = () => {
     if (contact) {
       dispatch(addContactActionCreator(contact));
       navigate(paths.contacts);
+      window.scroll(0, 0);
     }
   };
 
