@@ -24,6 +24,7 @@ const UpdateContactPage = (): React.ReactElement => {
 
     if (status === 200) {
       navigate(paths.contacts);
+      window.scroll(0, 0);
     }
   };
   return (
