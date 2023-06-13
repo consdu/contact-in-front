@@ -7,6 +7,13 @@ const ContactFormStyled = styled.form`
   padding-top: 20px;
   padding-bottom: 150px;
 
+  small {
+    position: absolute;
+    bottom: -18px;
+    right: 0;
+    font-size: 10px;
+  }
+
   .input-wrapper {
     display: flex;
     width: 100%;
@@ -20,6 +27,7 @@ const ContactFormStyled = styled.form`
 
   .contact-form {
     &__group {
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: 5px;

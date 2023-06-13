@@ -99,6 +99,8 @@ const ContactForm = ({
             id="name"
             placeholder="Insert a name"
             value={formData.name}
+            pattern="[A-Z][a-z]{1,}"
+            title="E.g. John"
             onChange={handleInputChange}
           />
         </div>
@@ -114,6 +116,8 @@ const ContactForm = ({
             id="surname"
             placeholder="Insert a surname"
             value={formData.surname}
+            pattern="[A-Z][a-z]{1,}"
+            title="E.g. Doe"
             onChange={handleInputChange}
           />
         </div>
@@ -125,12 +129,15 @@ const ContactForm = ({
             <IoCall />
           </span>
           <input
-            type="text"
+            type="tel"
             id="phoneNumber"
             placeholder="Insert a phone number"
+            pattern="[+]{1}[0-9]{2} [0-9]{3} [0-9]{3} [0-9]{3}"
             value={formData.phoneNumber.mobile}
+            title="E.g. +34 123 456 789"
             onChange={handlePhoneNumberChange}
           />
+          <small>Format: +34 123 456 789</small>
         </div>
       </div>
       <div className="contact-form__group">
@@ -184,7 +191,7 @@ const ContactForm = ({
             <IoImage />
           </span>
           <input
-            type="text"
+            type="url"
             id="avatar"
             placeholder="Link an image"
             value={formData.avatar}
