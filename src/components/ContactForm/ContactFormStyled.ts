@@ -11,7 +11,7 @@ const ContactFormStyled = styled.form`
     position: absolute;
     bottom: -18px;
     right: 0;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .input-wrapper {
@@ -42,6 +42,10 @@ const ContactFormStyled = styled.form`
         padding: 15px 10px;
         border-top-right-radius: ${(props) => props.theme.radius.normal};
         border-bottom-right-radius: ${(props) => props.theme.radius.normal};
+
+        &:focus:invalid {
+          color: #e23414;
+        }
 
         &::placeholder {
           color: ${(props) => props.theme.colors.gray700};
