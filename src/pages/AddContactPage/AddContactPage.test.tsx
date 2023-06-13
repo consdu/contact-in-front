@@ -1,7 +1,11 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
-import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
+import {
+  fillContactForm,
+  renderWithProviders,
+  wrapWithRouter,
+} from "../../testUtils/testUtils";
 import AddContactPage from "./AddContactPage";
 import { paths } from "../../constants";
 import ContactsPage from "../ContactsPage/ContactsPage";
@@ -35,26 +39,12 @@ describe("Given a AddContactPage component", () => {
   describe("When rendered and the user adds a contact", () => {
     test("Then it should show the contacts page", async () => {
       const buttonText = "create";
-      const inputTextSample = "example@example.com";
-      const requiredInputLabels = [
-        "Name",
-        "Surname",
-        "Phone number",
-        "Email",
-        "Address",
-        "Image",
-      ];
 
       const router = createMemoryRouter(routes);
 
       renderWithProviders(<RouterProvider router={router} />);
 
-      for (const inputLabel of requiredInputLabels) {
-        if (inputLabel !== "Date of birth") {
-          const input = screen.getByLabelText(inputLabel);
-          await userEvent.type(input, inputTextSample);
-        }
-      }
+      await fillContactForm();
 
       const createButton = screen.getByRole("button", {
         name: buttonText,

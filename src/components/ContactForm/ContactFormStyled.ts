@@ -7,6 +7,13 @@ const ContactFormStyled = styled.form`
   padding-top: 20px;
   padding-bottom: 150px;
 
+  small {
+    position: absolute;
+    bottom: -18px;
+    right: 0;
+    font-size: 12px;
+  }
+
   .input-wrapper {
     display: flex;
     width: 100%;
@@ -20,6 +27,7 @@ const ContactFormStyled = styled.form`
 
   .contact-form {
     &__group {
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -34,6 +42,10 @@ const ContactFormStyled = styled.form`
         padding: 15px 10px;
         border-top-right-radius: ${(props) => props.theme.radius.normal};
         border-bottom-right-radius: ${(props) => props.theme.radius.normal};
+
+        &:focus:invalid {
+          color: #e23414;
+        }
 
         &::placeholder {
           color: ${(props) => props.theme.colors.gray700};
