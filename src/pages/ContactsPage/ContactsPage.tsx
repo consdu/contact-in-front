@@ -14,6 +14,7 @@ import Search from "../../components/Search/Search";
 import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
 import LoadMore from "../../components/LoadMore/LoadMore";
 import ContactsPageStyled from "./ContactsPageStyled";
+import _debounce from "debounce";
 
 const ContactsPage = (): React.ReactElement => {
   const contacts = useAppSelector((state) => state.contacts.contactsData);
@@ -48,7 +49,7 @@ const ContactsPage = (): React.ReactElement => {
       })();
   }, [dispatch, getContacts, isLogged, limit]);
 
-  const handleSearchInputChange = async (searchTerm: string) => {
+  const handleSearchInputChange = _debounce(async (searchTerm: string) => {
     if (searchTerm.length === 0) {
       dispatch(resetLimitActionCreator());
       return;
@@ -59,7 +60,7 @@ const ContactsPage = (): React.ReactElement => {
       dispatch(clearLimitActionCreator());
       dispatch(loadContactsActionCreator(contacts));
     }
-  };
+  }, 200);
 
   const handleLoadMoreClick = () => {
     dispatch(loadMoreContactsActionCreator());
