@@ -2,7 +2,10 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import ContactForm from "./ContactForm";
-import { renderWithProviders } from "../../testUtils/testUtils";
+import {
+  fillContactForm,
+  renderWithProviders,
+} from "../../testUtils/testUtils";
 
 const handleFormSubmit = vi.fn();
 
@@ -58,25 +61,20 @@ describe("Given a Contact Form component", () => {
         if (inputLabel !== "Date of birth") {
           const input = screen.getByLabelText(inputLabel);
           await userEvent.type(input, inputTextSample);
+
           expect(input).toHaveValue(inputTextSample);
         }
       }
     });
   });
 
-  describe("When is rendered and the user fills the form and submits", () => {
+  describe("When is rendered and the user fills the form with correct data and submits", () => {
     test("Then it should call the received submit handler function", async () => {
       renderWithProviders(
         <ContactForm buttonText={buttonText} onFormSubmit={handleFormSubmit} />
       );
 
-      for (const inputLabel of inputLabels) {
-        if (inputLabel !== "Date of birth") {
-          const input = screen.getByLabelText(inputLabel);
-          await userEvent.type(input, inputTextSample);
-          expect(input).toHaveValue(inputTextSample);
-        }
-      }
+      await fillContactForm();
 
       const createButton = screen.getByRole("button", {
         name: buttonText,
