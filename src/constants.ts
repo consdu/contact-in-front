@@ -41,7 +41,7 @@ export const emptySelectedContact: ContactStructure = {
     "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBvcGFjaXR5PSIwLjIiIGN4PSI0MCIgY3k9IjQwIiByPSI0MCIgZmlsbD0iI0YxRjhGNCIvPgo8L3N2Zz4K",
   birthday: "01-01-2000",
   email: "",
-  name: "",
+  name: "﹒",
   surname: "",
   phoneNumber: {
     mobile: "",
