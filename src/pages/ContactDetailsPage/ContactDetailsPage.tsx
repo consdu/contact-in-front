@@ -19,6 +19,7 @@ import {
   loadSelectedContactActionCreator,
   resetLimitActionCreator,
 } from "../../store/contacts/contactsSlice";
+import { paths } from "../../constants";
 
 const ContactDetailsPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -64,9 +65,11 @@ const ContactDetailsPage = (): React.ReactElement => {
           const head = document.head;
           const firstChild = head.firstChild;
           head.insertBefore(preloadLink, firstChild);
+        } else {
+          navigate(paths.contacts);
         }
       })();
-  }, [contactId, dispatch, getContact, isLogged]);
+  }, [contactId, dispatch, getContact, isLogged, navigate]);
 
   return (
     <ContainerStyled>
