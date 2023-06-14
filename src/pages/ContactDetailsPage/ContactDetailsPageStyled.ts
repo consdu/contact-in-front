@@ -90,7 +90,7 @@ const ContactDetailsPageStyled = styled.section`
     }
   }
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 1441px) {
     padding-top: 80px;
 
     .contact {

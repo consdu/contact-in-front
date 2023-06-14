@@ -7,6 +7,7 @@ import {
   clearLimitActionCreator,
   loadContactsActionCreator,
   loadMoreContactsActionCreator,
+  loadSelectedContactActionCreator,
   resetLimitActionCreator,
 } from "../../store/contacts/contactsSlice";
 import Loading from "../../components/Loading/Loading";
@@ -15,6 +16,7 @@ import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
 import LoadMore from "../../components/LoadMore/LoadMore";
 import ContactsPageStyled from "./ContactsPageStyled";
 import _debounce from "debounce";
+import { emptySelectedContact } from "../../mocks/contacts/contactsStateMocks";
 
 const ContactsPage = (): React.ReactElement => {
   const contacts = useAppSelector((state) => state.contacts.contactsData);
@@ -26,6 +28,10 @@ const ContactsPage = (): React.ReactElement => {
   );
   const dispatch = useAppDispatch();
   const { getContacts, searchContacts } = useContacts();
+
+  useEffect(() => {
+    dispatch(loadSelectedContactActionCreator(emptySelectedContact));
+  });
 
   useEffect(() => {
     isLogged &&

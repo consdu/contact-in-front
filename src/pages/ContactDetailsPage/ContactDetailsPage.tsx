@@ -114,7 +114,7 @@ const ContactDetailsPage = (): React.ReactElement => {
                   <span className="contact__detail-icon">
                     <IoGift />
                   </span>
-                  <time dateTime={birthdayDate.toISOString().slice(0, 10)}>
+                  <time dateTime={birthdayDate.toLocaleString().slice(0, 10)}>
                     {birthdayDate.toLocaleDateString("en-UK", {
                       day: "numeric",
                       month: "long",
