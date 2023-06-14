@@ -129,7 +129,7 @@ const ContactForm = ({
             <IoCall />
           </span>
           <input
-            type="tel"
+            type="text"
             id="phoneNumber"
             placeholder="Insert a phone number"
             pattern="[+]{1}[0-9]{2} [0-9]{3} [0-9]{3} [0-9]{3}"

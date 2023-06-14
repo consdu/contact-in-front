@@ -16,7 +16,7 @@ import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
 import LoadMore from "../../components/LoadMore/LoadMore";
 import ContactsPageStyled from "./ContactsPageStyled";
 import _debounce from "debounce";
-import { emptySelectedContact } from "../../mocks/contacts/contactsStateMocks";
+import { emptySelectedContact } from "../../constants";
 
 const ContactsPage = (): React.ReactElement => {
   const contacts = useAppSelector((state) => state.contacts.contactsData);

@@ -40,6 +40,7 @@ const ContactDetailsPageStyled = styled.section`
       right: 0;
       border-radius: ${(props) => props.theme.radius.normal};
       background-color: ${(props) => props.theme.colors.primary200};
+      color: ${(props) => props.theme.colors.primary950};
     }
 
     &__details {
