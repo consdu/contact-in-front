@@ -92,19 +92,20 @@ const useContacts = () => {
     }
   };
 
-  const searchContacts = async (
-    name: string
-  ): Promise<ContactStructure[] | undefined> => {
-    try {
-      const { data } = await contactsApi.get<{
-        contacts: ContactStructure[];
-      }>(`${apiUrl}${paths.contacts}${paths.search}?name=${name}`, config);
+  const searchContacts = useCallback(
+    async (name: string): Promise<ContactStructure[] | undefined> => {
+      try {
+        const { data } = await contactsApi.get<{
+          contacts: ContactStructure[];
+        }>(`${apiUrl}${paths.contacts}${paths.search}?name=${name}`, config);
 
-      return data.contacts;
-    } catch {
-      toast.error(responseErrors.serverError);
-    }
-  };
+        return data.contacts;
+      } catch {
+        toast.error(responseErrors.serverError);
+      }
+    },
+    [config]
+  );
 
   const getContact = useCallback(
     async (contactId: string): Promise<ContactStructure | number> => {

@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import { renderWithProviders } from "../../testUtils/testUtils";
-import Search from "./Search";
+import SearchBar from "./SearchBar";
 
 const handleSearchInputChange = vi.fn();
 
@@ -12,7 +12,7 @@ describe("Given a Search component", () => {
       const labelName = "search";
 
       renderWithProviders(
-        <Search onSearchInputChange={handleSearchInputChange} />
+        <SearchBar onSearchInputChange={handleSearchInputChange} />
       );
 
       const searchInput = screen.getByLabelText(labelName);
@@ -27,7 +27,7 @@ describe("Given a Search component", () => {
       const expectedText = "test";
 
       renderWithProviders(
-        <Search onSearchInputChange={handleSearchInputChange} />
+        <SearchBar onSearchInputChange={handleSearchInputChange} />
       );
 
       const searchInput = screen.getByPlaceholderText(placeholder);

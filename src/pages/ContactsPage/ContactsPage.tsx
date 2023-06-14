@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import ContactList from "../../components/ContactList/ContactList";
 import ContainerStyled from "../../components/shared/ContainerStyled";
 import { useAppSelector, useAppDispatch } from "../../store";
@@ -11,7 +11,7 @@ import {
   resetLimitActionCreator,
 } from "../../store/contacts/contactsSlice";
 import Loading from "../../components/Loading/Loading";
-import Search from "../../components/Search/Search";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
 import LoadMore from "../../components/LoadMore/LoadMore";
 import ContactsPageStyled from "./ContactsPageStyled";
@@ -55,18 +55,22 @@ const ContactsPage = (): React.ReactElement => {
       })();
   }, [dispatch, getContacts, isLogged, limit]);
 
-  const handleSearchInputChange = _debounce(async (searchTerm: string) => {
-    if (searchTerm.length === 0) {
-      dispatch(resetLimitActionCreator());
-      return;
-    }
+  const handleSearchInputChange = useMemo(
+    () =>
+      _debounce(async (searchTerm: string) => {
+        if (searchTerm.length === 0) {
+          dispatch(resetLimitActionCreator());
+          return;
+        }
 
-    const contacts = await searchContacts(searchTerm);
-    if (contacts) {
-      dispatch(clearLimitActionCreator());
-      dispatch(loadContactsActionCreator(contacts));
-    }
-  }, 250);
+        const contacts = await searchContacts(searchTerm);
+        if (contacts) {
+          dispatch(clearLimitActionCreator());
+          dispatch(loadContactsActionCreator(contacts));
+        }
+      }, 250),
+    [dispatch, searchContacts]
+  );
 
   const handleLoadMoreClick = () => {
     dispatch(loadMoreContactsActionCreator());
@@ -76,7 +80,7 @@ const ContactsPage = (): React.ReactElement => {
     <ContactsPageStyled>
       {isLoading && <Loading />}
       <ContainerStyled>
-        <Search onSearchInputChange={handleSearchInputChange} />
+        <SearchBar onSearchInputChange={handleSearchInputChange} />
         {contacts.length === 0 && <NoContactsFound />}
         {contacts.length >= 1 && <ContactList contacts={contacts} />}
         {contacts.length < totalContactsCount && limit !== 0 && (

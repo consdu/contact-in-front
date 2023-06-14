@@ -1,12 +1,14 @@
 import { IoSearch } from "react-icons/io5";
-import SearchStyled from "./SearchStyled";
-import { useState } from "react";
+import SearchStyled from "./SearchBarStyled";
+import { useEffect, useState } from "react";
 
 interface SearchProps {
   onSearchInputChange: (value: string) => void;
 }
 
-const Search = ({ onSearchInputChange }: SearchProps): React.ReactElement => {
+const SearchBar = ({
+  onSearchInputChange,
+}: SearchProps): React.ReactElement => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearchInputChange = (
@@ -15,6 +17,10 @@ const Search = ({ onSearchInputChange }: SearchProps): React.ReactElement => {
     setSearchTerm(event.target.value);
     onSearchInputChange(event.target.value);
   };
+
+  useEffect(() => {
+    onSearchInputChange(searchTerm);
+  }, [onSearchInputChange, searchTerm]);
 
   return (
     <SearchStyled className="search-group">
@@ -39,4 +45,4 @@ const Search = ({ onSearchInputChange }: SearchProps): React.ReactElement => {
   );
 };
 
-export default Search;
+export default SearchBar;
