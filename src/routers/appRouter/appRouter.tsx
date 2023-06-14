@@ -15,7 +15,6 @@ const routes: RouteObject[] = [
   {
     path: "/",
     element: <App />,
-    errorElement: <LazyNotFoundPage />,
     children: [
       {
         index: true,
@@ -56,6 +55,10 @@ const routes: RouteObject[] = [
             <LazyUpdateContactPage />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "*",
+        element: <LazyNotFoundPage />,
       },
     ],
   },
