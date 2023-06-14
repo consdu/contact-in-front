@@ -2,22 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
-  font-family: 'Inter';
-  font-display: swap;
-  }
-
-  @font-face {
-  font-family: 'Sora';
-  font-display: swap;
-  }
-
-  @font-face {
     font-family: 'Adjusted Arial Fallback';
     src: local(Arial);
     size-adjust: 104%;
-    ascent-override: normal;
-    descent-override: normal;
-    line-gap-override: normal;
   }
 
   *,
