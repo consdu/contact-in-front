@@ -1,6 +1,25 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+  font-family: 'Inter';
+  font-display: swap;
+  }
+
+  @font-face {
+  font-family: 'Sora';
+  font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 104%;
+    ascent-override: normal;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
   *,
   ::before,
   ::after {
@@ -10,7 +29,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: ${(props) => props.theme.fonts.primary}, sans-serif;
+    font-family: ${(props) =>
+      props.theme.fonts.primary}, "Adjusted Arial Fallback", sans-serif;
   }
 
   body {
