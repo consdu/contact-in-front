@@ -11,7 +11,7 @@ import {
   resetLimitActionCreator,
 } from "../../store/contacts/contactsSlice";
 import Loading from "../../components/Loading/Loading";
-import Search from "../../components/Search/Search";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
 import LoadMore from "../../components/LoadMore/LoadMore";
 import ContactsPageStyled from "./ContactsPageStyled";
@@ -80,7 +80,7 @@ const ContactsPage = (): React.ReactElement => {
     <ContactsPageStyled>
       {isLoading && <Loading />}
       <ContainerStyled>
-        <Search onSearchInputChange={handleSearchInputChange} />
+        <SearchBar onSearchInputChange={handleSearchInputChange} />
         {contacts.length === 0 && <NoContactsFound />}
         {contacts.length >= 1 && <ContactList contacts={contacts} />}
         {contacts.length < totalContactsCount && limit !== 0 && (
