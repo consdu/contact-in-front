@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import ContactList from "../../components/ContactList/ContactList";
 import ContainerStyled from "../../components/shared/ContainerStyled";
 import { useAppSelector, useAppDispatch } from "../../store";
@@ -55,18 +55,22 @@ const ContactsPage = (): React.ReactElement => {
       })();
   }, [dispatch, getContacts, isLogged, limit]);
 
-  const handleSearchInputChange = _debounce(async (searchTerm: string) => {
-    if (searchTerm.length === 0) {
-      dispatch(resetLimitActionCreator());
-      return;
-    }
+  const handleSearchInputChange = useMemo(
+    () =>
+      _debounce(async (searchTerm: string) => {
+        if (searchTerm.length === 0) {
+          dispatch(resetLimitActionCreator());
+          return;
+        }
 
-    const contacts = await searchContacts(searchTerm);
-    if (contacts) {
-      dispatch(clearLimitActionCreator());
-      dispatch(loadContactsActionCreator(contacts));
-    }
-  }, 250);
+        const contacts = await searchContacts(searchTerm);
+        if (contacts) {
+          dispatch(clearLimitActionCreator());
+          dispatch(loadContactsActionCreator(contacts));
+        }
+      }, 250),
+    [dispatch, searchContacts]
+  );
 
   const handleLoadMoreClick = () => {
     dispatch(loadMoreContactsActionCreator());
