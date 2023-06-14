@@ -66,7 +66,7 @@ const ContactsPage = (): React.ReactElement => {
       dispatch(clearLimitActionCreator());
       dispatch(loadContactsActionCreator(contacts));
     }
-  }, 200);
+  }, 250);
 
   const handleLoadMoreClick = () => {
     dispatch(loadMoreContactsActionCreator());
@@ -79,7 +79,7 @@ const ContactsPage = (): React.ReactElement => {
         <Search onSearchInputChange={handleSearchInputChange} />
         {contacts.length === 0 && <NoContactsFound />}
         {contacts.length >= 1 && <ContactList contacts={contacts} />}
-        {(contacts.length < totalContactsCount || limit === 0) && (
+        {contacts.length < totalContactsCount && limit !== 0 && (
           <LoadMore handleButtonClick={handleLoadMoreClick} />
         )}
       </ContainerStyled>
