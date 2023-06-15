@@ -81,7 +81,7 @@ const ContactsPage = (): React.ReactElement => {
       {isLoading && <Loading />}
       <ContainerStyled>
         <SearchBar onSearchInputChange={handleSearchInputChange} />
-        {contacts.length === 0 && <NoContactsFound />}
+        {contacts.length === 0 && !isLoading && <NoContactsFound />}
         {contacts.length >= 1 && <ContactList contacts={contacts} />}
         {contacts.length < totalContactsCount && limit !== 0 && (
           <LoadMore handleButtonClick={handleLoadMoreClick} />
