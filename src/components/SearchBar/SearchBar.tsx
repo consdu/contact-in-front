@@ -15,7 +15,6 @@ const SearchBar = ({
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setSearchTerm(event.target.value);
-    onSearchInputChange(event.target.value);
   };
 
   useEffect(() => {
