@@ -1,5 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "../Navbar/Navbar";
 import { useAppDispatch, useAppSelector } from "../../store";
