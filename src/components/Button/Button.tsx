@@ -3,7 +3,7 @@ import ButtonStyled from "./ButtonStyled";
 interface ButtonProps {
   isLoading?: boolean;
   isButtonDisabled?: boolean;
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: "button" | "submit" | "reset";
   text: string;
 }
 

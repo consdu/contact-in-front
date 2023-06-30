@@ -2,8 +2,8 @@ import {
   UserActionPayloadStructure,
   UserStateStructure,
   UserTokenPayloadStructure,
+  UserCredentials,
 } from "../../types";
-import { UserCredentials } from "../../types";
 
 export const userIdMock = "646f6a9da1b8a16b45eabf44";
 
