@@ -10,7 +10,7 @@ You can view, create, update and delete any of your contacts in a frendly and ea
 
 ## Metrics
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Constantin-Dusescu-Final-Project-front-202304-bcn&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Constantin-Dusescu-Final-Project-front-202304-bcn) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Constantin-Dusescu-Final-Project-front-202304-bcn&metric=coverage)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Constantin-Dusescu-Final-Project-front-202304-bcn) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Constantin-Dusescu-Final-Project-front-202304-bcn&metric=bugs)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Constantin-Dusescu-Final-Project-front-202304-bcn) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Constantin-Dusescu-Final-Project-front-202304-bcn&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Constantin-Dusescu-Final-Project-front-202304-bcn) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Constantin-Dusescu-Final-Project-front-202304-bcn&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Constantin-Dusescu-Final-Project-front-202304-bcn)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=consdu_contact-in-front&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=consdu_contact-in-front) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=consdu_contact-in-front&metric=coverage)](https://sonarcloud.io/summary/new_code?id=consdu_contact-in-front) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=consdu_contact-in-front&metric=bugs)](https://sonarcloud.io/summary/new_code?id=consdu_contact-in-front) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=consdu_contact-in-front&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=consdu_contact-in-front) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=consdu_contact-in-front&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=consdu_contact-in-front)
 
 ---
 
@@ -33,7 +33,7 @@ You can view, create, update and delete any of your contacts in a frendly and ea
 
 ## Demo
 
-[Netlify deploy](https://constantin-dusescu-final-project-fro.netlify.app/)
+[Netlify deploy](https://contact-in.netlify.app/)
 
 ---
 
