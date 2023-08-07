@@ -35,6 +35,11 @@ You can view, create, update and delete any of your contacts in a frendly and ea
 
 [Netlify deploy](https://contact-in.netlify.app/)
 
+Login details for demo:
+
+Username: **test** </br>
+Password: **test**
+
 ---
 
 ## Authors
