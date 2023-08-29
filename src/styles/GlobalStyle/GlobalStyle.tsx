@@ -28,6 +28,8 @@ const GlobalStyle = createGlobalStyle`
     background-size: cover;
     background-repeat: no-repeat;
     color: ${(props) => props.theme.colors.gray950};
+    overflow: scroll;
+    
   }
 
   h1,
