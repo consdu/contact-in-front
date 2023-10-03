@@ -1,12 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Adjusted Arial Fallback';
-    src: local(Arial);
-    size-adjust: 104%;
-  }
-
   *,
   ::before,
   ::after {
@@ -16,8 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: ${(props) =>
-      props.theme.fonts.primary}, "Adjusted Arial Fallback", sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   body {
@@ -28,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     background-size: cover;
     background-repeat: no-repeat;
     color: ${(props) => props.theme.colors.gray950};
-    overflow: scroll;
+    overflow-y: scroll;
     
   }
 
