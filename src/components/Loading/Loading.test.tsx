@@ -11,7 +11,7 @@ describe("Given a Loading Component", () => {
 
       render(<Loading />);
 
-      act(() => vi.advanceTimersByTime(200));
+      act(() => vi.advanceTimersByTime(300));
 
       const loadingAnimation = screen.getByLabelText(loadingAnimationName);
 
