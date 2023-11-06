@@ -7,7 +7,7 @@ const Loading = (): React.ReactElement => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoading(true);
-    }, 200);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, []);
