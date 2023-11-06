@@ -9,10 +9,7 @@ import GlobalStyle from "./styles/GlobalStyle/GlobalStyle";
 import theme from "./styles/theme/theme";
 import appRouter from "./routers/appRouter/appRouter";
 import "react-toastify/dist/ReactToastify.min.css";
-import "@fontsource/sora/300.css";
-import "@fontsource/sora/400.css";
-import "@fontsource/sora/600.css";
-import "@fontsource/sora/700.css";
+import "./fonts";
 import Loading from "./components/Loading/Loading";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

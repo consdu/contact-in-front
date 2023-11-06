@@ -1,12 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ContactStructure, ContactsStateStructure } from "../../types";
-import { emptySelectedContact } from "../../constants";
 
 const initialContactsState: ContactsStateStructure = {
   contactsData: [],
   limit: 10,
   totalCount: 0,
-  selectedContact: emptySelectedContact,
+  selectedContact: {} as ContactStructure,
 };
 
 const contactsSlice = createSlice({
@@ -48,6 +47,10 @@ const contactsSlice = createSlice({
       ...currentContactsState,
       selectedContact: action.payload,
     }),
+    resetSelectedContact: (currentContactsState: ContactsStateStructure) => ({
+      ...currentContactsState,
+      selectedContact: {} as ContactStructure,
+    }),
     resetLimit: (currentContactsState: ContactsStateStructure) => ({
       ...currentContactsState,
       limit: 10,
@@ -73,6 +76,7 @@ export const {
   addContact: addContactActionCreator,
   loadMoreContacts: loadMoreContactsActionCreator,
   loadSelectedContact: loadSelectedContactActionCreator,
+  resetSelectedContact: resetSelectedContactActionCreator,
   resetLimit: resetLimitActionCreator,
   clearLimit: clearLimitActionCreator,
   setTotalCount: setTotalCountActionCreator,

@@ -8,15 +8,15 @@ import { ContactStructure } from "../../types";
 import AddContactPageStyled from "../shared/FormPageStyled";
 
 const UpdateContactPage = (): React.ReactElement => {
-  const contact = useAppSelector(
+  const selectedContact = useAppSelector(
     (state) => state.contacts.selectedContact
   ) as ContactStructure;
   const { updateContact } = useContacts();
   const navigate = useNavigate();
 
-  const formContact = {
-    ...contact,
-    birthday: contact?.birthday.slice(0, 10),
+  const formContact: ContactStructure = {
+    ...selectedContact,
+    birthday: selectedContact?.birthday.slice(0, 10),
   };
 
   const handleFormSubmit = async (contactData: Partial<ContactStructure>) => {
@@ -38,7 +38,7 @@ const UpdateContactPage = (): React.ReactElement => {
         <ContainerStyled>
           <ContactForm
             buttonText="Update"
-            contact={formContact as ContactStructure}
+            contact={formContact}
             onFormSubmit={handleFormSubmit}
           />
         </ContainerStyled>

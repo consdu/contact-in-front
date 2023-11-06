@@ -24,12 +24,6 @@ import { paths } from "../../constants";
 const ContactDetailsPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const selectedContact = useAppSelector(
-    (state) => state.contacts.selectedContact
-  );
-  const isLogged = useAppSelector((state) => state.user.isLogged);
-  const { contactId } = useParams();
-  const { getContact } = useContacts();
   const {
     avatar,
     name,
@@ -39,7 +33,10 @@ const ContactDetailsPage = (): React.ReactElement => {
     address,
     birthday,
     socials,
-  } = selectedContact;
+  } = useAppSelector((state) => state.contacts.selectedContact);
+  const isLogged = useAppSelector((state) => state.user.isLogged);
+  const { contactId } = useParams();
+  const { getContact } = useContacts();
 
   const birthdayDate = new Date(birthday);
 
@@ -54,17 +51,6 @@ const ContactDetailsPage = (): React.ReactElement => {
           dispatch(
             loadSelectedContactActionCreator(contact as ContactStructure)
           );
-
-          const avatar = (contact as ContactStructure).avatar;
-
-          const preloadLink = document.createElement("link");
-          preloadLink.rel = "preload";
-          preloadLink.as = "image";
-          preloadLink.href = avatar;
-
-          const head = document.head;
-          const firstChild = head.firstChild;
-          head.insertBefore(preloadLink, firstChild);
         } else {
           navigate(paths.contacts);
         }
@@ -75,85 +61,89 @@ const ContactDetailsPage = (): React.ReactElement => {
     <ContainerStyled>
       <main>
         <ContactDetailsPageStyled>
-          <article className="contact">
-            <header className="contact__header">
-              <img
-                src={`${avatar}`}
-                alt={`Avatar of ${name} ${surname}`}
-                width={80}
-                height={80}
-                className="contact__avatar"
-              />
-              <h2 className="contact__fullname">{`${name} ${surname}`}</h2>
-              <button
-                className="contact__update-button"
-                aria-label="update contact"
-                onClick={() => navigate("/update-contact")}
-              >
-                <IoPencilSharp />
-              </button>
-            </header>
-            <address>
-              <ul className="contact__details">
-                <li className="contact__detail">
-                  <span className="contact__detail-icon">
-                    <IoCall />
-                  </span>
-                  <a href={`tel:${phoneNumber.mobile}`}>{phoneNumber.mobile}</a>
-                </li>
-                <li className="contact__detail">
-                  <span className="contact__detail-icon">
-                    <IoAtSharp />
-                  </span>
-                  <a href={`mailto:${email}`}>{email}</a>
-                </li>
-                <li className="contact__detail">
-                  <span className="contact__detail-icon">
-                    <IoLocationSharp />
-                  </span>
-                  <span>{address}</span>
-                </li>
-                <li className="contact__detail">
-                  <span className="contact__detail-icon">
-                    <IoGift />
-                  </span>
-                  <time dateTime={birthdayDate.toLocaleString().slice(0, 10)}>
-                    {birthdayDate.toLocaleDateString("en-UK", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </time>
-                </li>
-              </ul>
-              <footer className="contact__socials">
-                {socials.twitter && (
-                  <a
-                    href={`https://twitter.com/${socials.twitter}`}
-                    aria-label="twitter profile"
-                  >
-                    <IoLogoTwitter />
-                  </a>
-                )}
-                {socials.linkedin && (
-                  <a
-                    href={`https://linkedin.com/in/${socials.linkedin}`}
-                    aria-label="linkedin profile"
-                  >
-                    <IoLogoLinkedin />
-                  </a>
-                )}
-                {socials.instagram && (
-                  <a
-                    href={`https://instagram.com/${socials.instagram}`}
-                    aria-label="instagram profile"
-                  >
-                    <IoLogoInstagram />
-                  </a>
-                )}
-              </footer>
-            </address>
-          </article>
+          {name && (
+            <article className="contact">
+              <header className="contact__header">
+                <img
+                  src={`${avatar}`}
+                  alt={`Avatar of ${name} ${surname}`}
+                  width={80}
+                  height={80}
+                  className="contact__avatar"
+                />
+                <h2 className="contact__fullname">{`${name} ${surname}`}</h2>
+                <button
+                  className="contact__update-button"
+                  aria-label="update contact"
+                  onClick={() => navigate("/update-contact")}
+                >
+                  <IoPencilSharp />
+                </button>
+              </header>
+              <address>
+                <ul className="contact__details">
+                  <li className="contact__detail">
+                    <span className="contact__detail-icon">
+                      <IoCall />
+                    </span>
+                    <a href={`tel:${phoneNumber.mobile}`}>
+                      {phoneNumber.mobile}
+                    </a>
+                  </li>
+                  <li className="contact__detail">
+                    <span className="contact__detail-icon">
+                      <IoAtSharp />
+                    </span>
+                    <a href={`mailto:${email}`}>{email}</a>
+                  </li>
+                  <li className="contact__detail">
+                    <span className="contact__detail-icon">
+                      <IoLocationSharp />
+                    </span>
+                    <span>{address}</span>
+                  </li>
+                  <li className="contact__detail">
+                    <span className="contact__detail-icon">
+                      <IoGift />
+                    </span>
+                    <time dateTime={birthdayDate.toLocaleString().slice(0, 10)}>
+                      {birthdayDate.toLocaleDateString("en-UK", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </time>
+                  </li>
+                </ul>
+                <footer className="contact__socials">
+                  {socials.twitter && (
+                    <a
+                      href={`https://twitter.com/${socials.twitter}`}
+                      aria-label="twitter profile"
+                    >
+                      <IoLogoTwitter />
+                    </a>
+                  )}
+                  {socials.linkedin && (
+                    <a
+                      href={`https://linkedin.com/in/${socials.linkedin}`}
+                      aria-label="linkedin profile"
+                    >
+                      <IoLogoLinkedin />
+                    </a>
+                  )}
+                  {socials.instagram && (
+                    <a
+                      href={`https://instagram.com/${socials.instagram}`}
+                      aria-label="instagram profile"
+                    >
+                      <IoLogoInstagram />
+                    </a>
+                  )}
+                </footer>
+              </address>
+            </article>
+          )}
         </ContactDetailsPageStyled>
       </main>
     </ContainerStyled>
