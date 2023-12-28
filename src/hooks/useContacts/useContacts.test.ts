@@ -1,15 +1,15 @@
-import { vi } from "vitest";
 import { renderHook } from "@testing-library/react";
 import { toast } from "react-toastify";
+import { vi } from "vitest";
+import { feedbacks, responseErrors } from "@/constants";
 import {
   contactMock,
   contactsMock,
-} from "../../factories/contacts/contactsFactory";
+} from "@/factories/contacts/contactsFactory";
+import { errorHandlers } from "@/mocks/handlers";
+import { server } from "@/mocks/server";
+import { wrapWithProviders } from "@/testUtils/testUtils";
 import useContacts from "./useContacts";
-import { wrapWithProviders } from "../../testUtils/testUtils";
-import { feedbacks, responseErrors } from "../../constants";
-import { server } from "../../mocks/server";
-import { errorHandlers } from "../../mocks/handlers";
 
 beforeEach(() => {
   vi.clearAllMocks();

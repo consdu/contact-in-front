@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
-import { renderWithProviders } from "../../testUtils/testUtils";
+import { renderWithProviders } from "@/testUtils/testUtils";
 import SearchBar from "./SearchBar";
 
 const handleSearchInputChange = vi.fn();

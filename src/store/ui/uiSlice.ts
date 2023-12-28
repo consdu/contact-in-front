@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UiStateStructure } from "../../types";
+import { UiStateStructure } from "@/types";
 
 const initialUiState: UiStateStructure = {
   isLoading: false,

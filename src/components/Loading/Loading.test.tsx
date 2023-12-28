@@ -1,6 +1,6 @@
 import { act, render, screen } from "@testing-library/react";
-import Loading from "./Loading";
 import { vi } from "vitest";
+import Loading from "./Loading";
 
 describe("Given a Loading Component", () => {
   describe("When rendered", () => {

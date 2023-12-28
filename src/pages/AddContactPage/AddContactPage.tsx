@@ -1,16 +1,16 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ContactForm from "../../components/ContactForm/ContactForm";
-import ContainerStyled from "../../components/shared/ContainerStyled";
-import AddContactPageStyled from "../shared/FormPageStyled";
-import useContacts from "../../hooks/useContacts/useContacts";
-import { useAppDispatch } from "../../store";
+import ContactForm from "@/components/ContactForm/ContactForm";
+import ContainerStyled from "@/components/shared/ContainerStyled";
+import { paths } from "@/constants";
+import useContacts from "@/hooks/useContacts/useContacts";
+import { useAppDispatch } from "@/store";
 import {
   addContactActionCreator,
   resetLimitActionCreator,
-} from "../../store/contacts/contactsSlice";
-import { ContactStructure } from "../../types";
-import { paths } from "../../constants";
-import { useEffect } from "react";
+} from "@/store/contacts/contactsSlice";
+import { ContactStructure } from "@/types";
+import AddContactPageStyled from "../shared/FormPageStyled";
 
 const AddContactPage = () => {
   const { addContact } = useContacts();

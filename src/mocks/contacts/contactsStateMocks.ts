@@ -1,5 +1,5 @@
-import { contactsMock } from "../../factories/contacts/contactsFactory";
-import { ContactStructure, ContactsStateStructure } from "../../types";
+import { contactsMock } from "@/factories/contacts/contactsFactory";
+import { ContactStructure, ContactsStateStructure } from "@/types";
 
 export const emptyContactsStateMock: ContactsStateStructure = {
   contactsData: [],

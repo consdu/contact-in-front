@@ -1,6 +1,6 @@
-import { Factory } from "fishery";
 import { faker } from "@faker-js/faker";
-import { ContactStructure } from "../../types";
+import { Factory } from "fishery";
+import { ContactStructure } from "@/types";
 
 const contactFactory = Factory.define<ContactStructure>(() => ({
   id: faker.database.mongodbObjectId().toString(),

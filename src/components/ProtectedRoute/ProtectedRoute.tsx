@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
+import useLocalStorage from "@/hooks/useLocalStorage/useLocalStorage";
 
 interface ProtectedRouteProps {
   children: React.ReactElement;

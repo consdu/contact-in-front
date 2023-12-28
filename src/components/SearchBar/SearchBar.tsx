@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import SearchStyled from "./SearchBarStyled";
-import { useEffect, useState } from "react";
 
 interface SearchProps {
   onSearchInputChange: (value: string) => void;

@@ -1,15 +1,15 @@
+import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { RouterProvider, createMemoryRouter } from "react-router-dom";
+import { vi } from "vitest";
+import { paths } from "@/constants";
 import {
   fillContactForm,
   renderWithProviders,
   wrapWithRouter,
-} from "../../testUtils/testUtils";
-import AddContactPage from "./AddContactPage";
-import { paths } from "../../constants";
+} from "@/testUtils/testUtils";
 import ContactsPage from "../ContactsPage/ContactsPage";
-import { vi } from "vitest";
+import AddContactPage from "./AddContactPage";
 
 const routes = [
   {

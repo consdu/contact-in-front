@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { IoPeople, IoPersonAdd, IoExit } from "react-icons/io5";
-import NavbarStyled from "./NavbarStyled";
+import { paths } from "@/constants";
 import ContainerStyled from "../shared/ContainerStyled";
-import { paths } from "../../constants";
+import NavbarStyled from "./NavbarStyled";
 
 interface NavbarProps {
   onLogoutClick: () => void;

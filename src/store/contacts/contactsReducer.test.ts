@@ -1,12 +1,12 @@
 import {
   contactMock,
   contactsMock,
-} from "../../factories/contacts/contactsFactory";
+} from "@/factories/contacts/contactsFactory";
 import {
   emptyContactsStateMock,
   fullContactsStateMock,
-} from "../../mocks/contacts/contactsStateMocks";
-import { ContactsStateStructure } from "../../types";
+} from "@/mocks/contacts/contactsStateMocks";
+import { ContactsStateStructure } from "@/types";
 import {
   addContactActionCreator,
   loadMoreContactsActionCreator,

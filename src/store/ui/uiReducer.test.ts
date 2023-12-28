@@ -1,6 +1,6 @@
-import { shownLoadingStateMock } from "../../mocks/ui/uiStateMocks";
-import { hiddenLoadingStateMock } from "../../mocks/ui/uiStateMocks";
-import { UiStateStructure } from "../../types";
+import { shownLoadingStateMock } from "@/mocks/ui/uiStateMocks";
+import { hiddenLoadingStateMock } from "@/mocks/ui/uiStateMocks";
+import { UiStateStructure } from "@/types";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,

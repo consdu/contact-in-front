@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import ContainerStyled from "../../components/shared/ContainerStyled";
-import useToken from "../../hooks/useToken/useToken";
-import useUser from "../../hooks/useUser/useUser";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { loginUserActionCreator } from "../../store/user/userSlice";
-import { UserCredentials } from "../../types";
+import LoginForm from "@/components/LoginForm/LoginForm";
+import ContainerStyled from "@/components/shared/ContainerStyled";
+import { paths } from "@/constants";
+import useLocalStorage from "@/hooks/useLocalStorage/useLocalStorage";
+import useToken from "@/hooks/useToken/useToken";
+import useUser from "@/hooks/useUser/useUser";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { loginUserActionCreator } from "@/store/user/userSlice";
+import { UserCredentials } from "@/types";
 import LoginPageStyled from "./LoginPageStyled";
-import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
-import { paths } from "../../constants";
 
 const LoginPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();

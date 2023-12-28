@@ -1,13 +1,13 @@
+import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { toast } from "react-toastify";
 import { vi } from "vitest";
-import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
+import { paths, feedbacks } from "@/constants";
+import { loggedUserStateMock } from "@/mocks/user/userMocks";
+import LoginPage from "@/pages/LoginPage/LoginPage";
+import { renderWithProviders, wrapWithRouter } from "@/testUtils/testUtils";
 import Layout from "./Layout";
-import { paths, feedbacks } from "../../constants";
-import LoginPage from "../../pages/LoginPage/LoginPage";
-import { loggedUserStateMock } from "../../mocks/user/userMocks";
 
 const appName = "contact";
 const appLogoText = "in";

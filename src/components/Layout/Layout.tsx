@@ -1,11 +1,11 @@
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
+import { feedbacks, paths } from "@/constants";
+import useLocalStorage from "@/hooks/useLocalStorage/useLocalStorage";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { resetContactsStateActionCreator } from "@/store/contacts/contactsSlice";
+import { logoutUserActionCreator } from "@/store/user/userSlice";
 import Navbar from "../Navbar/Navbar";
-import { useAppDispatch, useAppSelector } from "../../store";
-import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
-import { logoutUserActionCreator } from "../../store/user/userSlice";
-import { resetContactsStateActionCreator } from "../../store/contacts/contactsSlice";
-import { feedbacks, paths } from "../../constants";
 
 const Layout = (): React.ReactElement => {
   const { pathname } = useLocation();

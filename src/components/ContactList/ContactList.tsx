@@ -1,7 +1,7 @@
-import useContacts from "../../hooks/useContacts/useContacts";
-import { useAppDispatch } from "../../store";
-import { deleteContactActionCreator } from "../../store/contacts/contactsSlice";
-import { ContactStructure } from "../../types";
+import useContacts from "@/hooks/useContacts/useContacts";
+import { useAppDispatch } from "@/store";
+import { deleteContactActionCreator } from "@/store/contacts/contactsSlice";
+import { ContactStructure } from "@/types";
 import ContactCard from "../ContactCard/ContactCard";
 import ContactListStyled from "./ContactListStyled";
 

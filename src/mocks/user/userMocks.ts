@@ -3,7 +3,7 @@ import {
   UserStateStructure,
   UserTokenPayloadStructure,
   UserCredentials,
-} from "../../types";
+} from "@/types";
 
 export const userIdMock = "646f6a9da1b8a16b45eabf44";
 

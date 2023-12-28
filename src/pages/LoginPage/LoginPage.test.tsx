@@ -1,20 +1,20 @@
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import LoginPage from "./LoginPage";
-import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
+import { paths } from "@/constants";
+import { contactsMock } from "@/factories/contacts/contactsFactory";
+import { errorHandlers } from "@/mocks/handlers";
+import { server } from "@/mocks/server";
 import {
   emptyUserStateMock,
   loggedUserStateMock,
-} from "../../mocks/user/userMocks";
-import { paths } from "../../constants";
-import { server } from "../../mocks/server";
-import { errorHandlers } from "../../mocks/handlers";
+} from "@/mocks/user/userMocks";
+import { correctCredentialsMock } from "@/mocks/user/userMocks";
+import { incorrectCredentialsMock } from "@/mocks/user/userMocks";
+import { renderWithProviders, wrapWithRouter } from "@/testUtils/testUtils";
+import { UserCredentials } from "@/types";
 import ContactsPage from "../ContactsPage/ContactsPage";
-import { contactsMock } from "../../factories/contacts/contactsFactory";
-import { UserCredentials } from "../../types";
-import { correctCredentialsMock } from "../../mocks/user/userMocks";
-import { incorrectCredentialsMock } from "../../mocks/user/userMocks";
+import LoginPage from "./LoginPage";
 
 beforeEach(() => {
   localStorage.clear();

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ContactStructure, ContactsStateStructure } from "../../types";
+import { ContactStructure, ContactsStateStructure } from "@/types";
 
 const initialContactsState: ContactsStateStructure = {
   contactsData: [],

@@ -1,16 +1,16 @@
 import React, { Suspense } from "react";
-import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import ReactDOM from "react-dom/client";
 import { ToastContainer } from "react-toastify";
+import { ThemeProvider } from "styled-components";
+import Loading from "./components/Loading/Loading";
+import appRouter from "./routers/appRouter/appRouter";
 import { store } from "./store";
 import GlobalStyle from "./styles/GlobalStyle/GlobalStyle";
 import theme from "./styles/theme/theme";
-import appRouter from "./routers/appRouter/appRouter";
-import "react-toastify/dist/ReactToastify.min.css";
 import "./fonts";
-import Loading from "./components/Loading/Loading";
+import "react-toastify/dist/ReactToastify.min.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
