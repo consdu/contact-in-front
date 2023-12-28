@@ -1,12 +1,12 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { UserCredentials } from "../../types";
 import { paths, feedbacks } from "../../constants";
 import { useAppDispatch } from "../../store";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../../store/ui/uiSlice";
+import { UserCredentials } from "../../types";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 

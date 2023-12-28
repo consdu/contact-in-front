@@ -1,8 +1,8 @@
 import { RouterProvider } from "react-router-dom";
+import { screen } from "@testing-library/react";
+import { userTokenMock } from "../../mocks/user/userMocks";
 import { renderWithProviders } from "../../testUtils/testUtils";
 import appRouter from "./appRouter";
-import { userTokenMock } from "../../mocks/user/userMocks";
-import { screen } from "@testing-library/react";
 
 localStorage.setItem("token", userTokenMock);
 

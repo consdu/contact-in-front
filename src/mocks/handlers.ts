@@ -1,10 +1,10 @@
 import { rest } from "msw";
-import { userTokenMock } from "./user/userMocks";
 import { paths, responseErrors, responseMesssages } from "../constants";
 import {
   contactMock,
   contactsMock,
 } from "../factories/contacts/contactsFactory";
+import { userTokenMock } from "./user/userMocks";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 

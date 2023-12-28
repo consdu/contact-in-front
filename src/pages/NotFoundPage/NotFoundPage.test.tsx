@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import NotFoundPage from "./NotFoundPage";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
+import NotFoundPage from "./NotFoundPage";
 
 describe("Given a NotFoundPage component", () => {
   describe("When rendered", () => {

@@ -1,12 +1,12 @@
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import {
   PreloadedState,
   combineReducers,
   configureStore,
 } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { userReducer } from "./user/userSlice";
 import { contactsReducer } from "./contacts/contactsSlice";
 import { uiReducer } from "./ui/uiSlice";
+import { userReducer } from "./user/userSlice";
 
 const rootReducer = combineReducers({
   user: userReducer,

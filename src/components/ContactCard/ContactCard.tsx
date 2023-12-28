@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { IoCloseCircleOutline } from "react-icons/io5";
 import { ContactStructure } from "../../types";
 import ContactCardStyled from "./ContactCardStyled";
-import { IoCloseCircleOutline } from "react-icons/io5";
 
 interface ContactCardProps {
   contact: ContactStructure;

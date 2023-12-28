@@ -1,8 +1,13 @@
 import { useEffect, useMemo } from "react";
+import _debounce from "debounce";
 import ContactList from "../../components/ContactList/ContactList";
+import Loading from "../../components/Loading/Loading";
+import LoadMore from "../../components/LoadMore/LoadMore";
+import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import ContainerStyled from "../../components/shared/ContainerStyled";
-import { useAppSelector, useAppDispatch } from "../../store";
 import useContacts from "../../hooks/useContacts/useContacts";
+import { useAppSelector, useAppDispatch } from "../../store";
 import {
   clearLimitActionCreator,
   loadContactsActionCreator,
@@ -10,12 +15,7 @@ import {
   resetLimitActionCreator,
   resetSelectedContactActionCreator,
 } from "../../store/contacts/contactsSlice";
-import Loading from "../../components/Loading/Loading";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
-import LoadMore from "../../components/LoadMore/LoadMore";
 import ContactsPageStyled from "./ContactsPageStyled";
-import _debounce from "debounce";
 
 const ContactsPage = (): React.ReactElement => {
   const contacts = useAppSelector((state) => state.contacts.contactsData);

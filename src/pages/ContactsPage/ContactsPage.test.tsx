@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { contactsMock } from "../../factories/contacts/contactsFactory";
+import { fullContactsStateMock } from "../../mocks/contacts/contactsStateMocks";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import ContactsPage from "./ContactsPage";
-import { fullContactsStateMock } from "../../mocks/contacts/contactsStateMocks";
 
 describe("Given a ContactsPage component", () => {
   beforeEach(() => {

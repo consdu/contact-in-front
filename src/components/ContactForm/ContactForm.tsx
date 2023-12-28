@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   IoPerson,
   IoPeopleSharp,
@@ -10,10 +11,9 @@ import {
   IoLogoInstagram,
   IoLogoLinkedin,
 } from "react-icons/io5";
-import ContactFormStyled from "./ContactFormStyled";
-import { useState } from "react";
 import { ContactStructure } from "../../types";
 import Button from "../Button/Button";
+import ContactFormStyled from "./ContactFormStyled";
 
 interface ContactFormProps {
   buttonText: string;

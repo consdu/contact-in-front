@@ -1,14 +1,14 @@
-import axios from "axios";
 import { useCallback, useMemo } from "react";
+import axios from "axios";
 import { toast } from "react-toastify";
-import { ContactStructure } from "../../types";
 import { paths, feedbacks, responseErrors } from "../../constants";
 import { useAppDispatch, useAppSelector } from "../../store";
+import { setTotalCountActionCreator } from "../../store/contacts/contactsSlice";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../../store/ui/uiSlice";
-import { setTotalCountActionCreator } from "../../store/contacts/contactsSlice";
+import { ContactStructure } from "../../types";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 

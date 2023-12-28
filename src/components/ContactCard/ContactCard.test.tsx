@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
-import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
-import ContactCard from "./ContactCard";
+import { vi } from "vitest";
 import { contactMock } from "../../factories/contacts/contactsFactory";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
+import ContactCard from "./ContactCard";
 
 const handleDeleteClick = vi.fn();
 describe("Given a ContactCard component", () => {

@@ -1,8 +1,8 @@
 import { screen } from "@testing-library/react";
-import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
-import LoadMore from "./LoadMore";
+import { vi } from "vitest";
 import { renderWithProviders } from "../../testUtils/testUtils";
+import LoadMore from "./LoadMore";
 
 const handleButtonClick = vi.fn();
 

@@ -1,10 +1,10 @@
+import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
+import { paths } from "../../constants";
+import { userTokenMock } from "../../mocks/user/userMocks";
+import LoginPage from "../../pages/LoginPage/LoginPage";
 import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
 import ProtectedRoute from "./ProtectedRoute";
-import { userTokenMock } from "../../mocks/user/userMocks";
-import { paths } from "../../constants";
-import LoginPage from "../../pages/LoginPage/LoginPage";
-import { RouterProvider, createMemoryRouter } from "react-router-dom";
 
 describe("Given a Protected Route components", () => {
   const text = "Example";

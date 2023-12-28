@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   IoCall,
   IoAtSharp,
@@ -8,18 +10,16 @@ import {
   IoLogoLinkedin,
   IoLogoInstagram,
 } from "react-icons/io5";
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import ContainerStyled from "../../components/shared/ContainerStyled";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { ContactStructure } from "../../types";
-import ContactDetailsPageStyled from "./ContactDetailsPageStyled";
+import { paths } from "../../constants";
 import useContacts from "../../hooks/useContacts/useContacts";
+import { useAppDispatch, useAppSelector } from "../../store";
 import {
   loadSelectedContactActionCreator,
   resetLimitActionCreator,
 } from "../../store/contacts/contactsSlice";
-import { paths } from "../../constants";
+import { ContactStructure } from "../../types";
+import ContactDetailsPageStyled from "./ContactDetailsPageStyled";
 
 const ContactDetailsPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();

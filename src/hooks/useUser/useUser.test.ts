@@ -1,16 +1,16 @@
 import { renderHook } from "@testing-library/react";
 import { toast } from "react-toastify";
 import { vi } from "vitest";
+import { feedbacks } from "../../constants";
+import { errorHandlers } from "../../mocks/handlers";
+import { server } from "../../mocks/server";
 import {
   incorrectCredentialsMock,
   correctCredentialsMock,
   userTokenMock,
 } from "../../mocks/user/userMocks";
-import useUser from "./useUser";
-import { feedbacks } from "../../constants";
-import { server } from "../../mocks/server";
-import { errorHandlers } from "../../mocks/handlers";
 import { wrapWithProviders } from "../../testUtils/testUtils";
+import useUser from "./useUser";
 
 describe("Given a getUserToken function", () => [
   describe("When called with username 'admin' and password 'admin'", () => {

@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
-import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
-import LoginForm from "./LoginForm";
-import { renderWithProviders } from "../../testUtils/testUtils";
+import { vi } from "vitest";
 import { correctCredentialsMock } from "../../mocks/user/userMocks";
+import { renderWithProviders } from "../../testUtils/testUtils";
+import LoginForm from "./LoginForm";
 
 const handleLoginFormSubmit = vi.fn();
 
