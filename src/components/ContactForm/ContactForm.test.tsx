@@ -1,10 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
-import {
-  fillContactForm,
-  renderWithProviders,
-} from "../../testUtils/testUtils";
+import { fillContactForm, renderWithProviders } from "@/testUtils/testUtils";
 import ContactForm from "./ContactForm";
 
 const handleFormSubmit = vi.fn();

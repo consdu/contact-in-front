@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import { contactsMock } from "../../factories/contacts/contactsFactory";
-import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
+import { contactsMock } from "@/factories/contacts/contactsFactory";
+import { renderWithProviders, wrapWithRouter } from "@/testUtils/testUtils";
 import ContactList from "./ContactList";
 
 describe("Given a ContactList component", () => {

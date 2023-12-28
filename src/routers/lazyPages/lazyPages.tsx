@@ -1,25 +1,23 @@
 import { lazy } from "react";
 
-export const LazyLoginPage = lazy(
-  () => import("../../pages/LoginPage/LoginPage")
-);
+export const LazyLoginPage = lazy(() => import("@/pages/LoginPage/LoginPage"));
 
 export const LazyContactsPage = lazy(
-  () => import("../../pages/ContactsPage/ContactsPage")
+  () => import("@/pages/ContactsPage/ContactsPage")
 );
 
 export const LazyNotFoundPage = lazy(
-  () => import("../../pages/NotFoundPage/NotFoundPage")
+  () => import("@/pages/NotFoundPage/NotFoundPage")
 );
 
 export const LazyAddContactPage = lazy(
-  () => import("../../pages/AddContactPage/AddContactPage")
+  () => import("@/pages/AddContactPage/AddContactPage")
 );
 
 export const LazyContactDetailsPage = lazy(
-  () => import("../../pages/ContactDetailsPage/ContactDetailsPage")
+  () => import("@/pages/ContactDetailsPage/ContactDetailsPage")
 );
 
 export const LazyUpdateContactPage = lazy(
-  () => import("../../pages/UpdateContactPage/UpdateContactPage")
+  () => import("@/pages/UpdateContactPage/UpdateContactPage")
 );

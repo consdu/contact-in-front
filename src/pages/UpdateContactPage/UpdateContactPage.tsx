@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import ContactForm from "../../components/ContactForm/ContactForm";
-import ContainerStyled from "../../components/shared/ContainerStyled";
-import { paths } from "../../constants";
-import useContacts from "../../hooks/useContacts/useContacts";
-import { useAppSelector } from "../../store";
-import { ContactStructure } from "../../types";
+import ContactForm from "@/components/ContactForm/ContactForm";
+import ContainerStyled from "@/components/shared/ContainerStyled";
+import { paths } from "@/constants";
+import useContacts from "@/hooks/useContacts/useContacts";
+import { useAppSelector } from "@/store";
+import { ContactStructure } from "@/types";
 import AddContactPageStyled from "../shared/FormPageStyled";
 
 const UpdateContactPage = (): React.ReactElement => {

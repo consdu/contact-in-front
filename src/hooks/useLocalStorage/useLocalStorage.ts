@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { UseLocalStorageStructure } from "../../types";
+import { UseLocalStorageStructure } from "@/types";
 
 const useLocalStorage = (): UseLocalStorageStructure => {
   const setLocalStorageItem = (key: string, value: string) => {

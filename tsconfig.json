@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "sourceMap": true,
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],

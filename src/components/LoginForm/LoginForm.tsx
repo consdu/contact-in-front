@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoKey, IoPersonCircleSharp } from "react-icons/io5";
-import { UserCredentials } from "../../types";
+import { UserCredentials } from "@/types";
 import Button from "../Button/Button";
 import LoginFormStyled from "./LoginFormStyled";
 

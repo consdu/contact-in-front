@@ -2,12 +2,12 @@ import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
-import { paths } from "../../constants";
+import { paths } from "@/constants";
 import {
   fillContactForm,
   renderWithProviders,
   wrapWithRouter,
-} from "../../testUtils/testUtils";
+} from "@/testUtils/testUtils";
 import ContactsPage from "../ContactsPage/ContactsPage";
 import AddContactPage from "./AddContactPage";
 

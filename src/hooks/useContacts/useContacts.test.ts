@@ -1,14 +1,14 @@
 import { renderHook } from "@testing-library/react";
 import { toast } from "react-toastify";
 import { vi } from "vitest";
-import { feedbacks, responseErrors } from "../../constants";
+import { feedbacks, responseErrors } from "@/constants";
 import {
   contactMock,
   contactsMock,
-} from "../../factories/contacts/contactsFactory";
-import { errorHandlers } from "../../mocks/handlers";
-import { server } from "../../mocks/server";
-import { wrapWithProviders } from "../../testUtils/testUtils";
+} from "@/factories/contacts/contactsFactory";
+import { errorHandlers } from "@/mocks/handlers";
+import { server } from "@/mocks/server";
+import { wrapWithProviders } from "@/testUtils/testUtils";
 import useContacts from "./useContacts";
 
 beforeEach(() => {

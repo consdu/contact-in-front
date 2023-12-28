@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
-import useToken from "../../hooks/useToken/useToken";
-import { useAppDispatch } from "../../store";
-import { loginUserActionCreator } from "../../store/user/userSlice";
+import useLocalStorage from "@/hooks/useLocalStorage/useLocalStorage";
+import useToken from "@/hooks/useToken/useToken";
+import { useAppDispatch } from "@/store";
+import { loginUserActionCreator } from "@/store/user/userSlice";
 import Layout from "../Layout/Layout";
 
 const App = (): React.ReactElement => {

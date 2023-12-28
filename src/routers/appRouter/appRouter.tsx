@@ -1,7 +1,7 @@
 import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom";
-import App from "../../components/App/App";
-import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
-import { paths } from "../../constants";
+import App from "@/components/App/App";
+import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute";
+import { paths } from "@/constants";
 import {
   LazyContactsPage,
   LazyLoginPage,

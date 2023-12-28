@@ -1,20 +1,20 @@
 import { useEffect, useMemo } from "react";
 import _debounce from "debounce";
-import ContactList from "../../components/ContactList/ContactList";
-import Loading from "../../components/Loading/Loading";
-import LoadMore from "../../components/LoadMore/LoadMore";
-import NoContactsFound from "../../components/NoContactsFound/NoContactsFound";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import ContainerStyled from "../../components/shared/ContainerStyled";
-import useContacts from "../../hooks/useContacts/useContacts";
-import { useAppSelector, useAppDispatch } from "../../store";
+import ContactList from "@/components/ContactList/ContactList";
+import Loading from "@/components/Loading/Loading";
+import LoadMore from "@/components/LoadMore/LoadMore";
+import NoContactsFound from "@/components/NoContactsFound/NoContactsFound";
+import SearchBar from "@/components/SearchBar/SearchBar";
+import ContainerStyled from "@/components/shared/ContainerStyled";
+import useContacts from "@/hooks/useContacts/useContacts";
+import { useAppSelector, useAppDispatch } from "@/store";
 import {
   clearLimitActionCreator,
   loadContactsActionCreator,
   loadMoreContactsActionCreator,
   resetLimitActionCreator,
   resetSelectedContactActionCreator,
-} from "../../store/contacts/contactsSlice";
+} from "@/store/contacts/contactsSlice";
 import ContactsPageStyled from "./ContactsPageStyled";
 
 const ContactsPage = (): React.ReactElement => {

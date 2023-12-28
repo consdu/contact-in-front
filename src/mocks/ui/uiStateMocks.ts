@@ -1,4 +1,4 @@
-import { UiStateStructure } from "../../types";
+import { UiStateStructure } from "@/types";
 
 export const shownLoadingStateMock: UiStateStructure = {
   isLoading: true,

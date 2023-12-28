@@ -10,15 +10,15 @@ import {
   IoLogoLinkedin,
   IoLogoInstagram,
 } from "react-icons/io5";
-import ContainerStyled from "../../components/shared/ContainerStyled";
-import { paths } from "../../constants";
-import useContacts from "../../hooks/useContacts/useContacts";
-import { useAppDispatch, useAppSelector } from "../../store";
+import ContainerStyled from "@/components/shared/ContainerStyled";
+import { paths } from "@/constants";
+import useContacts from "@/hooks/useContacts/useContacts";
+import { useAppDispatch, useAppSelector } from "@/store";
 import {
   loadSelectedContactActionCreator,
   resetLimitActionCreator,
-} from "../../store/contacts/contactsSlice";
-import { ContactStructure } from "../../types";
+} from "@/store/contacts/contactsSlice";
+import { ContactStructure } from "@/types";
 import ContactDetailsPageStyled from "./ContactDetailsPageStyled";
 
 const ContactDetailsPage = (): React.ReactElement => {

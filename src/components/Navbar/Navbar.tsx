@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { IoPeople, IoPersonAdd, IoExit } from "react-icons/io5";
-import { paths } from "../../constants";
+import { paths } from "@/constants";
 import ContainerStyled from "../shared/ContainerStyled";
 import NavbarStyled from "./NavbarStyled";
 

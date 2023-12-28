@@ -11,7 +11,7 @@ import {
   IoLogoInstagram,
   IoLogoLinkedin,
 } from "react-icons/io5";
-import { ContactStructure } from "../../types";
+import { ContactStructure } from "@/types";
 import Button from "../Button/Button";
 import ContactFormStyled from "./ContactFormStyled";
 

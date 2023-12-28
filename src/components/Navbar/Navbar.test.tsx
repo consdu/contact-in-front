@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
-import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
+import { renderWithProviders, wrapWithRouter } from "@/testUtils/testUtils";
 import Navbar from "./Navbar";
 
 const handleLogoutClick = vi.fn();

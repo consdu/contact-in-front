@@ -1,8 +1,8 @@
 import { screen } from "@testing-library/react";
-import { contactMock } from "../../factories/contacts/contactsFactory";
-import { fullContactsStateMock } from "../../mocks/contacts/contactsStateMocks";
-import { loggedUserStateMock } from "../../mocks/user/userMocks";
-import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
+import { contactMock } from "@/factories/contacts/contactsFactory";
+import { fullContactsStateMock } from "@/mocks/contacts/contactsStateMocks";
+import { loggedUserStateMock } from "@/mocks/user/userMocks";
+import { renderWithProviders, wrapWithRouter } from "@/testUtils/testUtils";
 import ContactDetailsPage from "./ContactDetailsPage";
 
 describe("Given a ContactDetailsPage", () => {

@@ -2,13 +2,13 @@ import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
-import { paths } from "../../constants";
+import { paths } from "@/constants";
 import {
   contactMock,
   contactsMock,
-} from "../../factories/contacts/contactsFactory";
-import { fullContactsStateMock } from "../../mocks/contacts/contactsStateMocks";
-import { renderWithProviders, wrapWithRouter } from "../../testUtils/testUtils";
+} from "@/factories/contacts/contactsFactory";
+import { fullContactsStateMock } from "@/mocks/contacts/contactsStateMocks";
+import { renderWithProviders, wrapWithRouter } from "@/testUtils/testUtils";
 import ContactsPage from "../ContactsPage/ContactsPage";
 import UpdateContactPage from "./UpdateContactPage";
 

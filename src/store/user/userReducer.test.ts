@@ -2,8 +2,8 @@ import {
   emptyUserStateMock,
   loggedUserStateMock,
   userActionPayloadMock,
-} from "../../mocks/user/userMocks";
-import { UserStateStructure } from "../../types";
+} from "@/mocks/user/userMocks";
+import { UserStateStructure } from "@/types";
 import {
   loginUserActionCreator,
   logoutUserActionCreator,
